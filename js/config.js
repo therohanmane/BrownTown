@@ -99,6 +99,7 @@ window.INB_I18N = {
     footerEmail: '📧 partner@inbrowntown.com',
     footerPhone: '📞 +९१ ९८२३० ९९८८७',
     copyright: '© २०२६ INBrownTown Media Network. सर्व हक्क राखीव.',
+    madeBy: 'Made by PaviqLabs',
     privacy: 'गोपनीयता धोरण',
     terms: 'नियम व अटी',
     ethics: 'संपादकीय आचारसंहिता'
@@ -188,6 +189,7 @@ window.INB_I18N = {
     footerEmail: '📧 partner@inbrowntown.com',
     footerPhone: '📞 +९१ ९८२३० ९९८८७',
     copyright: '© २०२६ INBrownTown Media Network. सर्वाधिकार सुरक्षित।',
+    madeBy: 'Made by PaviqLabs',
     privacy: 'गोपनीयता नीति',
     terms: 'नियम व शर्तें',
     ethics: 'संपादकीय आचार संहिता'
@@ -277,6 +279,7 @@ window.INB_I18N = {
     footerEmail: '📧 partner@inbrowntown.com',
     footerPhone: '📞 +91 98230 99887',
     copyright: '© 2026 INBrownTown Media Network. All rights reserved.',
+    madeBy: 'Made by PaviqLabs',
     privacy: 'Privacy Policy',
     terms: 'Terms of Service',
     ethics: 'Editorial Standards'

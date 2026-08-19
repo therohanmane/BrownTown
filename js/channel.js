@@ -345,6 +345,9 @@ const Channel = {
             </a>
           `).join('')}
         </div>
+        <div style="margin-top:auto; padding: 1.25rem 0.5rem 0.5rem 0.5rem; text-align:center; font-size:0.78rem; color:var(--text-muted); border-top:1px solid var(--border-light);">
+          <span>Made by</span> <strong style="color:var(--brand-brown-600);">PaviqLabs</strong>
+        </div>
       `;
     }
   },
@@ -749,7 +752,12 @@ const Channel = {
         </div>
 
         <div class="footer-bottom-bar">
-          <div>${this.t('copyright')}</div>
+          <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+            <span>${this.t('copyright')}</span>
+            <span class="made-by-pill">
+              Made by <strong style="color:#fff;">PaviqLabs</strong>
+            </span>
+          </div>
           <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
             <a href="#who-we-are" onclick="Channel.scrollToSection('who-we-are', event)">${this.t('privacy')}</a>
             <a href="#who-we-are" onclick="Channel.scrollToSection('who-we-are', event)">${this.t('terms')}</a>
