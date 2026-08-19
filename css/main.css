@@ -1,7 +1,7 @@
 /**
  * INBrownTown - Main Design System & Responsive Core Stylesheet
  * Fluid Mobile-First Layout from 320px to 4K Ultra-Wide (1920px+)
- * Fluid Typography, Dynamic Spacing Tokens, Clean Mobile Navigation Drawer & Bottom Bar
+ * Dynamic Sticky Glassmorphism Header with Scroll Progress & Frosted Glass Effects
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
@@ -153,15 +153,43 @@ section, footer {
   scroll-margin-top: 85px;
 }
 
-/* --- SITE HEADER & RESPONSIVE APP-BAR --- */
+/* ==================== DYNAMIC STICKY FROSTED HEADER ==================== */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 2000;
   background-color: var(--bg-surface);
   border-bottom: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Transformed Header Style when Page is Scrolled Down */
+.site-header.header-scrolled {
+  background-color: rgba(253, 251, 247, 0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(179, 84, 30, 0.3);
+  box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.12), 0 0 15px rgba(179, 84, 30, 0.08);
+}
+
+[data-theme="dark"] .site-header.header-scrolled {
+  background-color: rgba(7, 14, 27, 0.88);
+  border-bottom: 1px solid rgba(216, 138, 88, 0.25);
+  box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.6), 0 0 20px rgba(179, 84, 30, 0.15);
+}
+
+/* Dynamic Scroll Progress Bar */
+.scroll-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand-brown-600) 0%, var(--accent-gold) 50%, var(--brand-brown-500) 100%);
+  z-index: 2001;
+  transition: width 0.08s ease-out;
+  width: 0%;
+  box-shadow: 0 0 8px rgba(229, 169, 59, 0.6);
 }
 
 /* Main Brand Header Row */
@@ -171,6 +199,11 @@ section, footer {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
+  transition: padding 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-header.header-scrolled .main-header-row {
+  padding: 0.38rem 0;
 }
 
 .brand-logo-wrap {
@@ -194,6 +227,11 @@ section, footer {
   font-size: 1.15rem;
   box-shadow: 0 4px 10px rgba(179, 84, 30, 0.25);
   flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.site-header.header-scrolled .brand-symbol {
+  box-shadow: 0 0 14px rgba(179, 84, 30, 0.45);
 }
 
 .brand-text-block {
@@ -207,6 +245,7 @@ section, footer {
   color: var(--text-primary);
   line-height: 1.1;
   white-space: nowrap;
+  transition: font-size 0.3s ease;
 }
 
 .brand-text-block h1 span.in-prefix {
@@ -239,7 +278,7 @@ section, footer {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 0.35rem;
+  gap: 0.3rem;
   padding: 0;
   white-space: nowrap;
 }
@@ -255,7 +294,7 @@ section, footer {
   gap: 0.25rem;
   min-height: 38px;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all 0.2s ease;
   text-decoration: none;
 }
 
@@ -269,6 +308,16 @@ section, footer {
   background: var(--bg-surface-subtle);
   font-weight: 700;
   border-bottom: 2px solid var(--brand-brown-600);
+}
+
+/* Highlighted Active Nav Tab in Scrolled Header */
+.site-header.header-scrolled .nav-item-link.active {
+  background: var(--brand-brown-600);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+  border-bottom: none;
+  box-shadow: 0 3px 12px rgba(179, 84, 30, 0.35);
+  padding: 0.35rem 0.75rem;
 }
 
 .nav-item-link.highlight-pill {
@@ -298,6 +347,7 @@ section, footer {
   border-radius: var(--radius-sm);
   padding: 2px;
   gap: 2px;
+  transition: all 0.3s ease;
 }
 
 .lang-btn {

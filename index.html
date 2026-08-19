@@ -39,8 +39,8 @@
 </head>
 <body>
 
-  <!-- ==================== 1. SITE HEADER ==================== -->
-  <header class="site-header">
+  <!-- ==================== 1. SITE HEADER (STICKY WITH SCROLL TRANSFORMATION) ==================== -->
+  <header class="site-header" id="site-header">
     <div class="container main-header-row">
       <!-- Mobile Menu Toggle Button -->
       <button class="mobile-menu-toggle" id="mobile-drawer-toggle" onclick="Channel.toggleMobileDrawer()" aria-label="Open Navigation Menu">
@@ -76,6 +76,9 @@
         </button>
       </div>
     </div>
+
+    <!-- Glowing Dynamic Scroll Progress Bar -->
+    <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
   </header>
 
   <!-- ==================== 2. MOBILE DRAWER SLIDE-OVER ==================== -->

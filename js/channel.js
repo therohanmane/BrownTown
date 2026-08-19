@@ -1,7 +1,7 @@
 /**
  * INBrownTown - Brand & Channel Engine
- * Manages full top-to-bottom multilingual rendering, smooth section navigation with header offset,
- * scrollspy active tabs, embedded video modal player with zero redirect, and inquiry processing.
+ * Manages full top-to-bottom multilingual rendering, sticky header freeze & scroll transformation,
+ * dynamic scroll progress bar, scrollspy active tabs, embedded video modal player, and inquiry processing.
  */
 
 const Channel = {
@@ -86,7 +86,7 @@ const Channel = {
     const target = document.getElementById(sectionId);
     if (!target) return;
 
-    const headerOffset = 78;
+    const headerOffset = 72;
     const elementPosition = target.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -109,12 +109,34 @@ const Channel = {
     });
   },
 
+  // ScrollSpy & Dynamic Sticky Header Transformation
   initScrollSpy() {
     const sections = ['hero', 'who-we-are', 'what-we-do', 'how-we-help', 'content', 'videos', 'testimonials', 'work-with-us', 'contact'];
+    const header = document.getElementById('site-header');
+    const progressBar = document.getElementById('scroll-progress-bar');
     
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+      // 1. FREEZE & TRANSFORM HEADER ON SCROLL
+      if (header) {
+        if (scrollY > 20) {
+          header.classList.add('header-scrolled');
+        } else {
+          header.classList.remove('header-scrolled');
+        }
+      }
+
+      // 2. DYNAMIC SCROLL PROGRESS BAR
+      if (progressBar) {
+        const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = totalScroll > 0 ? (scrollY / totalScroll) * 100 : 0;
+        progressBar.style.width = `${Math.min(progress, 100)}%`;
+      }
+
+      // 3. ACTIVE TAB TRACKING
       let currentSection = '';
-      const scrollPos = window.pageYOffset + 120;
+      const scrollPos = scrollY + 140;
 
       sections.forEach(id => {
         const el = document.getElementById(id);
@@ -136,7 +158,10 @@ const Channel = {
           }
         });
       }
-    });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
   },
 
   // ==================== VIDEO MODAL PLAYER (ZERO REDIRECT) ====================
