@@ -600,6 +600,63 @@ section, footer {
   color: #fff;
 }
 
+/* ==================== FLOATING CORNER BADGE: MADE BY PAVIQLABS ==================== */
+.floating-paviqlabs-badge {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 4500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(7, 14, 27, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(179, 84, 30, 0.45);
+  color: #cbd5e1;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5), 0 0 14px rgba(179, 84, 30, 0.2);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  cursor: default;
+  user-select: none;
+}
+
+.floating-paviqlabs-badge .paviq-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--brand-brown-400);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--brand-brown-400);
+  animation: pulse-ring 2s infinite;
+}
+
+.floating-paviqlabs-badge .paviq-brand {
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.floating-paviqlabs-badge:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: rgba(11, 25, 44, 0.95);
+  border-color: var(--brand-brown-400);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(179, 84, 30, 0.4);
+  color: #ffffff;
+}
+
+@media (max-width: 480px) {
+  .floating-paviqlabs-badge {
+    bottom: 14px;
+    right: 14px;
+    font-size: 0.74rem;
+    padding: 0.35rem 0.75rem;
+  }
+}
+
 /* =========================================================================
    BREAKPOINTS (320px, 480px, 768px, 1024px, 1280px, 1536px, 1920px+)
    ========================================================================= */
