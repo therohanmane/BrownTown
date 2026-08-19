@@ -1,6 +1,7 @@
 /**
  * INBrownTown - Brand & Showcase Localization Engine & Config
  * Complete dictionaries for Marathi (mr), Hindi (hi), and English (en)
+ * Clearly highlights Advertising, Ad Posters, and Promotions for busy entrepreneurs & business owners.
  */
 
 window.INB_CONFIG = {
@@ -18,12 +19,12 @@ window.INB_I18N = {
   // MARATHI (Primary)
   mr: {
     brandName: 'INBrownTown',
-    brandTagline: 'डिजिटल मीडिया आणि कम्युनिटी चॅनेल',
-    heroTag: 'लोकांपर्यंत पोहोचणारा आवाज • जमिनीवरचे सत्य',
-    heroHeadline: 'लोकांचे प्रश्न, खरी वस्तुस्थिती आणि प्रेरणादायी कहाण्यांचा डिजिटल मंच.',
-    heroSubheadline: 'INBrownTown हे केवळ एक माध्यम नाही, तर नागरिकांचा आवाज बुलंद करणारा, स्थानिक समस्या मांडणारा आणि समाजाला जोडणारा विश्वासार्ह डिजिटल चॅनेल आहे.',
-    ctaWatchVideos: '▶ ताज्या व्हिडिओ स्टोरीज पहा',
-    ctaWorkWithUs: '💼 आमच्यासोबत काम करा',
+    brandTagline: 'डिजिटल जाहिरात, कम्युनिटी व मीडिया चॅनेल',
+    heroTag: 'लोकांपर्यंत पोहोचणारा आवाज • डिजिटल जाहिरात व प्रमोशन',
+    heroHeadline: 'स्थानिक व्यवसाय जाहिरात, ॲड पोस्टर्स आणि प्रेरणादायी कम्युनिटी स्टोरीजचा डिजिटल मंच.',
+    heroSubheadline: 'INBrownTown व्यस्त व्यावसायिक आणि दुकानदारांसाठी तयार जाहिरात पोस्टर्स, सोशल मीडिया प्रमोशन आणि ब्रँड प्रसिद्धीद्वारे लाखो ग्राहकांपर्यंत पोहोचवणारा विश्वासार्ह डिजिटल मंच आहे.',
+    ctaWatchVideos: '▶ चॅनेलवरील व्हिडिओ पहा',
+    ctaWorkWithUs: '📢 जाहिरात व सहकार्य करा',
 
     // Nav
     navWhoWeAre: 'आमच्याबद्दल',
@@ -37,16 +38,16 @@ window.INB_I18N = {
 
     // Who We Are
     whoWeAreTitle: 'आम्ही कोण आहोत?',
-    whoWeAreSub: 'सत्य, जबाबदारी आणि लोकसहभागावर आधारलेला आधुनिक मीडिया चॅनेल',
-    whoWeAreStory: 'INBrownTown ची सुरुवात जमिनीवरचे सत्य लोकांसमोर आणण्याच्या ध्येयाने झाली. आम्ही पारंपारिक सनसनाटीला फाटा देऊन नागरी समस्या, सामाजिक विकास आणि स्थानिक संस्कृतीला डिजिटल व्हिज्युअल माध्यमातून जागतिक स्तरावर पोहोचवतो. नागरिकांचा हक्काचा आवाज बनणे हेच आमचे अंतिम उद्दिष्ट आहे.',
+    whoWeAreSub: 'स्थानिक व्यवसायांना डिजिटल बळ देणारा आणि लोकसहभागावर आधारलेला आधुनिक मीडिया व जाहिरात मंच',
+    whoWeAreStory: 'INBrownTown हा व्यस्त व्यावसायिक, दुकानदार आणि ब्रँड्सना डिजिटल जाहिरात, ॲड पोस्टर्स आणि सोशल मीडिया प्रमोशनच्या माध्यमातून लाखो ग्राहकांपर्यंत पोहोचवणारा मंच आहे. आम्ही स्वतः व्हिडिओ शूटिंग करत नाही, तर व्यावसायिकांचे प्रमोशन करण्यासाठी दर्जेदार जाहिरात पोस्टर्स आणि डिजिटल मार्केटिंग कॅम्पेन तयार करतो.',
 
     // What We Do
     whatWeDoTitle: 'आम्ही काय करतो?',
-    whatWeDoSub: 'उच्च दर्जाचे व्हिडिओ उत्पादन, सखोल वार्तांकन आणि जनसंवाद',
+    whatWeDoSub: 'व्यस्त व्यावसायिकांसाठी डिजिटल जाहिरात, ॲड पोस्टर्स डिझाइन आणि सोशल मीडिया प्रमोशन',
 
     // How We Help
-    howWeHelpTitle: 'आम्ही समाजाला कशी मदत करतो?',
-    howWeHelpSub: '४ भक्कम मूल्यस्तंभ जे आमच्या प्रत्येक व्हिडिओ कव्हरेजला दिशा देतात',
+    howWeHelpTitle: 'आम्ही व्यावसायिकांना व समाजाला कशी मदत करतो?',
+    howWeHelpSub: '४ भक्कम मूल्यस्तंभ जे आमच्या जाहिरात व कम्युनिटी कार्याला दिशा देतात',
 
     // Content Showcase
     contentTitle: 'आमच्या चॅनेलवरील प्रमुख कंटेंट',
@@ -56,7 +57,7 @@ window.INB_I18N = {
     videosTitle: 'व्हिडिओ गॅलरी',
     videosSub: 'आमच्या अधिकृत चॅनेलवरील सर्वात लोकप्रिय आणि गाजलेले व्हिडिओ थेट येथे पहा',
     filterAll: '🌐 सर्व व्हिडिओ',
-    filterGround: '🎥 ग्राउंड रिपोर्ट्स',
+    filterGround: '🎥 ग्राउंड स्टोरीज',
     filterInterviews: '🎙️ मुलाखती व पॉडकास्ट',
     filterExplainers: '💡 योजना व एक्सप्लेनर',
     filterCommunity: '🤝 कम्युनिटी स्टोरीज',
@@ -71,30 +72,30 @@ window.INB_I18N = {
     modalYoutubeBtn: 'YouTube वर सबस्क्राइब करा ↗',
 
     // Testimonials
-    testTitle: 'कम्युनिटी व प्रेक्षकांच्या प्रतिक्रिया',
-    testSub: 'नागरिक, व्यावसायिक आणि तज्ज्ञांनी व्यक्त केलेला विश्वास',
+    testTitle: 'कम्युनिटी व भागीदारांच्या प्रतिक्रिया',
+    testSub: 'स्थानिक व्यावसायिक, नागरिक आणि तज्ज्ञांनी व्यक्त केलेला विश्वास',
 
     // Work With Us / Collaboration
-    workTitle: 'आमच्यासोबत काम करा',
-    workSub: 'ब्रँड प्रमोशन, स्थानिक व्यवसाय जाहिरात, व्हिडिओ प्रोडक्शन आणि मीडिया कव्हरेजसाठी संपर्क साधा',
+    workTitle: 'आमच्यासोबत जाहिरात व प्रमोशन करा',
+    workSub: 'वेळ नसलेल्या व्यावसायिकांसाठी कस्टमाईज्ड ॲड पोस्टर्स, सोशल मीडिया जाहिरात, ब्रँड प्रमोशन आणि डिजिटल रीचसाठी संपर्क साधा.',
     formName: 'तुमचे पूर्ण नाव *',
     formPhone: 'मोबाईल नंबर *',
     formEmail: 'ईमेल आयडी *',
-    formService: 'सहकार्याचा प्रकार *',
-    serviceOption1: 'स्थानिक व्यवसाय प्रमोशन व व्हिडिओ शूट',
-    serviceOption2: 'ब्रँड स्पॉन्सरशिप व डिजिटल कॅम्पेन',
-    serviceOption3: 'सामाजिक संस्था / NGO कव्हरेज',
-    serviceOption4: 'पॉडकास्ट / मुलाखत आमंत्रण',
-    serviceOptionOther: 'इतर / इतर चौकशी (Other)',
-    formMessage: 'तुमच्या प्रकल्पाविषयी किंवा कल्पनेविषयी थोडक्यात सांगा *',
-    btnSubmitInquiry: '🚀 चौकशी पाठवा (Enquire Now)',
-    formSuccessToast: 'तुमची चौकशी यशस्वीरित्या नोंदवली गेली! आमची टीम लवकरच संपर्क साधेल.',
+    formService: 'जाहिरात / सहकार्याचा प्रकार *',
+    serviceOption1: 'स्थानिक व्यवसाय जाहिरात व प्रोमो पोस्टर्स',
+    serviceOption2: 'ब्रँड स्पॉन्सरशिप व डिजिटल प्रमोशन कॅम्पेन',
+    serviceOption3: 'सोशल मीडिया ॲड क्रिएटिव्ह व बॅनर डिझाइन',
+    serviceOption4: 'कम्युनिटी बिझनेस स्पॉटलाइट व जाहिरात',
+    serviceOptionOther: 'इतर / इतर जाहिरात चौकशी (Other)',
+    formMessage: 'तुमच्या ब्रँड, प्रॉडक्ट किंवा प्रमोशन कल्पनेविषयी सांगा *',
+    btnSubmitInquiry: '🚀 जाहिरात चौकशी पाठवा (Enquire Now)',
+    formSuccessToast: 'तुमची जाहिरात चौकशी यशस्वीरित्या नोंदवली गेली! आमची टीम लवकरच संपर्क साधेल.',
 
     // Contact & Footer
-    contactTitle: 'न्यूजरूम व स्टुडिओ संपर्क',
-    footerAbout: 'INBrownTown हा पुणे व महाराष्ट्रातील अग्रगण्य डिजिटल व्हिडिओ मीडिया चॅनेल आहे. ग्राउंड रिपोर्ट्स, प्रेरणादायी कथा आणि नागरी प्रश्नांचा हक्काचा मंच.',
+    contactTitle: 'जाहिरात व चॅनेल संपर्क',
+    footerAbout: 'INBrownTown हा पुणे व महाराष्ट्रातील स्थानिक व्यवसाय जाहिरात, ॲड पोस्टर्स आणि कम्युनिटी स्टोरीजचा अग्रगण्य डिजिटल मंच आहे.',
     footerQuickLinks: 'महत्त्वाचे दुवे',
-    footerServices: 'सेवा व सहकार्य',
+    footerServices: 'जाहिरात सेवा',
     footerAddress: '📍 एफसी रोड, डेक्कन जिमखाना, पुणे ४११००४, महाराष्ट्र',
     footerEmail: '📧 partner@inbrowntown.com',
     footerPhone: '📞 +९१ ९८२३० ९९८८७',
@@ -108,12 +109,12 @@ window.INB_I18N = {
   // HINDI
   hi: {
     brandName: 'INBrownTown',
-    brandTagline: 'डिजिटल मीडिया और कम्युनिटी चैनल',
-    heroTag: 'जन-जन तक पहुँचती आवाज़ • ज़मीनी सच्चाई',
-    heroHeadline: 'जनता के मुद्दे, वास्तविक धरातल और प्रेरक कहानियों का डिजिटल मंच।',
-    heroSubheadline: 'INBrownTown सिर्फ एक माध्यम नहीं, बल्कि नागरिकों की आवाज़ उठाने वाला, स्थानीय समस्याओं को उजागर करने वाला और समाज को जोड़ने वाला विश्वसनीय डिजिटल चैनल है।',
-    ctaWatchVideos: '▶ ताज़ा वीडियो स्टोरीज़ देखें',
-    ctaWorkWithUs: '💼 हमारे साथ जुड़ें',
+    brandTagline: 'डिजिटल विज्ञापन, कम्युनिटी व मीडिया चैनल',
+    heroTag: 'जन-जन तक पहुँच • डिजिटल विज्ञापन व प्रमोशन',
+    heroHeadline: 'स्थानीय व्यापार विज्ञापन, एड पोस्टर्स और प्रेरक कम्युनिटी स्टोरीज का डिजिटल मंच।',
+    heroSubheadline: 'INBrownTown व्यस्त व्यापारियों और ब्रांड्स के लिए रेडीमेड विज्ञापन पोस्टर्स, सोशल मीडिया प्रमोशन और डिजिटल रीच प्रदान करने वाला सशक्त मंच है।',
+    ctaWatchVideos: '▶ चैनल के वीडियो देखें',
+    ctaWorkWithUs: '📢 विज्ञापन व सहयोग करें',
 
     // Nav
     navWhoWeAre: 'परिचय',
@@ -122,21 +123,21 @@ window.INB_I18N = {
     navContent: 'कंटेंट',
     navVideos: 'वीडियो गैलरी',
     navTestimonials: 'प्रतिक्रियाएं',
-    navWorkWithUs: 'सहयोग',
+    navWorkWithUs: 'विज्ञापन व सहयोग',
     navContact: 'संपर्क',
 
     // Who We Are
     whoWeAreTitle: 'हम कौन हैं?',
-    whoWeAreSub: 'सत्य, निष्पक्षता और जनभागीदारी पर आधारित आधुनिक मीडिया चैनल',
-    whoWeAreStory: 'INBrownTown की शुरुआत ज़मीनी हकीकत को निष्पक्षता से सामने लाने के उद्देश्य से हुई। हम सनसनीखेज खबरों से दूर रहकर नागरिक समस्याओं, विकास और स्थानीय संस्कृति को गुणवत्तापूर्ण वीडियो के जरिए प्रस्तुत करते हैं। नागरिकों का सच्चा मंच बनना ही हमारा ध्येय है।',
+    whoWeAreSub: 'स्थानीय व्यवसायों को डिजिटल ताक़त देने वाला आधुनिक मीडिया व विज्ञापन मंच',
+    whoWeAreStory: 'INBrownTown व्यस्त व्यापारियों, दुकानदारों और ब्रांड्स को डिजिटल विज्ञापन, एड पोस्टर्स और सोशल मीडिया प्रचार के माध्यम से लाखों ग्राहकों तक पहुँचाने में मदद करता है। हम स्वयं वीडियो शूटिंग नहीं करते, बल्कि व्यवसायों के प्रचार हेतु उच्च-गुणवत्ता वाले विज्ञापन पोस्टर्स और डिजिटल मार्केटिंग अभियान तैयार करते हैं।',
 
     // What We Do
     whatWeDoTitle: 'हम क्या करते हैं?',
-    whatWeDoSub: 'उच्च स्तरीय वीडियो निर्माण, गहन ग्राउंड रिपोर्टिंग और जन-संवाद',
+    whatWeDoSub: 'व्यस्त व्यापारियों के लिए डिजिटल विज्ञापन, एड पोस्टर्स डिज़ाईन और सोशल मीडिया प्रमोशन',
 
     // How We Help
-    howWeHelpTitle: 'हम समाज की कैसे मदद करते हैं?',
-    howWeHelpSub: '४ आधारभूत मूल्य जो हमारी हर वीडियो रिपोर्ट को दिशा प्रदान करते हैं',
+    howWeHelpTitle: 'हम व्यापारियों और समाज की कैसे मदद करते हैं?',
+    howWeHelpSub: '४ आधारभूत मूल्य जो हमारी विज्ञापन व कम्युनिटी सेवाओं को दिशा प्रदान करते हैं',
 
     // Content Showcase
     contentTitle: 'चैनल पर मिलने वाला प्रमुख कंटेंट',
@@ -146,7 +147,7 @@ window.INB_I18N = {
     videosTitle: 'वीडियो गैलरी',
     videosSub: 'हमारे आधिकारिक चैनल के लोकप्रिय और प्रभावकारी वीडियो सीधे यहाँ देखें',
     filterAll: '🌐 सभी वीडियो',
-    filterGround: '🎥 ग्राउंड रिपोर्ट्स',
+    filterGround: '🎥 ग्राउंड स्टोरीज',
     filterInterviews: '🎙️ इंटरव्यू व पॉडकास्ट',
     filterExplainers: '💡 योजना व एक्सप्लेनर',
     filterCommunity: '🤝 कम्युनिटी स्टोरीज',
@@ -161,30 +162,30 @@ window.INB_I18N = {
     modalYoutubeBtn: 'YouTube पर सब्सक्राइब करें ↗',
 
     // Testimonials
-    testTitle: 'कम्युनिटी व दर्शकों की राय',
-    testSub: 'नागरिकों, व्यापारियों और विशेषज्ञों का अटूट भरोसा',
+    testTitle: 'कम्युनिटी व पार्टनर राय',
+    testSub: 'स्थानीय व्यापारियों, नागरिकों और विशेषज्ञों का अटूट भरोसा',
 
     // Work With Us
-    workTitle: 'हमारे साथ काम करें / विज्ञापन',
-    workSub: 'ब्रांड प्रमोशन, स्थानीय व्यापार प्रचार, वीडियो प्रोडक्शन और मीडिया कवरेज हेतु संपर्क करें',
+    workTitle: 'हमारे साथ विज्ञापन व प्रमोशन करें',
+    workSub: 'जिनके पास समय नहीं है, उन व्यापारियों के लिए कस्टमाइज्ड एड पोस्टर्स, सोशल मीडिया विज्ञापन और डिजिटल रीच हेतु संपर्क करें।',
     formName: 'आपका पूरा नाम *',
     formPhone: 'मोबाइल नंबर *',
     formEmail: 'ईमेल आईडी *',
-    formService: 'सहयोग का प्रकार *',
-    serviceOption1: 'स्थानीय व्यापार प्रमोशन व वीडियो शूट',
-    serviceOption2: 'ब्रांड स्पॉन्सरशिप व डिजिटल अभियान',
-    serviceOption3: 'एनजीओ / सामाजिक संस्थान कवरेज',
-    serviceOption4: 'पॉडकास्ट / साक्षात्कार निमंत्रण',
-    serviceOptionOther: 'अन्य / सामान्य पूछताछ (Other)',
-    formMessage: 'अपनी परियोजना या विचार के बारे में संक्षेप में बताएं *',
-    btnSubmitInquiry: '🚀 पूछताछ भेजें (Enquire Now)',
-    formSuccessToast: 'आपकी पूछताछ सफलतापूर्वक दर्ज कर ली गई है! हमारी टीम शीघ्र संपर्क करेगी।',
+    formService: 'विज्ञापन / सहयोग का प्रकार *',
+    serviceOption1: 'स्थानीय व्यापार विज्ञापन व प्रोमो पोस्टर्स',
+    serviceOption2: 'ब्रांड स्पॉन्सरशिप व डिजिटल प्रमोशन अभियान',
+    serviceOption3: 'सोशल मीडिया विज्ञापन पोस्टर्स व बैनर डिज़ाईन',
+    serviceOption4: 'कम्युनिटी बिज़नेस स्पॉटलाइट व प्रमोशन',
+    serviceOptionOther: 'अन्य / सामान्य विज्ञापन पूछताछ (Other)',
+    formMessage: 'अपने ब्रांड, उत्पाद या विज्ञापन विचार के बारे में बताएं *',
+    btnSubmitInquiry: '🚀 विज्ञापन पूछताछ भेजें (Enquire Now)',
+    formSuccessToast: 'आपकी विज्ञापन पूछताछ सफलतापूर्वक दर्ज कर ली गई है! हमारी टीम शीघ्र संपर्क करेगी।',
 
     // Contact & Footer
-    contactTitle: 'न्यूज़रूम व स्टूडियो संपर्क',
-    footerAbout: 'INBrownTown पुणे व महाराष्ट्र का अग्रणी डिजिटल वीडियो मीडिया चैनल है। ज़मीनी खबरों, प्रेरक कहानियों और नागरिक मुद्दों का विश्वसनीय मंच।',
+    contactTitle: 'विज्ञापन व न्यूज़रूम संपर्क',
+    footerAbout: 'INBrownTown पुणे व महाराष्ट्र का प्रमुख डिजिटल विज्ञापन, एड पोस्टर्स और कम्युनिटी स्टोरीज मंच है।',
     footerQuickLinks: 'महत्वपूर्ण लिंक',
-    footerServices: 'सेवाएं व सहयोग',
+    footerServices: 'विज्ञापन सेवाएं',
     footerAddress: '📍 एफसी रोड, डेक्कन जिमखाना, पुणे ४११००४, महाराष्ट्र',
     footerEmail: '📧 partner@inbrowntown.com',
     footerPhone: '📞 +९१ ९८२३० ९९८८७',
@@ -198,12 +199,12 @@ window.INB_I18N = {
   // ENGLISH
   en: {
     brandName: 'INBrownTown',
-    brandTagline: 'Digital Media & Community Channel',
-    heroTag: 'Real Voices • Ground Truth • Cinematic Stories',
-    heroHeadline: 'The Digital Platform for Citizen Voices, Ground Truth & Untold Stories.',
-    heroSubheadline: 'INBrownTown is not just a media channel—it is a community ecosystem amplifying real civic issues, celebrating grassroots heroes, and fostering impactful change through visual storytelling.',
-    ctaWatchVideos: '▶ Watch Latest Videos',
-    ctaWorkWithUs: '💼 Work With Us',
+    brandTagline: 'Digital Advertising, Media & Community Channel',
+    heroTag: 'Real Voices • Digital Advertising & Promotional Posters',
+    heroHeadline: 'The Digital Platform for Local Business Advertising, Ad Posters & Community Stories.',
+    heroSubheadline: 'INBrownTown helps busy entrepreneurs, shopkeepers, and local businesses grow with done-for-you ad posters, targeted social media promotions, and curated community reach.',
+    ctaWatchVideos: '▶ Watch Channel Videos',
+    ctaWorkWithUs: '📢 Advertise With Us',
 
     // Nav
     navWhoWeAre: 'Who We Are',
@@ -212,21 +213,21 @@ window.INB_I18N = {
     navContent: 'Content',
     navVideos: 'Video Gallery',
     navTestimonials: 'Testimonials',
-    navWorkWithUs: 'Collaborate',
+    navWorkWithUs: 'Advertise With Us',
     navContact: 'Contact',
 
     // Who We Are
     whoWeAreTitle: 'Who We Are',
-    whoWeAreSub: 'An independent digital channel rooted in journalistic integrity and community empowerment',
-    whoWeAreStory: 'INBrownTown was founded with a singular conviction: real impact happens on the ground. We cut through sensational noise to deliver investigative visual reports, civic explainers, and human-interest documentaries across Pune and Maharashtra.',
+    whoWeAreSub: 'An advertising, creative promotion, and digital media platform empowering local businesses',
+    whoWeAreStory: 'INBrownTown is dedicated to helping busy business owners, merchants, and professionals reach thousands of local customers through creative ad posters, digital banners, and social media promotions. We do not do video shoots or camera recordings; instead, we craft high-impact promotional advertising and marketing campaigns so busy entrepreneurs can grow effortlessly.',
 
     // What We Do
     whatWeDoTitle: 'What We Do',
-    whatWeDoSub: 'High-production visual journalism, civic follow-ups, and brand storytelling',
+    whatWeDoSub: 'Done-for-you digital advertising, promotional posters, and social media campaigns for busy business owners',
 
     // How We Help
-    howWeHelpTitle: 'How We Help the Community',
-    howWeHelpSub: '4 foundational pillars that guide every story, interview, and campaign we produce',
+    howWeHelpTitle: 'How We Help Businesses & Community',
+    howWeHelpSub: '4 foundational pillars that guide our advertising services and community publishing',
 
     // Content Showcase
     contentTitle: 'Content You’ll Find Here',
@@ -236,7 +237,7 @@ window.INB_I18N = {
     videosTitle: 'Featured Video Gallery',
     videosSub: 'Watch our curated, highest-impact YouTube video productions directly on this page',
     filterAll: '🌐 All Videos',
-    filterGround: '🎥 Ground Reports',
+    filterGround: '🎥 Ground Stories',
     filterInterviews: '🎙️ Interviews & Podcasts',
     filterExplainers: '💡 Explainers',
     filterCommunity: '🤝 Community Stories',
@@ -252,29 +253,29 @@ window.INB_I18N = {
 
     // Testimonials
     testTitle: 'Community & Partner Voices',
-    testSub: 'What citizens, business owners, and policy leaders say about our coverage',
+    testSub: 'What local business owners, citizens, and policy leaders say about our platform',
 
     // Work With Us
-    workTitle: 'Work With Us / Advertise',
-    workSub: 'Partner with INBrownTown for brand documentaries, local business spotlights, and digital reach',
+    workTitle: 'Advertise With Us / Promotions',
+    workSub: 'Partner with INBrownTown for custom promotional posters, digital advertising campaigns, and massive local reach crafted for busy professionals.',
     formName: 'Your Full Name *',
     formPhone: 'Phone Number *',
     formEmail: 'Email Address *',
-    formService: 'Collaboration Type *',
-    serviceOption1: 'Local Business Spotlight & Video Shoot',
-    serviceOption2: 'Brand Sponsorship & Digital Campaign',
-    serviceOption3: 'NGO / Social Impact Coverage',
-    serviceOption4: 'Podcast / Leadership Interview',
-    serviceOptionOther: 'Other / Custom Inquiry',
-    formMessage: 'Tell us about your brand, project, or event *',
-    btnSubmitInquiry: '🚀 Submit Inquiry (Enquire Now)',
-    formSuccessToast: 'Your inquiry has been successfully received! Our team will get back to you shortly.',
+    formService: 'Advertising / Promotion Type *',
+    serviceOption1: 'Local Business Ads & Promotional Posters',
+    serviceOption2: 'Brand Sponsorship & Digital Ad Campaign',
+    serviceOption3: 'Social Media Ad Creatives & Poster Design',
+    serviceOption4: 'Community Business Spotlight & Promotion',
+    serviceOptionOther: 'Other / Custom Advertising Inquiry',
+    formMessage: 'Tell us about your brand, product, or promotion goals *',
+    btnSubmitInquiry: '🚀 Submit Advertising Inquiry (Enquire Now)',
+    formSuccessToast: 'Your advertising inquiry has been successfully received! Our team will get back to you shortly.',
 
     // Contact & Footer
-    contactTitle: 'Studio & Newsroom Inquiries',
-    footerAbout: 'INBrownTown is a premier digital media brand producing on-the-ground investigations, civic explainers, and inspiring community documentaries.',
+    contactTitle: 'Advertising & Media Desk',
+    footerAbout: 'INBrownTown is a premier digital advertising and media platform empowering local businesses with custom ad posters, promotions, and impactful community stories.',
     footerQuickLinks: 'Quick Navigation',
-    footerServices: 'Services & Ads',
+    footerServices: 'Advertising Services',
     footerAddress: '📍 FC Road, Deccan Gymkhana, Pune 411004, Maharashtra, India',
     footerEmail: '📧 partner@inbrowntown.com',
     footerPhone: '📞 +91 98230 99887',

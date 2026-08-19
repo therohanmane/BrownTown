@@ -631,19 +631,19 @@ const Channel = {
               <div class="perk-item">
                 <span class="perk-icon">🎯</span>
                 <div>
-                  <strong>Targeted Local Reach:</strong> Direct access to 250k+ engaged viewers across Pune & Maharashtra.
+                  <strong>Targeted Local Reach:</strong> Direct promotional access to 250k+ active community members across Pune & Maharashtra.
                 </div>
               </div>
               <div class="perk-item">
-                <span class="perk-icon">🎬</span>
+                <span class="perk-icon">🎨</span>
                 <div>
-                  <strong>High-End 4K Production:</strong> Cinematic field storytelling, aerial drone visuals, and crisp audio.
+                  <strong>Done-For-You Ad Posters:</strong> Custom promotional posters, banners & social media creatives crafted specifically for busy business owners.
                 </div>
               </div>
               <div class="perk-item">
-                <span class="perk-icon">🛡️</span>
+                <span class="perk-icon">⏱️</span>
                 <div>
-                  <strong>Editorial Authenticity:</strong> High credibility and deep organic community trust.
+                  <strong>Hassle-Free Marketing:</strong> We handle your digital advertising and promotion so you can focus 100% on running your business.
                 </div>
               </div>
             </div>

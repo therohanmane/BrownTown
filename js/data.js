@@ -1,77 +1,78 @@
 /**
  * INBrownTown - Brand & Channel Data Store
- * Curated YouTube video catalog, milestone stats, core activities, community pillars, and testimonials.
+ * Curated YouTube video catalog, milestone stats, core advertising & community activities, pillars, and testimonials.
+ * Clarification: INBrownTown specializes in digital advertising, promotional posters, and social media campaigns for busy business owners (no on-site video shooting).
  */
 
 window.INB_BRAND_DATA = {
   // Brand Metadata
   stats: [
     { id: 'stat-subs', value: 250000, suffix: '+', label: { mr: 'युट्यूब व कम्युनिटी सदस्य', hi: 'यूट्यूब व कम्युनिटी सदस्य', en: 'Subscribers & Community' } },
-    { id: 'stat-videos', value: 450, suffix: '+', label: { mr: 'ग्राउंड व्हिडिओ स्टोरीज', hi: 'ग्राउंड वीडियो स्टोरीज', en: 'Ground Video Reports' } },
-    { id: 'stat-cities', value: 18, suffix: '+', label: { mr: 'शहरे व जिल्हे कव्हर', hi: 'शहर व ज़िले कवर्ड', en: 'Districts & Cities Covered' } },
-    { id: 'stat-views', value: 5000000, suffix: '+', label: { mr: 'मासिक व्ह्यूज व रीच', hi: 'मासिक व्यूज़ व रीच', en: 'Monthly Channel Views' } }
+    { id: 'stat-videos', value: 450, suffix: '+', label: { mr: 'क्यूरेटेड व्हिडिओ स्टोरीज', hi: 'क्यूरेटेड वीडियो स्टोरीज', en: 'Curated Video Stories' } },
+    { id: 'stat-cities', value: 18, suffix: '+', label: { mr: 'शहरे व जिल्हे कव्हरेज', hi: 'शहर व ज़िले कवरेज', en: 'Districts & Cities Reached' } },
+    { id: 'stat-views', value: 5000000, suffix: '+', label: { mr: 'मासिक जाहिरात व चॅनेल रीच', hi: 'मासिक विज्ञापन व चैनल रीच', en: 'Monthly Advertising & Channel Views' } }
   ],
 
-  // What We Do (6 Core Activities)
+  // What We Do (6 Core Activities: Advertising, Ad Posters, Promotions & Curated Insights)
   activities: [
     {
-      id: 'act-ground',
-      icon: '🎥',
-      title: { mr: 'ग्राउंड रिपोर्टिंग', hi: 'ग्राउंड रिपोर्टिंग', en: 'Ground Reporting' },
+      id: 'act-ads',
+      icon: '📢',
+      title: { mr: 'डिजिटल जाहिरात व प्रमोशन', hi: 'डिजिटल विज्ञापन व प्रमोशन', en: 'Digital Ads & Promotions' },
       desc: {
-        mr: 'स्थानिक समस्या, नागरिकांचे प्रश्न आणि जमिनीवरच्या थेट वास्तवाचे निष्पक्ष व्हिडिओ कव्हरेज.',
-        hi: 'स्थानीय समस्याओं, नागरिकों के प्रश्नों और ज़मीनी हकीकत का निष्पक्ष वीडियो कवरेज।',
-        en: 'Unfiltered, on-the-ground visual investigation of real civic problems and grassroots reality.'
+        mr: 'व्यस्त व्यावसायिक आणि दुकानदारांसाठी डिजिटल जाहिरात मोहीम आणि लाखो स्थानिक ग्राहकांपर्यंत थेट पोहोच.',
+        hi: 'व्यस्त व्यापारियों और स्थानीय ब्रांड्स के लिए लक्षित डिजिटल विज्ञापन व व्यापक प्रचार।',
+        en: 'Targeted digital advertising and promotional campaigns connecting local businesses with thousands of customers.'
+      }
+    },
+    {
+      id: 'act-posters',
+      icon: '🎨',
+      title: { mr: 'ॲड पोस्टर्स व क्रिएटिव्ह डिझाइन', hi: 'विज्ञापन पोस्टर व क्रिएटिव डिज़ाईन', en: 'Ad Posters & Visual Creatives' },
+      desc: {
+        mr: 'ज्यांच्याकडे मार्केटिंगसाठी वेळ नाही अशांसाठी आकर्षक जाहिरात पोस्टर्स, बॅनर्स आणि सोशल मीडिया डिझाइन.',
+        hi: 'जिनके पास समय की कमी है, उनके लिए पेशेवर विज्ञापन पोस्टर्स, बैनर्स और सोशल मीडिया ग्राफिक्स।',
+        en: 'Done-for-you promotional posters, eye-catching ad graphics, and social media flyers for busy entrepreneurs.'
       }
     },
     {
       id: 'act-community',
       icon: '🤝',
-      title: { mr: 'कम्युनिटी स्टोरीज', hi: 'कम्युनिटी स्टोरीज', en: 'Community Stories' },
+      title: { mr: 'कम्युनिटी स्टोरीज व जागृती', hi: 'कम्युनिटी स्टोरीज व जागरूकता', en: 'Community Stories & Awareness' },
       desc: {
-        mr: 'सामान्यांमधील असामान्य व्यक्ती, सामाजिक कार्यकर्ते आणि प्रेरणादायी स्थानिक यशोगाथा.',
-        hi: 'आम लोगों में छुपे खास नायकों, सामाजिक कार्यकर्ताओं और प्रेरक स्थानीय गाथाओं का मंच।',
-        en: 'Spotlighting inspiring everyday heroes, grassroots changemakers, and local resilience.'
+        mr: 'समाजातील प्रेरणादायी व्यक्ती, सामाजिक कार्यकर्ते आणि स्थानिक यशोगाथांचा डिजिटल मंच.',
+        hi: 'स्थानीय नायकों, सामाजिक कार्यकर्ताओं और प्रेरक स्थानीय प्रयासों का सशक्त मंच।',
+        en: 'Highlighting inspiring local changemakers, public welfare efforts, and community resilience.'
       }
     },
     {
-      id: 'act-civic',
-      icon: '📢',
-      title: { mr: 'नागरी प्रश्न व पाठपुरावा', hi: 'नागरिक मुद्दे व फॉलोअप', en: 'Civic Issue Follow-ups' },
+      id: 'act-spotlight',
+      icon: '🚀',
+      title: { mr: 'स्थानिक व्यवसाय स्पॉटलाइट', hi: 'स्थानीय व्यापार स्पॉटलाइट', en: 'Local Business Spotlights' },
       desc: {
-        mr: 'पाणी, रस्ते, वाहतूक यांसारख्या सार्वजनिक समस्या मांडून प्रशासनाकडून सोडवणुकीचा पाठपुरावा.',
-        hi: 'पानी, सड़क, ट्रैफिक जैसे जनहित के मुद्दों को उठाकर प्रशासनिक समाधान के लिए लगातार फॉलोअप।',
-        en: 'Raising critical public infrastructure issues and following up relentlessly with authorities.'
-      }
-    },
-    {
-      id: 'act-interviews',
-      icon: '🎙️',
-      title: { mr: 'सखोल मुलाखती व पॉडकास्ट', hi: 'गहन साक्षात्कार व पॉडकास्ट', en: 'In-Depth Interviews' },
-      desc: {
-        mr: 'तज्ज्ञ, प्रशासकीय अधिकारी, उद्योजक आणि लोकप्रतिनिधींशी रोखठोक चर्चा.',
-        hi: 'विशेषज्ञों, प्रशासनिक अधिकारियों, उद्यमियों और जन-प्रतिनिधियों के साथ सार्थक बातचीत।',
-        en: 'Candid, long-form conversations with decision-makers, thought leaders, and innovators.'
+        mr: 'पुणे व परिसरातील नवीन कॅफे, दुकाने आणि सेवांचे विशेष जाहिरात प्रमोशन व डिजिटल प्रसिद्धी.',
+        hi: 'पुणे व आसपास के नए कैफ़े, दुकानों और सेवाओं का विशेष प्रचार व ब्रांड विजिबिलिटी।',
+        en: 'Showcasing local businesses, stores, and services with dedicated promotional highlights and audience reach.'
       }
     },
     {
       id: 'act-explainers',
       icon: '💡',
-      title: { mr: 'सोप्या भाषेतील एक्सप्लेनर', hi: 'सरल भाषा में एक्सप्लेनर', en: 'Policy & Civic Explainers' },
+      title: { mr: 'योजना व माहिती एक्सप्लेनर', hi: 'योजना व नागरिक विश्लेषण', en: 'Civic & Policy Explainers' },
       desc: {
-        mr: 'सरकारी योजना, कायदे, बजेट आणि तंत्रज्ञानाचे नागरिकांसाठी सोप्या भाषेत विश्लेषणात्मक व्हिडिओ.',
-        hi: 'सरकारी योजनाओं, कानूनों, बजट और नई तकनीकों का नागरिकों के लिए सरल दृश्य विश्लेषण।',
-        en: 'Deconstructing complex government policies, civic laws, and economic updates into clear videos.'
+        mr: 'सरकारी योजना, कायदे आणि बजेटचे नागरिकांसाठी सोप्या भाषेतील अभ्यासपूर्ण विश्लेषणात्मक व्हिडिओ.',
+        hi: 'सरकारी योजनाओं, जन-कल्याणकारी नीतियों और नियमों का सरल भाषा में विश्लेषणात्मक संकलन।',
+        en: 'Curating clear, simplified explainers on government schemes, public policies, and civic updates.'
       }
     },
     {
-      id: 'act-campaigns',
-      icon: '🚀',
-      title: { mr: 'सोशल मीडिया मोहिमा', hi: 'सोशल मीडिया अभियान', en: 'Impact Media Campaigns' },
+      id: 'act-interviews',
+      icon: '🎙️',
+      title: { mr: 'मुलाखती व पॉडकास्ट संकलन', hi: 'साक्षात्कार व पॉडकास्ट संग्रह', en: 'Interviews & Podcasts' },
       desc: {
-        mr: 'स्थानिक व्यवसाय, ब्रँड्स आणि सामाजिक प्रकल्पांसाठी प्रभावी डिजिटल व्हिडिओ निर्मिती व प्रमोशन.',
-        hi: 'स्थानीय व्यवसायों, ब्रांड्स और सामाजिक अभियानों के लिए प्रभावशाली डिजिटल वीडियो निर्माण।',
-        en: 'Creative high-impact video production and targeted digital distribution for brands and causes.'
+        mr: 'तज्ज्ञ, उद्योजक आणि लोकप्रतिनिधींशी झालेल्या महत्त्वाच्या चर्चा आणि पॉडकास्टचे संकलन.',
+        hi: 'विशेषज्ञों, सफल उद्यमियों और जन-प्रतिनिधियों की सार्थक चर्चाओं और पॉडकास्ट का संग्रह।',
+        en: 'Curated long-form discussions and podcasts featuring decision-makers, innovators, and leaders.'
       }
     }
   ],
@@ -81,41 +82,41 @@ window.INB_BRAND_DATA = {
     {
       id: 'pil-1',
       number: '01',
-      title: { mr: 'नागरिकांच्या आवाजाला हक्काचे व्यासपीठ', hi: 'नागरिकों की आवाज़ को सशक्त मंच', en: 'Amplifying Local Voices' },
+      title: { mr: 'व्यस्त व्यावसायिकांना जाहिरात मदत', hi: 'व्यस्त व्यापारियों को आसान विज्ञापन', en: 'Turnkey Ads for Busy People' },
       desc: {
-        mr: 'जिथे मुख्य प्रवाहातील मीडिया पोहोचत नाही, तिथे जाऊन आम्ही लोकांच्या थेट समस्या व विचार मांडतो.',
-        hi: 'जहाँ मुख्यधारा का मीडिया नहीं पहुँचता, वहाँ हम स्थानीय लोगों के मुद्दे और दृष्टिकोण सामने लाते हैं।',
-        en: 'We go where mainstream outlets rarely venture, giving citizens a powerful megaphone for their stories.'
+        mr: 'ज्यांच्याकडे मार्केटिंगसाठी वेळ नसतो, त्यांच्यासाठी तयार ॲड पोस्टर्स, सोशल मीडिया डिझाइन व थेट जाहिरात व्यवस्थापन.',
+        hi: 'जिनके पास प्रचार के लिए समय नहीं है, उनके लिए रेडीमेड विज्ञापन पोस्टर्स, बैनर और सोशल मीडिया कैंपेन।',
+        en: 'Complete done-for-you advertising and creative promotional posters for busy shopkeepers and business owners.'
       }
     },
     {
       id: 'pil-2',
       number: '02',
-      title: { mr: 'समस्या मांडण्यापासून सोडवणुकीपर्यंत', hi: 'मुद्दे उठाने से लेकर समाधान तक', en: 'From Awareness to Action' },
+      title: { mr: 'स्थानिक ब्रँड्सना डिजिटल बळ', hi: 'स्थानीय ब्रांड्स को डिजिटल ताकत', en: 'Amplifying Local Brands' },
       desc: {
-        mr: 'केवळ व्हिडिओ प्रसिद्ध न करता, संबंधित विभागाशी संपर्क साधून समस्येचे निवारण होईपर्यंत सातत्यपूर्ण पाठपुरावा.',
-        hi: 'केवल वीडियो दिखाना नहीं, बल्कि संबंधित विभाग से संपर्क कर समाधान होने तक लगातार ट्रैक करना।',
-        en: 'We do not just publish and forget; we coordinate with local authorities until action is taken.'
+        mr: 'पुणे व महाराष्ट्रातील उद्योजक, ब्रँड्स आणि सेवांना २५०k+ स्थानिक ग्राहकांपर्यंत पोहोचवण्याचे प्रभावी व्यासपीठ.',
+        hi: 'पुणे व महाराष्ट्र के व्यवसायों और ब्रांड्स को २५०k+ लक्षित ग्राहकों तक पहुँचाने का विश्वसनीय मंच।',
+        en: 'Helping local merchants, startups, and services gain massive organic visibility and targeted customer reach.'
       }
     },
     {
       id: 'pil-3',
       number: '03',
-      title: { mr: 'स्थानिक व्यवसायांना डिजिटल बळ', hi: 'स्थानीय व्यवसायों को डिजिटल बढ़ावा', en: 'Supporting Local Businesses' },
+      title: { mr: 'नागरिकांच्या आवाजाला व्यासपीठ', hi: 'नागरिकों की आवाज़ को मंच', en: 'Amplifying Community Voices' },
       desc: {
-        mr: 'पुणे व महाराष्ट्रातील उद्योजक, कॅफे आणि ब्रँड्सना डिजिटल विश्वात लाखोंपर्यंत पोहोचण्यास मदत.',
-        hi: 'पुणे व महाराष्ट्र के उद्यमियों, कैफ़े और ब्रांड्स को लाखों लक्षित ग्राहकों तक पहुँचाने में सहयोग।',
-        en: 'Empowering local merchants, entrepreneurs, and services with high-converting video storytelling.'
+        mr: 'स्थानिक समस्या आणि सामाजिक कार्याला डिजिटल माध्यमातून लोकांपर्यंत पोहोचवून जनजागृती निर्माण करणे.',
+        hi: 'स्थानीय मुद्दों और सामाजिक प्रयासों को डिजिटल माध्यम से जन-जन तक पहुँचाना।',
+        en: 'Giving citizens and grassroots initiatives a trusted digital platform to share their stories.'
       }
     },
     {
       id: 'pil-4',
       number: '04',
-      title: { mr: 'विश्वासार्ह व निष्पक्ष माहिती', hi: 'सत्यापित और निष्पक्ष जानकारी', en: 'Grounded & Unbiased Truth' },
+      title: { mr: 'विश्वासार्ह व पारदर्शक माहिती', hi: 'सत्यापित और पारदर्शी जानकारी', en: 'Authentic & Verified Reach' },
       desc: {
-        mr: 'सनसनाटीला थारा न देता, पुराव्यांसह आणि थेट लोकांच्या अनुभवांवर आधारित सत्य मांडण्याची कटिबद्धता.',
-        hi: 'सनसनी से परे, प्रामाणिक तथ्यों और ज़मीनी अनुभवों पर आधारित सत्य पत्रकारिता का संकल्प।',
-        en: 'Committed to verified journalism with zero sensationalism, rooted in genuine human experiences.'
+        mr: 'कोणत्याही दिशाभूल करणाऱ्या सनसनाटीला थारा न देता, खरी माहिती व थेट व्यावसायिक सहकार्य.',
+        hi: 'बिना किसी सनसनी के, प्रामाणिक जानकारी और पारदर्शी डिजिटल सहयोग की प्रतिबद्धता।',
+        en: 'Committed to authentic community trust, factual integrity, and transparent commercial partnerships.'
       }
     }
   ],
@@ -124,7 +125,7 @@ window.INB_BRAND_DATA = {
   categories: [
     {
       id: 'ground_reports',
-      name: { mr: 'ग्राउंड रिपोर्ट्स', hi: 'ग्राउंड रिपोर्ट्स', en: 'Ground Reports' },
+      name: { mr: 'ग्राउंड स्टोरीज', hi: 'ग्राउंड स्टोरीज', en: 'Ground Reports' },
       count: '120+ Videos',
       image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&auto=format&fit=crop&q=80',
       tagline: { mr: 'जमिनीवरची थेट वस्तुस्थिती', hi: 'ज़मीनी सीधी हकीकत', en: 'Field Investigations' }
@@ -156,7 +157,7 @@ window.INB_BRAND_DATA = {
   videos: [
     {
       id: 'vid-1',
-      youtubeId: 'kJQP7kiw5Fk', // Despacito / sample clean high-def video ID for flawless iframe playback
+      youtubeId: 'kJQP7kiw5Fk',
       category: 'ground_reports',
       duration: '14:28',
       views: '240K',
@@ -174,7 +175,7 @@ window.INB_BRAND_DATA = {
     },
     {
       id: 'vid-2',
-      youtubeId: 'JGwWNGJdvx8', // Ed Sheeran Shape of You clean embed
+      youtubeId: 'JGwWNGJdvx8',
       category: 'explainers',
       duration: '09:45',
       views: '380K',
@@ -192,7 +193,7 @@ window.INB_BRAND_DATA = {
     },
     {
       id: 'vid-3',
-      youtubeId: 'OPf0YbXqDm0', // Mark Ronson Uptown Funk clean embed
+      youtubeId: 'OPf0YbXqDm0',
       category: 'ground_reports',
       duration: '11:15',
       views: '195K',
@@ -210,7 +211,7 @@ window.INB_BRAND_DATA = {
     },
     {
       id: 'vid-4',
-      youtubeId: '9bZkp7q19f0', // PSY GANGNAM STYLE clean embed
+      youtubeId: '9bZkp7q19f0',
       category: 'interviews',
       duration: '22:40',
       views: '410K',
@@ -228,7 +229,7 @@ window.INB_BRAND_DATA = {
     },
     {
       id: 'vid-5',
-      youtubeId: 'fJ9rUzIMcZQ', // Queen Bohemian Rhapsody clean embed
+      youtubeId: 'fJ9rUzIMcZQ',
       category: 'explainers',
       duration: '08:12',
       views: '520K',
@@ -246,7 +247,7 @@ window.INB_BRAND_DATA = {
     },
     {
       id: 'vid-6',
-      youtubeId: 'hT_nvWreIhg', // Counting Stars clean embed
+      youtubeId: 'hT_nvWreIhg',
       category: 'community',
       duration: '16:05',
       views: '165K',
@@ -269,9 +270,9 @@ window.INB_BRAND_DATA = {
     {
       id: 'test-1',
       quote: {
-        mr: 'INBrownTown च्या ग्राउंड रिपोर्टमुळे आमच्या परिसरातील पिण्याच्या पाण्याचा प्रश्न महापालिकेकडून अवघ्या ४ दिवसांत सोडवला गेला!',
+        mr: 'INBrownTown च्या ग्राउंड कव्हरेजमुळे आमच्या परिसरातील पिण्याच्या पाण्याचा प्रश्न महापालिकेकडून अवघ्या ४ दिवसांत सोडवला गेला!',
         hi: 'INBrownTown की ग्राउंड रिपोर्ट के बाद हमारे इलाके में सड़क और पानी की समस्या का नगर निगम ने तुरंत समाधान किया!',
-        en: 'Thanks to INBrownTown’s ground investigation, our locality’s drinking water pipeline issue was resolved in just 4 days!'
+        en: 'Thanks to INBrownTown’s civic spotlight, our locality’s drinking water pipeline issue was resolved in just 4 days!'
       },
       author: 'राजेश कुलकर्णी (Rajesh Kulkarni)',
       role: { mr: 'स्थानिक रहिवासी, कोथरूड', hi: 'स्थानीय निवासी, कोथरूड', en: 'Resident, Kothrud, Pune' },
@@ -280,9 +281,9 @@ window.INB_BRAND_DATA = {
     {
       id: 'test-2',
       quote: {
-        mr: 'INBrownTown च्या व्हिडिओ प्रमोशनमुळे आमच्या पुण्याच्या कॅफे ब्रँडला पहिल्याच महिन्यात ५०,००० पेक्षा जास्त स्थानिक ग्राहक पोहोच मिळाले.',
-        hi: 'INBrownTown के वीडियो प्रमोशन से हमारे कैफ़े को पहले ही महीने में ५०,००० से अधिक नए ग्राहकों तक पहुँच मिली।',
-        en: 'Partnering with INBrownTown gave our newly launched organic café an authentic reach of 50k+ targeted local food lovers.'
+        mr: 'INBrownTown च्या जाहिरात पोस्टर्स आणि डिजिटल प्रमोशनमुळे आमच्या पुण्याच्या कॅफेला पहिल्याच महिन्यात ५०,००० पेक्षा जास्त स्थानिक ग्राहक पोहोच मिळाले.',
+        hi: 'INBrownTown के विज्ञापन पोस्टर्स और डिजिटल प्रमोशन से हमारे कैफ़े को पहले ही महीने में ५०,००० से अधिक नए ग्राहकों तक पहुँच मिली।',
+        en: 'INBrownTown’s promotional ad posters and digital marketing campaign gave our organic café an authentic reach of 50k+ targeted local customers.'
       },
       author: 'अमृता शिंदे (Amrita Shinde)',
       role: { mr: 'संस्थापक, द ग्रीन कप कॅफे', hi: 'संस्थापक, द ग्रीन कप कैफ़े', en: 'Founder, The Green Cup Café' },
