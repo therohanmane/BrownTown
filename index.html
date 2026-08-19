@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="mr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>INBrownTown — Digital News &amp; Community Ecosystem</title>
+  <meta name="description" content="INBrownTown: News that reaches people. Stories that matter. A platform for everyone.">
+  <meta name="keywords" content="INBrownTown, Pune News, Maharashtra News, Citizen Reports, Fact Check, Govt Schemes, Ladki Bahin Yojana, MPSC, Marathi News, Hindi News">
+  <meta name="author" content="INBrownTown Editorial Network">
+
+  <!-- OpenGraph / Social Cards -->
+  <meta property="og:title" content="INBrownTown — Digital News &amp; Community Platform">
+  <meta property="og:description" content="News that reaches people. Stories that matter. A platform for everyone.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&auto=format&fit=crop&q=80">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <!-- Platform Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/modules.css">
+  <link rel="stylesheet" href="css/admin.css">
+
+  <!-- Schema.org NewsMediaOrganization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsMediaOrganization",
+    "name": "INBrownTown",
+    "url": "https://inbrowntown.com",
+    "logo": "https://inbrowntown.com/assets/logo.png",
+    "slogan": "News that reaches people. Stories that matter. A platform for everyone.",
+    "sameAs": [
+      "https://youtube.com/@inbrowntown",
+      "https://instagram.com/inbrowntown"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ==================== 1. SITE HEADER ==================== -->
+  <header class="site-header">
+    <!-- Top Utility & Breaking Ticker Bar -->
+    <div class="top-bar">
+      <div class="container top-bar-inner">
+        <!-- Breaking Ticker -->
+        <div class="breaking-ticker">
+          <span class="ticker-badge" id="topbar-breaking-badge"><span class="pulse-dot"></span> ब्रेकिंग</span>
+          <span class="ticker-text" id="breaking-ticker-text">ताज्या घडामोडी लोड होत आहेत...</span>
+        </div>
+
+        <!-- Language, Theme & Helpline Utilities -->
+        <div class="top-utilities">
+          <span class="helpline-top-text">
+            📞 <span id="topbar-helpline-label">आपत्कालीन हेल्पलाईन:</span> <strong style="color: #f1f5f9;">1800-889-2769</strong>
+          </span>
+
+          <!-- Language Switcher -->
+          <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="mr">मराठी</button>
+            <button class="lang-btn" data-lang="hi">हिन्दी</button>
+            <button class="lang-btn" data-lang="en">English</button>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle Dark/Light Mode">
+            🌙
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Header Brand Row -->
+    <div class="container main-header-row">
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-menu-toggle" id="mobile-drawer-toggle" onclick="UI.toggleMobileDrawer()" aria-label="Open Navigation Menu">
+        ☰
+      </button>
+
+      <!-- Brand Identity -->
+      <a href="#/" class="brand-logo-wrap" title="INBrownTown Home">
+        <div class="brand-symbol">IN</div>
+        <div class="brand-text-block">
+          <h1><span class="in-prefix">IN</span>BrownTown</h1>
+          <div class="brand-tagline-sub" id="brand-tagline-text">डिजिटल न्यूझ आणि कम्युनिटी प्लॅटफॉर्म</div>
+        </div>
+      </a>
+
+      <!-- Search, AI Copilot & Action CTA Group -->
+      <div class="header-action-group">
+        <!-- Deep Search Trigger Button -->
+        <button class="header-search-btn" onclick="openSearchModal()">
+          <span>🔍</span>
+          <span id="header-search-placeholder">बातम्या, योजना, समस्या शोधा...</span>
+          <kbd>/</kbd>
+        </button>
+
+        <!-- Ask INBrownTown AI Trigger -->
+        <button class="btn btn-outline btn-sm" id="header-btn-ai" onclick="AIAssistant.openChatModal()" style="border-color: var(--brand-brown-400); color: var(--brand-brown-600);">
+          🤖 <strong>Ask AI</strong>
+        </button>
+
+        <!-- Report Issue Primary Action -->
+        <button class="btn btn-primary btn-sm" id="header-btn-report" onclick="CitizenDesk.openReportModal()">
+          📢 समस्या नोंदवा
+        </button>
+
+        <!-- Newsroom Admin CMS Switcher -->
+        <a href="#/admin" class="btn btn-navy btn-sm" id="header-btn-cms" title="Editorial CMS &amp; Moderation">
+          ⚙️ CMS
+        </a>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation Bar -->
+    <div class="nav-scroll-wrap">
+      <div class="container">
+        <nav>
+          <ul class="main-nav-list" id="main-nav-list">
+            <!-- Nav links dynamically injected in UI.renderHeaderNav() -->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 2. MOBILE DRAWER SLIDE-OVER ==================== -->
+  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" onclick="UI.closeMobileDrawer()">
+    <div class="mobile-drawer" onclick="event.stopPropagation()">
+      <div class="drawer-header">
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <div class="brand-symbol" style="width:32px; height:32px; font-size:1rem;">IN</div>
+          <strong style="font-size:1.1rem;">INBrownTown</strong>
+        </div>
+        <button class="modal-close-btn" onclick="UI.closeMobileDrawer()">&times;</button>
+      </div>
+      <div class="drawer-body" id="mobile-drawer-links">
+        <!-- Injected via UI.renderMobileDrawer() -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 3. MAIN APPLICATION WORKSPACE ==================== -->
+  <main class="container" style="padding-top: clamp(1rem, 2.5vw, 2rem); padding-bottom: clamp(2rem, 5vw, 4rem);">
+    <div id="app-main">
+      <!-- Views are dynamically injected by Router & UI engine -->
+    </div>
+  </main>
+
+  <!-- ==================== 4. FLOATING AUDIO NARRATOR BAR ==================== -->
+  <div class="audio-narrator-bar" id="audio-narrator-bar">
+    <div class="audio-pulse-bars">
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+    </div>
+    <div class="audio-narrator-info">
+      <span style="color: var(--brand-brown-400); font-weight: 700; margin-right: 6px;" id="audio-narrator-label">वाचून दाखवत आहे:</span>
+      <span id="audio-narrator-title">बातमी शीर्षक</span>
+    </div>
+    <button class="btn btn-outline btn-sm" id="audio-stop-btn" style="color: #fff; border-color: rgba(255,255,255,0.3); padding: 0.2rem 0.6rem; min-height:36px;" onclick="UI.stopArticleAudio()">
+      ⏹️ थांबवा
+    </button>
+  </div>
+
+  <!-- ==================== 5. MOBILE BOTTOM NAVIGATION BAR ==================== -->
+  <nav class="mobile-bottom-nav">
+    <div class="mobile-bottom-nav-inner">
+      <button class="bottom-nav-btn active" onclick="window.INB_ROUTER.navigate('/'); UI.updateBottomNavUI('/');" id="bnav-home">
+        <span class="icon">🏠</span>
+        <span id="bnav-label-home">Home</span>
+      </button>
+      <button class="bottom-nav-btn" onclick="window.INB_ROUTER.navigate('/citizen-reports'); UI.updateBottomNavUI('/citizen-reports');" id="bnav-reports">
+        <span class="icon">📢</span>
+        <span id="bnav-label-reports">Reports</span>
+      </button>
+      <button class="bottom-nav-btn" onclick="window.INB_ROUTER.navigate('/help'); UI.updateBottomNavUI('/help');" id="bnav-help" style="color:var(--accent-red)">
+        <span class="icon">🚨</span>
+        <span id="bnav-label-help">Help</span>
+      </button>
+      <button class="bottom-nav-btn" onclick="window.INB_ROUTER.navigate('/live-map'); UI.updateBottomNavUI('/live-map');" id="bnav-map">
+        <span class="icon">🗺️</span>
+        <span id="bnav-label-map">Map</span>
+      </button>
+      <button class="bottom-nav-btn" onclick="UI.toggleMobileDrawer()" id="bnav-menu">
+        <span class="icon">☰</span>
+        <span id="bnav-label-menu">Menu</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== 6. SITE FOOTER ==================== -->
+  <footer class="site-footer" id="site-footer-container">
+    <!-- Footer rendered dynamically in UI.renderFooter() -->
+  </footer>
+
+  <!-- ==================== 7. SCRIPTS & ENGINE BUNDLES ==================== -->
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Platform Core JavaScript Modules in Order -->
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/liveMap.js"></script>
+  <script src="js/citizenDesk.js"></script>
+  <script src="js/aiAssistant.js"></script>
+  <script src="js/adminCMS.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
