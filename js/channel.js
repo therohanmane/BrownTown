@@ -752,16 +752,16 @@ const Channel = {
         </div>
 
         <div class="footer-bottom-bar">
-          <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
-            <span>${this.t('copyright')}</span>
-            <span class="made-by-pill">
-              Made by <strong style="color:#fff;">PaviqLabs</strong>
-            </span>
+          <div style="color: #94a3b8; font-size: 0.85rem;">
+            ${this.t('copyright')}
           </div>
-          <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
             <a href="#who-we-are" onclick="Channel.scrollToSection('who-we-are', event)">${this.t('privacy')}</a>
             <a href="#who-we-are" onclick="Channel.scrollToSection('who-we-are', event)">${this.t('terms')}</a>
             <a href="#who-we-are" onclick="Channel.scrollToSection('who-we-are', event)">${this.t('ethics')}</a>
+            <span class="made-by-pill">
+              Made by <strong style="color: #fff; margin-left: 2px;">PaviqLabs</strong>
+            </span>
           </div>
         </div>
       </div>
