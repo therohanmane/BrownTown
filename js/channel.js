@@ -506,40 +506,92 @@ const Channel = {
     this.scrollToSection('videos');
   },
 
+  sortVideos(sortType, btnEl) {
+    this.sortBy = sortType;
+    if (btnEl) {
+      document.querySelectorAll('.video-sort-tab').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+    }
+    this.renderVideoGrid();
+  },
+
+  filterVideos(catId, btnEl) {
+    this.activeCategory = catId;
+    if (btnEl) {
+      document.querySelectorAll('.video-filter-tab').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+    }
+    this.renderVideoGrid();
+  },
+
   renderVideoSection() {
     const sec = document.getElementById('videos');
     if (!sec) return;
 
+    if (!this.sortBy) this.sortBy = 'all';
+    if (!this.activeCategory) this.activeCategory = 'all';
+
     sec.innerHTML = `
       <div class="container">
         <div class="section-heading-center">
-          <span class="badge badge-category" style="background:var(--brand-brown-600); color:#fff;">CORE VIDEO SHOWCASE</span>
+          <span class="badge badge-category" style="background:var(--brand-brown-600); color:#fff;">OFFICIAL CHANNEL SHOWCASE</span>
           <h2 class="section-heading-title">${this.t('videosTitle')}</h2>
           <p class="section-heading-sub">${this.t('videosSub')}</p>
         </div>
 
-        <!-- Video Filter Tabs -->
-        <div class="video-filter-bar">
-          <button class="video-filter-tab ${this.activeCategory === 'all' ? 'active' : ''}" onclick="Channel.filterVideos('all', this)">
-            ${this.t('filterAll')}
-          </button>
-          <button class="video-filter-tab ${this.activeCategory === 'ground_reports' ? 'active' : ''}" onclick="Channel.filterVideos('ground_reports', this)">
-            ${this.t('filterGround')}
-          </button>
-          <button class="video-filter-tab ${this.activeCategory === 'interviews' ? 'active' : ''}" onclick="Channel.filterVideos('interviews', this)">
-            ${this.t('filterInterviews')}
-          </button>
-          <button class="video-filter-tab ${this.activeCategory === 'explainers' ? 'active' : ''}" onclick="Channel.filterVideos('explainers', this)">
-            ${this.t('filterExplainers')}
-          </button>
-          <button class="video-filter-tab ${this.activeCategory === 'community' ? 'active' : ''}" onclick="Channel.filterVideos('community', this)">
-            ${this.t('filterCommunity')}
-          </button>
+        <!-- Video Controls: Category Filter Tabs & Sorting Bar -->
+        <div class="video-controls-header">
+          <!-- Category Filter Bar -->
+          <div class="video-filter-bar">
+            <button class="video-filter-tab ${this.activeCategory === 'all' ? 'active' : ''}" onclick="Channel.filterVideos('all', this)">
+              ${this.t('filterAll')}
+            </button>
+            <button class="video-filter-tab ${this.activeCategory === 'interviews' ? 'active' : ''}" onclick="Channel.filterVideos('interviews', this)">
+              ${this.t('filterInterviews')}
+            </button>
+            <button class="video-filter-tab ${this.activeCategory === 'ground_reports' ? 'active' : ''}" onclick="Channel.filterVideos('ground_reports', this)">
+              ${this.t('filterGround')}
+            </button>
+            <button class="video-filter-tab ${this.activeCategory === 'community' ? 'active' : ''}" onclick="Channel.filterVideos('community', this)">
+              ${this.t('filterCommunity')}
+            </button>
+            <button class="video-filter-tab ${this.activeCategory === 'explainers' ? 'active' : ''}" onclick="Channel.filterVideos('explainers', this)">
+              ${this.t('filterExplainers')}
+            </button>
+          </div>
+
+          <!-- Sorting Pill Group (Popular / Latest) -->
+          <div class="video-sort-bar">
+            <span class="sort-label-text">${this.t('sortLabel')}</span>
+            <button class="video-sort-tab ${this.sortBy === 'all' ? 'active' : ''}" onclick="Channel.sortVideos('all', this)">
+              ${this.t('sortAll')}
+            </button>
+            <button class="video-sort-tab ${this.sortBy === 'popular' ? 'active' : ''}" onclick="Channel.sortVideos('popular', this)">
+              ${this.t('sortPopular')}
+            </button>
+            <button class="video-sort-tab ${this.sortBy === 'latest' ? 'active' : ''}" onclick="Channel.sortVideos('latest', this)">
+              ${this.t('sortLatest')}
+            </button>
+          </div>
         </div>
 
         <!-- Video Grid Container -->
         <div id="video-cards-container">
           ${this.getVideoCardsHtml()}
+        </div>
+
+        <!-- Official YouTube Channel Banner Showcase -->
+        <div class="youtube-channel-banner">
+          <div class="yt-banner-left">
+            <div class="yt-play-badge">▶</div>
+            <div>
+              <div class="yt-banner-title">INBrownTown Official YouTube Channel</div>
+              <div class="yt-banner-sub">@INBrownTown • 250k+ Community • Ground Reporting & Documentaries</div>
+            </div>
+          </div>
+          <a href="${window.INB_BRAND_DATA.channelUrl}" target="_blank" rel="noreferrer" class="btn btn-primary" style="background:#ff0000; border-color:#ff0000;">
+            ${this.t('watchOnYoutube')}
+          </a>
         </div>
       </div>
     `;
@@ -552,32 +604,63 @@ const Channel = {
 
   getVideoCardsHtml() {
     const videos = window.INB_BRAND_DATA.videos;
-    const filtered = this.activeCategory === 'all' ? videos : videos.filter(v => v.category === this.activeCategory);
+    let list = [...videos];
+
+    // 1. Filter by category
+    if (this.activeCategory && this.activeCategory !== 'all') {
+      list = list.filter(v => v.category === this.activeCategory);
+    }
+
+    // 2. Sort by Popularity or Latest
+    if (this.sortBy === 'popular') {
+      list.sort((a, b) => b.viewsRaw - a.viewsRaw);
+    } else if (this.sortBy === 'latest') {
+      list.sort((a, b) => a.publishDateDaysAgo - b.publishDateDaysAgo);
+    }
+
+    const currentLang = this.currentLang || 'mr';
 
     return `
       <div class="video-gallery-grid">
-        ${filtered.map(v => `
-          <div class="video-card" onclick="Channel.openVideoModal('${v.youtubeId}', '${this.getI18n(v.title).replace(/'/g, "\\'")}')">
-            <div class="video-thumbnail-wrap">
-              <img src="${v.thumbnail}" alt="${this.getI18n(v.title)}" loading="lazy">
-              <div class="video-play-overlay">
-                <div class="play-circle-icon">▶</div>
+        ${list.map(v => {
+          const publishTime = (v.publishText && v.publishText[currentLang]) ? v.publishText[currentLang] : (v.publishText && v.publishText['mr']) || '';
+          
+          let highlightBadge = '';
+          if (v.isPopular || v.viewsRaw >= 1000) {
+            highlightBadge = `<span class="video-badge-popular">${this.t('popularBadge')}</span>`;
+          } else if (v.isLatest || v.publishDateDaysAgo <= 30) {
+            highlightBadge = `<span class="video-badge-latest">${this.t('latestBadge')}</span>`;
+          }
+
+          return `
+            <div class="video-card" onclick="Channel.openVideoModal('${v.youtubeId}', '${this.getI18n(v.title).replace(/'/g, "\\'")}')">
+              <div class="video-thumbnail-wrap">
+                <img src="${v.thumbnail}" alt="${this.getI18n(v.title)}" loading="lazy">
+                <div class="video-play-overlay">
+                  <div class="play-circle-icon">▶</div>
+                </div>
+                <span class="video-duration-tag">⏱️ ${v.duration}</span>
               </div>
-              <span class="video-duration-tag">⏱️ ${v.duration}</span>
+              <div class="video-card-body">
+                <div class="video-card-meta">
+                  <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
+                    <span class="badge badge-category">${v.category.toUpperCase().replace(/_/g, ' ')}</span>
+                    ${highlightBadge}
+                  </div>
+                  <span>${publishTime}</span>
+                </div>
+                <h3 class="video-card-title">${this.getI18n(v.title)}</h3>
+                <p class="video-card-summary">${this.getI18n(v.summary)}</p>
+                <div class="video-card-cta">
+                  <span class="video-watch-btn">▶ ${this.t('watchNow')}</span>
+                  <a href="https://www.youtube.com/watch?v=${v.youtubeId}" target="_blank" rel="noreferrer" class="video-ext-link" onclick="event.stopPropagation()">
+                    ${this.t('watchOnYoutube')}
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="video-card-body">
-              <div class="video-card-meta">
-                <span class="badge badge-category">${v.category.toUpperCase().replace(/_/g, ' ')}</span>
-                <span>👁️ ${v.views} ${this.t('viewsLabel')}</span>
-              </div>
-              <h3 class="video-card-title">${this.getI18n(v.title)}</h3>
-              <p class="video-card-summary">${this.getI18n(v.summary)}</p>
-              <div class="video-card-cta">
-                <span class="video-watch-btn">▶ ${this.t('watchNow')}</span>
-              </div>
-            </div>
-          </div>
-        `).join('')}
+          `;
+        }).join('')}
       </div>
     `;
   },

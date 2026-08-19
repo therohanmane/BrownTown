@@ -337,16 +337,72 @@
 .tile-tagline {
   font-size: 0.8rem;
   color: #cbd5e1;
+/* ==================== 7. VIDEO GALLERY CONTROLS & SORTING ==================== */
+.video-controls-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-/* ==================== 7. VIDEO GALLERY ==================== */
+.video-sort-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  background: var(--bg-surface-secondary);
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-medium);
+}
+
+.sort-label-text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding: 0 0.4rem;
+}
+
+.video-sort-tab {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  transition: all var(--transition-fast);
+}
+
+.video-sort-tab:hover {
+  color: var(--brand-brown-600);
+  background: var(--bg-surface);
+}
+
+.video-sort-tab.active {
+  background: var(--brand-navy-900);
+  color: #fff;
+  border-color: var(--brand-brown-400);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .video-sort-tab.active {
+  background: var(--brand-brown-600);
+  border-color: var(--brand-brown-400);
+}
+
 .video-filter-bar {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .video-filter-tab {
@@ -358,7 +414,7 @@
   padding: 0.45rem clamp(0.85rem, 2vw, 1.2rem);
   border-radius: var(--radius-full);
   cursor: pointer;
-  min-height: 44px;
+  min-height: 42px;
   display: inline-flex;
   align-items: center;
   transition: all var(--transition-fast);
@@ -376,11 +432,33 @@
   box-shadow: 0 4px 12px rgba(179, 84, 30, 0.25);
 }
 
+.video-badge-popular {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+}
+
+.video-badge-latest {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
 .video-gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 100%, 360px), 1fr));
   gap: clamp(1.25rem, 2.5vw, 1.85rem);
-  margin-bottom: clamp(3rem, 6vw, 5rem);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
 .video-card {
@@ -393,6 +471,7 @@
   box-shadow: var(--shadow-sm);
   cursor: pointer;
   transition: all var(--transition-normal);
+  position: relative;
 }
 
 .video-card:hover {
@@ -513,17 +592,94 @@
 
 .video-card-cta {
   margin-top: auto;
-  padding-top: 0.65rem;
+  padding-top: 0.75rem;
   border-top: 1px solid var(--border-light);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .video-watch-btn {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--brand-brown-600);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.15s ease;
+}
+
+.video-watch-btn:hover {
+  color: var(--brand-brown-400);
+}
+
+.video-ext-link {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-secondary);
+  border: 1px solid var(--border-light);
+  transition: all 0.2s ease;
+}
+
+.video-ext-link:hover {
+  color: var(--brand-brown-600);
+  border-color: var(--brand-brown-400);
+  background: var(--bg-surface);
+}
+
+/* YouTube Channel Showcase Banner */
+.youtube-channel-banner {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(179, 84, 30, 0.08) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.yt-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.yt-play-badge {
+  width: 52px;
+  height: 52px;
+  background: #ff0000;
+  border-radius: var(--radius-lg);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.yt-banner-title {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 800;
+  margin-bottom: 0.2rem;
+  color: var(--text-primary);
+}
+
+.yt-banner-sub {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
 /* ==================== 8. VIDEO POPUP MODAL (ZERO REDIRECT) ==================== */
