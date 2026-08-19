@@ -114,13 +114,13 @@ window.INB_I18N = {
     ctaWorkWithUs: '💼 हमारे साथ जुड़ें',
 
     // Nav
-    navWhoWeAre: 'हमारे बारे में',
-    navWhatWeDo: 'हम क्या करते हैं',
+    navWhoWeAre: 'परिचय',
+    navWhatWeDo: 'गतिविधियां',
     navHowWeHelp: 'कम्युनिटी मूल्य',
-    navContent: 'कंटेंट श्रेणियां',
+    navContent: 'कंटेंट',
     navVideos: 'वीडियो गैलरी',
     navTestimonials: 'प्रतिक्रियाएं',
-    navWorkWithUs: 'विज्ञापन व सहयोग',
+    navWorkWithUs: 'सहयोग',
     navContact: 'संपर्क',
 
     // Who We Are
@@ -205,7 +205,7 @@ window.INB_I18N = {
     navWhoWeAre: 'Who We Are',
     navWhatWeDo: 'What We Do',
     navHowWeHelp: 'How We Help',
-    navContent: 'Content Showcase',
+    navContent: 'Content',
     navVideos: 'Video Gallery',
     navTestimonials: 'Testimonials',
     navWorkWithUs: 'Collaborate',

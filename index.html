@@ -48,7 +48,7 @@
       </button>
 
       <!-- Brand Identity -->
-      <a href="#" class="brand-logo-wrap" title="INBrownTown Home">
+      <a href="#hero" class="brand-logo-wrap" title="INBrownTown Home" onclick="Channel.scrollToSection('hero', event)">
         <div class="brand-symbol">IN</div>
         <div class="brand-text-block">
           <h1><span class="in-prefix">IN</span>BrownTown</h1>
@@ -57,7 +57,7 @@
       </a>
 
       <!-- Desktop Navigation Menu -->
-      <nav class="nav-scroll-wrap" style="border:none; background:transparent;">
+      <nav class="nav-scroll-wrap">
         <ul class="main-nav-list" id="main-nav-list">
           <!-- Injected via Channel.renderHeaderNav() -->
         </ul>
@@ -65,13 +65,13 @@
 
       <!-- Header Utilities: Language & Theme -->
       <div class="header-action-group">
-        <div class="lang-switcher" style="background:var(--bg-surface-subtle); border:1px solid var(--border-medium);">
+        <div class="lang-switcher">
           <button class="lang-btn active" data-lang="mr">मराठी</button>
           <button class="lang-btn" data-lang="hi">हिन्दी</button>
           <button class="lang-btn" data-lang="en">EN</button>
         </div>
 
-        <button class="theme-toggle-btn" id="theme-toggle-btn" style="background:var(--bg-surface-subtle); border:1px solid var(--border-medium); color:var(--text-primary);" title="Toggle Dark/Light Mode">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle Dark/Light Mode">
           🌙
         </button>
       </div>
@@ -97,32 +97,32 @@
   <!-- ==================== 3. MAIN SHOWCASE SECTIONS ==================== -->
   <main>
     <!-- Section 1: Hero Cinematic Banner -->
-    <section id="section-hero"></section>
+    <section id="hero"></section>
 
     <!-- Section 2: Who We Are & Live Stats -->
-    <section id="section-who-we-are"></section>
+    <section id="who-we-are"></section>
 
     <!-- Section 3: What We Do -->
-    <section id="section-what-we-do"></section>
+    <section id="what-we-do"></section>
 
     <!-- Section 4: How We Help (Pillars) -->
-    <section id="section-how-we-help"></section>
+    <section id="how-we-help"></section>
 
     <!-- Section 5: Content Showcase Tiles -->
-    <section id="section-content"></section>
+    <section id="content"></section>
 
     <!-- Section 6: Curated Video Gallery & In-Page Modal Player -->
-    <section id="section-videos"></section>
+    <section id="videos"></section>
 
     <!-- Section 7: Social Proof / Testimonials -->
-    <section id="section-testimonials"></section>
+    <section id="testimonials"></section>
 
     <!-- Section 8: Work With Us / Sponsorships & Business Inquiry -->
-    <section id="section-work-with-us"></section>
+    <section id="work-with-us"></section>
   </main>
 
   <!-- ==================== 4. SITE FOOTER ==================== -->
-  <footer class="site-footer" id="site-footer-container">
+  <footer class="site-footer" id="contact">
     <!-- Rendered dynamically via Channel.renderFooter() -->
   </footer>
 

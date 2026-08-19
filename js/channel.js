@@ -1,7 +1,7 @@
 /**
  * INBrownTown - Brand & Channel Engine
- * Manages full top-to-bottom multilingual rendering, embedded video modal player with zero redirect,
- * category filters, animated milestone counters, and inquiry processing.
+ * Manages full top-to-bottom multilingual rendering, smooth section navigation with header offset,
+ * scrollspy active tabs, embedded video modal player with zero redirect, and inquiry processing.
  */
 
 const Channel = {
@@ -76,6 +76,67 @@ const Channel = {
   closeMobileDrawer() {
     const drawer = document.getElementById('mobile-drawer-backdrop');
     if (drawer) drawer.classList.remove('active');
+  },
+
+  // Smooth Scroll with sticky header offset
+  scrollToSection(sectionId, e) {
+    if (e && e.preventDefault) e.preventDefault();
+    this.closeMobileDrawer();
+
+    const target = document.getElementById(sectionId);
+    if (!target) return;
+
+    const headerOffset = 78;
+    const elementPosition = target.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+
+    // Update active nav item
+    this.setActiveNavTab(`#${sectionId}`);
+  },
+
+  setActiveNavTab(hash) {
+    document.querySelectorAll('.nav-item-link').forEach(link => {
+      if (link.getAttribute('href') === hash) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  },
+
+  initScrollSpy() {
+    const sections = ['hero', 'who-we-are', 'what-we-do', 'how-we-help', 'content', 'videos', 'testimonials', 'work-with-us', 'contact'];
+    
+    window.addEventListener('scroll', () => {
+      let currentSection = '';
+      const scrollPos = window.pageYOffset + 120;
+
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            currentSection = `#${id}`;
+          }
+        }
+      });
+
+      if (currentSection) {
+        document.querySelectorAll('.nav-item-link').forEach(link => {
+          if (link.getAttribute('href') === currentSection) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
   },
 
   // ==================== VIDEO MODAL PLAYER (ZERO REDIRECT) ====================
@@ -211,8 +272,11 @@ const Channel = {
     this.renderWorkWithUs();
     this.renderFooter();
 
-    // Trigger stat counters
-    setTimeout(() => this.initStatCounters(), 150);
+    // Trigger stat counters & scrollspy
+    setTimeout(() => {
+      this.initStatCounters();
+      this.initScrollSpy();
+    }, 150);
   },
 
   renderHeaderNav() {
@@ -221,19 +285,19 @@ const Channel = {
     if (!navEl) return;
 
     const navItems = [
-      { href: '#who-we-are', label: this.t('navWhoWeAre') },
-      { href: '#what-we-do', label: this.t('navWhatWeDo') },
-      { href: '#how-we-help', label: this.t('navHowWeHelp') },
-      { href: '#content', label: this.t('navContent') },
-      { href: '#videos', label: this.t('navVideos'), isPrimary: true },
-      { href: '#testimonials', label: this.t('navTestimonials') },
-      { href: '#work-with-us', label: this.t('navWorkWithUs') },
-      { href: '#contact', label: this.t('navContact') }
+      { id: 'who-we-are', label: this.t('navWhoWeAre') },
+      { id: 'what-we-do', label: this.t('navWhatWeDo') },
+      { id: 'how-we-help', label: this.t('navHowWeHelp') },
+      { id: 'content', label: this.t('navContent') },
+      { id: 'videos', label: this.t('navVideos'), isPrimary: true },
+      { id: 'testimonials', label: this.t('navTestimonials') },
+      { id: 'work-with-us', label: this.t('navWorkWithUs') },
+      { id: 'contact', label: this.t('navContact') }
     ];
 
     navEl.innerHTML = navItems.map(item => `
       <li>
-        <a href="${item.href}" class="nav-item-link ${item.isPrimary ? 'highlight-pill' : ''}">
+        <a href="#${item.id}" class="nav-item-link ${item.isPrimary ? 'highlight-pill' : ''}" onclick="Channel.scrollToSection('${item.id}', event)">
           ${item.label}
         </a>
       </li>
@@ -242,16 +306,16 @@ const Channel = {
     if (drawerEl) {
       drawerEl.innerHTML = `
         <div style="padding: 0 0.5rem 0.75rem 0.5rem;">
-          <a href="#videos" class="btn btn-primary" style="width:100%; margin-bottom:0.5rem;" onclick="Channel.closeMobileDrawer()">
+          <a href="#videos" class="btn btn-primary" style="width:100%; margin-bottom:0.5rem;" onclick="Channel.scrollToSection('videos', event)">
             ▶ ${this.t('ctaWatchVideos')}
           </a>
-          <a href="#work-with-us" class="btn btn-outline" style="width:100%;" onclick="Channel.closeMobileDrawer()">
+          <a href="#work-with-us" class="btn btn-outline" style="width:100%;" onclick="Channel.scrollToSection('work-with-us', event)">
             💼 ${this.t('ctaWorkWithUs')}
           </a>
         </div>
         <div style="border-top: 1px solid var(--border-light); padding-top: 0.5rem;">
           ${navItems.map(item => `
-            <a href="${item.href}" class="drawer-link" onclick="Channel.closeMobileDrawer()">
+            <a href="#${item.id}" class="drawer-link" onclick="Channel.scrollToSection('${item.id}', event)">
               ${item.label}
             </a>
           `).join('')}
@@ -261,7 +325,7 @@ const Channel = {
   },
 
   renderHero() {
-    const heroEl = document.getElementById('section-hero');
+    const heroEl = document.getElementById('hero');
     if (!heroEl) return;
 
     heroEl.innerHTML = `
@@ -278,10 +342,10 @@ const Channel = {
             ${this.t('heroSubheadline')}
           </p>
           <div class="hero-action-buttons">
-            <a href="#videos" class="btn btn-primary btn-lg">
+            <a href="#videos" class="btn btn-primary btn-lg" onclick="Channel.scrollToSection('videos', event)">
               ${this.t('ctaWatchVideos')}
             </a>
-            <a href="#work-with-us" class="btn btn-outline btn-lg" style="color:#fff; border-color:rgba(255,255,255,0.35);">
+            <a href="#work-with-us" class="btn btn-outline btn-lg" style="color:#fff; border-color:rgba(255,255,255,0.35);" onclick="Channel.scrollToSection('work-with-us', event)">
               ${this.t('ctaWorkWithUs')}
             </a>
           </div>
@@ -291,7 +355,7 @@ const Channel = {
   },
 
   renderWhoWeAre() {
-    const sec = document.getElementById('section-who-we-are');
+    const sec = document.getElementById('who-we-are');
     if (!sec) return;
 
     const stats = window.INB_BRAND_DATA.stats;
@@ -325,7 +389,7 @@ const Channel = {
   },
 
   renderWhatWeDo() {
-    const sec = document.getElementById('section-what-we-do');
+    const sec = document.getElementById('what-we-do');
     if (!sec) return;
 
     const acts = window.INB_BRAND_DATA.activities;
@@ -352,7 +416,7 @@ const Channel = {
   },
 
   renderHowWeHelp() {
-    const sec = document.getElementById('section-how-we-help');
+    const sec = document.getElementById('how-we-help');
     if (!sec) return;
 
     const pillars = window.INB_BRAND_DATA.pillars;
@@ -379,7 +443,7 @@ const Channel = {
   },
 
   renderContentShowcase() {
-    const sec = document.getElementById('section-content');
+    const sec = document.getElementById('content');
     if (!sec) return;
 
     const cats = window.INB_BRAND_DATA.categories;
@@ -411,12 +475,11 @@ const Channel = {
   filterAndScrollVideos(catId) {
     this.activeCategory = catId;
     this.renderVideoSection();
-    const vSec = document.getElementById('section-videos');
-    if (vSec) vSec.scrollIntoView({ behavior: 'smooth' });
+    this.scrollToSection('videos');
   },
 
   renderVideoSection() {
-    const sec = document.getElementById('section-videos');
+    const sec = document.getElementById('videos');
     if (!sec) return;
 
     sec.innerHTML = `
@@ -492,7 +555,7 @@ const Channel = {
   },
 
   renderTestimonials() {
-    const sec = document.getElementById('section-testimonials');
+    const sec = document.getElementById('testimonials');
     if (!sec) return;
 
     const tests = window.INB_BRAND_DATA.testimonials;
@@ -525,7 +588,7 @@ const Channel = {
   },
 
   renderWorkWithUs() {
-    const sec = document.getElementById('section-work-with-us');
+    const sec = document.getElementById('work-with-us');
     if (!sec) return;
 
     sec.innerHTML = `
@@ -602,11 +665,11 @@ const Channel = {
   },
 
   renderFooter() {
-    const footerEl = document.getElementById('site-footer-container');
+    const footerEl = document.getElementById('contact');
     if (!footerEl) return;
 
     footerEl.innerHTML = `
-      <div class="container" id="contact">
+      <div class="container">
         <div class="footer-grid">
           <!-- Brand Column -->
           <div class="footer-brand">
@@ -624,11 +687,11 @@ const Channel = {
           <div class="footer-col">
             <h3>${this.t('footerQuickLinks')}</h3>
             <ul class="footer-links">
-              <li><a href="#who-we-are">${this.t('navWhoWeAre')}</a></li>
-              <li><a href="#what-we-do">${this.t('navWhatWeDo')}</a></li>
-              <li><a href="#how-we-help">${this.t('navHowWeHelp')}</a></li>
-              <li><a href="#videos">${this.t('navVideos')}</a></li>
-              <li><a href="#testimonials">${this.t('navTestimonials')}</a></li>
+              <li><a href="#who-we-are" onclick="Channel.scrollToSection('who-we-are', event)">${this.t('navWhoWeAre')}</a></li>
+              <li><a href="#what-we-do" onclick="Channel.scrollToSection('what-we-do', event)">${this.t('navWhatWeDo')}</a></li>
+              <li><a href="#how-we-help" onclick="Channel.scrollToSection('how-we-help', event)">${this.t('navHowWeHelp')}</a></li>
+              <li><a href="#videos" onclick="Channel.scrollToSection('videos', event)">${this.t('navVideos')}</a></li>
+              <li><a href="#testimonials" onclick="Channel.scrollToSection('testimonials', event)">${this.t('navTestimonials')}</a></li>
             </ul>
           </div>
 
@@ -636,10 +699,10 @@ const Channel = {
           <div class="footer-col">
             <h3>${this.t('footerServices')}</h3>
             <ul class="footer-links">
-              <li><a href="#work-with-us">${this.t('serviceOption1')}</a></li>
-              <li><a href="#work-with-us">${this.t('serviceOption2')}</a></li>
-              <li><a href="#work-with-us">${this.t('serviceOption3')}</a></li>
-              <li><a href="#work-with-us">${this.t('serviceOption4')}</a></li>
+              <li><a href="#work-with-us" onclick="Channel.scrollToSection('work-with-us', event)">${this.t('serviceOption1')}</a></li>
+              <li><a href="#work-with-us" onclick="Channel.scrollToSection('work-with-us', event)">${this.t('serviceOption2')}</a></li>
+              <li><a href="#work-with-us" onclick="Channel.scrollToSection('work-with-us', event)">${this.t('serviceOption3')}</a></li>
+              <li><a href="#work-with-us" onclick="Channel.scrollToSection('work-with-us', event)">${this.t('serviceOption4')}</a></li>
             </ul>
           </div>
 
@@ -662,9 +725,9 @@ const Channel = {
         <div class="footer-bottom-bar">
           <div>${this.t('copyright')}</div>
           <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-            <a href="#who-we-are">${this.t('privacy')}</a>
-            <a href="#who-we-are">${this.t('terms')}</a>
-            <a href="#who-we-are">${this.t('ethics')}</a>
+            <a href="#who-we-are" onclick="Channel.scrollToSection('who-we-are', event)">${this.t('privacy')}</a>
+            <a href="#who-we-are" onclick="Channel.scrollToSection('who-we-are', event)">${this.t('terms')}</a>
+            <a href="#who-we-are" onclick="Channel.scrollToSection('who-we-are', event)">${this.t('ethics')}</a>
           </div>
         </div>
       </div>
