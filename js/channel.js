@@ -671,6 +671,7 @@ const Channel = {
                   <option value="brand_sponsorship">${this.t('serviceOption2')}</option>
                   <option value="ngo_coverage">${this.t('serviceOption3')}</option>
                   <option value="podcast_interview">${this.t('serviceOption4')}</option>
+                  <option value="other">${this.t('serviceOptionOther')}</option>
                 </select>
               </div>
 
