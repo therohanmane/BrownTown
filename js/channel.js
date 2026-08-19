@@ -78,7 +78,7 @@ const Channel = {
     if (drawer) drawer.classList.remove('active');
   },
 
-  // Smooth Scroll with sticky header offset
+  // Smooth Scroll with fixed header offset
   scrollToSection(sectionId, e) {
     if (e && e.preventDefault) e.preventDefault();
     this.closeMobileDrawer();
@@ -650,17 +650,17 @@ const Channel = {
             <form onsubmit="Channel.handleInquirySubmit(event)" class="inquiry-form">
               <div class="form-group">
                 <label class="form-label">${this.t('formName')}</label>
-                <input type="text" class="form-control" id="inq-name" required placeholder="e.g. Rahul Patil">
+                <input type="text" class="form-control" id="inq-name" required>
               </div>
 
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                 <div class="form-group">
                   <label class="form-label">${this.t('formPhone')}</label>
-                  <input type="tel" class="form-control" id="inq-phone" required placeholder="e.g. +91 98230XXXXX">
+                  <input type="tel" class="form-control" id="inq-phone" required>
                 </div>
                 <div class="form-group">
                   <label class="form-label">${this.t('formEmail')}</label>
-                  <input type="email" class="form-control" id="inq-email" required placeholder="name@company.com">
+                  <input type="email" class="form-control" id="inq-email" required>
                 </div>
               </div>
 
@@ -676,7 +676,7 @@ const Channel = {
 
               <div class="form-group">
                 <label class="form-label">${this.t('formMessage')}</label>
-                <textarea class="form-control" id="inq-message" rows="3" required placeholder="Tell us about your brand, budget, and timeline..."></textarea>
+                <textarea class="form-control" id="inq-message" rows="4" required></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
