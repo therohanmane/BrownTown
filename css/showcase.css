@@ -337,242 +337,396 @@
 .tile-tagline {
   font-size: 0.8rem;
   color: #cbd5e1;
-/* ==================== 7. VIDEO GALLERY CONTROLS & SORTING ==================== */
-.video-controls-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.video-sort-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  background: var(--bg-surface-secondary);
-  padding: 0.35rem 0.6rem;
-  border-radius: var(--radius-full);
+/* =========================================================================
+   7. VIDEO GALLERY — RESPONSIVE 4-COLUMN GRID, CAROUSELS & FIXED-RATIO CARDS
+   ========================================================================= */
+
+/* Compact Controls Bar (Filters & Sorting) */
+.gallery-controls-bar {
+  background: var(--bg-surface);
   border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
 }
 
-.sort-label-text {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  padding: 0 0.4rem;
+.filter-pills-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
 }
 
-.video-sort-tab {
+.gallery-filter-pill {
   background: transparent;
   border: 1px solid transparent;
   color: var(--text-secondary);
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 0.35rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
   border-radius: var(--radius-full);
   cursor: pointer;
-  min-height: 36px;
-  display: inline-flex;
+  transition: all 0.2s ease;
+}
+
+.gallery-filter-pill:hover {
+  background: var(--bg-surface-secondary);
+  color: var(--text-primary);
+}
+
+.gallery-filter-pill.active {
+  background: var(--brand-brown-600);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(179, 84, 30, 0.3);
+}
+
+.sort-pills-group {
+  display: flex;
   align-items: center;
-  transition: all var(--transition-fast);
+  gap: 0.35rem;
+  background: var(--bg-surface-secondary);
+  padding: 0.25rem 0.45rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-light);
 }
 
-.video-sort-tab:hover {
-  color: var(--brand-brown-600);
-  background: var(--bg-surface);
+.sort-label-text {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding: 0 0.35rem;
 }
 
-.video-sort-tab.active {
+.gallery-sort-pill {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.gallery-sort-pill:hover {
+  color: var(--text-primary);
+}
+
+.gallery-sort-pill.active {
   background: var(--brand-navy-900);
   color: #fff;
-  border-color: var(--brand-brown-400);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-[data-theme="dark"] .video-sort-tab.active {
+[data-theme="dark"] .gallery-sort-pill.active {
   background: var(--brand-brown-600);
-  border-color: var(--brand-brown-400);
 }
 
-.video-filter-bar {
+/* Category Row Section */
+.category-row-section {
+  margin-bottom: 2.75rem;
+}
+
+.category-row-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.category-row-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.category-row-title {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.category-row-view-all {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--brand-brown-600);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.15s;
+}
+
+.category-row-view-all:hover {
+  color: var(--brand-brown-400);
+}
+
+/* Carousel Layout */
+.carousel-container {
+  position: relative;
+}
+
+.carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(260px, 28vw, 320px);
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 0.25rem 0.25rem 1rem 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-brown-400) transparent;
+}
+
+.carousel-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 4px;
+}
+
+.carousel-track .video-card {
+  scroll-snap-align: start;
+}
+
+.carousel-nav-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(7, 14, 27, 0.9);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.video-filter-tab {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-medium);
-  color: var(--text-secondary);
-  font-size: clamp(0.78rem, 1vw, 0.86rem);
-  font-weight: 600;
-  padding: 0.45rem clamp(0.85rem, 2vw, 1.2rem);
-  border-radius: var(--radius-full);
   cursor: pointer;
-  min-height: 42px;
-  display: inline-flex;
-  align-items: center;
-  transition: all var(--transition-fast);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
 }
 
-.video-filter-tab:hover {
-  border-color: var(--brand-brown-600);
-  color: var(--brand-brown-600);
-}
-
-.video-filter-tab.active {
+.carousel-nav-btn:hover {
   background: var(--brand-brown-600);
-  color: #fff;
-  border-color: var(--brand-brown-600);
-  box-shadow: 0 4px 12px rgba(179, 84, 30, 0.25);
+  border-color: var(--brand-brown-400);
+  transform: translateY(-50%) scale(1.1);
 }
 
-.video-badge-popular {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-  color: #fff;
-  font-size: 0.68rem;
-  font-weight: 800;
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-full);
-  letter-spacing: 0.03em;
-  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+.carousel-nav-prev { left: -14px; }
+.carousel-nav-next { right: -14px; }
+
+@media (max-width: 768px) {
+  .carousel-nav-btn { display: none; }
+  .carousel-track {
+    grid-auto-columns: minmax(260px, 82vw);
+    gap: 0.85rem;
+  }
 }
 
-.video-badge-latest {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: #fff;
-  font-size: 0.68rem;
-  font-weight: 800;
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-full);
-  letter-spacing: 0.03em;
-  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
-}
-
+/* ==================== 4-COLUMN RESPONSIVE VIDEO GRID ==================== */
 .video-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 100%, 360px), 1fr));
-  gap: clamp(1.25rem, 2.5vw, 1.85rem);
-  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
 }
 
+@media (max-width: 1279px) {
+  .video-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1023px) {
+  .video-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .video-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==================== VIDEO CARD COMPONENT ==================== */
 .video-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border-radius: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-sm);
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
   position: relative;
+  height: 100%;
 }
 
 .video-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
   border-color: var(--brand-brown-400);
 }
 
+/* Thumbnail 16:9 Aspect Ratio */
 .video-thumbnail-wrap {
   position: relative;
-  padding-top: 56.25%; /* 16:9 ratio */
+  width: 100%;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: var(--brand-navy-950);
+  background: #070e1b;
+  flex-shrink: 0;
 }
 
 .video-thumbnail-wrap img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
 .video-card:hover .video-thumbnail-wrap img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
+/* Category Badge: Pinned Top-Left */
+.video-card-cat-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(7, 14, 27, 0.85);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+/* Popular / Latest Flag: Pinned Top-Right */
+.video-card-flag-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.video-card-flag-popular {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #fff;
+}
+
+.video-card-flag-latest {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #fff;
+}
+
+/* Duration Tag: Pinned Bottom-Right */
+.video-duration-tag {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.18rem 0.45rem;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* Play Button Overlay (Centered) */
 .video-play-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(4, 9, 18, 0.4);
+  background: rgba(4, 9, 18, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease;
+  transition: background 0.25s ease;
+  z-index: 1;
 }
 
 .video-card:hover .video-play-overlay {
-  background: rgba(4, 9, 18, 0.15);
+  background: rgba(4, 9, 18, 0.08);
 }
 
 .play-circle-icon {
-  width: 54px;
-  height: 54px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: rgba(179, 84, 30, 0.9);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
-  padding-left: 4px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, background 0.3s ease;
+  font-size: 1rem;
+  padding-left: 3px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease, background 0.25s ease;
 }
 
 .video-card:hover .play-circle-icon {
-  transform: scale(1.15);
+  transform: scale(1.12);
   background: var(--brand-brown-600);
 }
 
-.video-duration-tag {
-  position: absolute;
-  bottom: 0.6rem;
-  right: 0.6rem;
-  background: rgba(0, 0, 0, 0.85);
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 0.2rem 0.45rem;
-  border-radius: 4px;
-}
-
+/* Card Body (Below Thumbnail) */
 .video-card-body {
-  padding: clamp(1rem, 2.5vw, 1.25rem);
+  padding: 0.85rem 0.95rem 0.9rem 0.95rem;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
-.video-card-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.76rem;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
-}
-
 .video-card-title {
-  font-family: var(--font-serif);
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.35;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.7em;
 }
 
 :lang(mr) .video-card-title, :lang(hi) .video-card-title {
@@ -580,59 +734,53 @@
 }
 
 .video-card-summary {
-  font-size: clamp(0.82rem, 1vw, 0.88rem);
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 1rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 0.65rem;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  height: 1.4em;
 }
 
-.video-card-cta {
+.video-card-meta {
   margin-top: auto;
-  padding-top: 0.75rem;
+  padding-top: 0.5rem;
   border-top: 1px solid var(--border-light);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.video-watch-btn {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--brand-brown-600);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  transition: color 0.15s ease;
-}
-
-.video-watch-btn:hover {
-  color: var(--brand-brown-400);
-}
-
-.video-ext-link {
-  font-size: 0.76rem;
-  font-weight: 600;
+  font-size: 0.75rem;
   color: var(--text-muted);
-  text-decoration: none;
+}
+
+.video-card-views {
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-sm);
-  background: var(--bg-surface-secondary);
-  border: 1px solid var(--border-light);
-  transition: all 0.2s ease;
 }
 
-.video-ext-link:hover {
+.video-card-ext-btn {
+  font-size: 0.72rem;
+  font-weight: 700;
   color: var(--brand-brown-600);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  background: var(--bg-surface-secondary);
+  border: 1px solid var(--border-light);
+  transition: all 0.15s ease;
+}
+
+.video-card-ext-btn:hover {
+  color: var(--brand-brown-400);
   border-color: var(--brand-brown-400);
-  background: var(--bg-surface);
 }
 
 /* YouTube Channel Showcase Banner */
@@ -646,7 +794,7 @@
   justify-content: space-between;
   gap: 1.5rem;
   flex-wrap: wrap;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   box-shadow: var(--shadow-sm);
 }
 
@@ -657,28 +805,28 @@
 }
 
 .yt-play-badge {
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   background: #ff0000;
   border-radius: var(--radius-lg);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   box-shadow: 0 4px 14px rgba(255, 0, 0, 0.35);
   flex-shrink: 0;
 }
 
 .yt-banner-title {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
   font-weight: 800;
   margin-bottom: 0.2rem;
   color: var(--text-primary);
 }
 
 .yt-banner-sub {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
 }
 
