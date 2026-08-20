@@ -1072,11 +1072,11 @@ const Channel = {
               <div class="yt-banner-sub">@INBrownTown (1.8k+ Subscribers) • @inbrowntown (4.8k+ Followers) • Ground Reporting</div>
             </div>
           </div>
-          <div style="display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
-            <a href="https://www.instagram.com/inbrowntown" target="_blank" rel="noreferrer" class="btn btn-outline" style="color:#fff; border-color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.08);">
-              📸 Official Instagram
+          <div class="yt-banner-actions">
+            <a href="https://www.instagram.com/inbrowntown" target="_blank" rel="noreferrer" class="yt-banner-ig-btn">
+              <span>📸</span> <span>Official Instagram</span>
             </a>
-            <a href="${window.INB_BRAND_DATA.channelUrl}" target="_blank" rel="noreferrer" class="btn btn-primary" style="background:#ff0000; border-color:#ff0000;">
+            <a href="${window.INB_BRAND_DATA.channelUrl}" target="_blank" rel="noreferrer" class="btn btn-primary yt-banner-yt-btn">
               ${this.t('watchOnYoutube')}
             </a>
           </div>

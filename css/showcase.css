@@ -1479,6 +1479,63 @@
   color: var(--text-secondary);
 }
 
+.yt-banner-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.yt-banner-ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  color: var(--text-primary) !important;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.yt-banner-ig-btn:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #ffffff !important;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(220, 39, 67, 0.4);
+}
+
+[data-theme="dark"] .yt-banner-ig-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .yt-banner-ig-btn:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #ffffff !important;
+  border-color: transparent;
+}
+
+.yt-banner-yt-btn {
+  background: #ff0000 !important;
+  border-color: #ff0000 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.35);
+}
+
+.yt-banner-yt-btn:hover {
+  background: #cc0000 !important;
+  border-color: #cc0000 !important;
+  transform: translateY(-2px);
+}
+
 /* =========================================================================
    7. VIDEO POPUP MODAL (ZERO REDIRECT)
    ========================================================================= */
