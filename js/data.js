@@ -129,7 +129,7 @@ window.INB_BRAND_DATA = {
     {
       id: 'interviews',
       name: { mr: 'विशेष मुलाखती', hi: 'विशेष साक्षात्कार', en: 'Exclusive Interviews' },
-      count: '150+ Videos',
+      count: '200+ Videos',
       image: 'https://i.ytimg.com/vi/kgZFF-ye7RY/hq720.jpg',
       tagline: { mr: 'अभिनेते, नेते व मान्यवरांशी संवाद', hi: 'दिग्गजों से विशेष बातचीत', en: 'Candid Celebrity & Political Talks' }
     },
@@ -480,10 +480,10 @@ window.INB_BRAND_DATA = {
         }
       },
       {
-        value: '150+',
+        value: '200+',
         label: {
-          mr: 'विशेष मुलाखती व संवाद',
-          hi: 'विशेष साक्षात्कार व संवाद',
+          mr: 'विशेष मुलाखती व संवाद (Interviews)',
+          hi: 'विशेष साक्षात्कार व संवाद (Interviews)',
           en: 'Interviews Conducted'
         }
       },
