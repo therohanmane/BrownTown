@@ -337,6 +337,7 @@ const Channel = {
       { id: 'baramati', name: 'Baramati', tag: 'BARAMATI', ticker: '🔴 LIVE GROUND REPORTING • BARAMATI • RURAL ENTERPRISE & PROGRESS', x: 45.83, y: 60.00, svgX: 165, svgY: 180 }
     ];
 
+    const stage = document.getElementById('newsroom-stage');
     const layerCam = document.getElementById('layer-camera');
     const cityTag = document.getElementById('cam-active-city-name');
     const focusBadge = document.getElementById('hero-focus-badge');
@@ -347,20 +348,12 @@ const Channel = {
     const tickerText2 = document.getElementById('hero-live-ticker-text-copy');
     const mapNodes = document.querySelectorAll('.map-node');
 
-    if (!layerCam) return;
+    if (!layerCam || !stage) return;
 
     // Check prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // State Single-Source-of-Truth
-    this.cameraCityIndex = 0;
-    if (this.cameraAutoTimer) { clearInterval(this.cameraAutoTimer); this.cameraAutoTimer = null; }
-    if (this.cameraResumeTimer) { clearTimeout(this.cameraResumeTimer); this.cameraResumeTimer = null; }
-
-    const clearTimers = () => {
-      if (this.cameraAutoTimer) { clearInterval(this.cameraAutoTimer); this.cameraAutoTimer = null; }
-      if (this.cameraResumeTimer) { clearTimeout(this.cameraResumeTimer); this.cameraResumeTimer = null; }
-    };
+    let currentPos = { x: 40.28, y: 53.33, svgX: 145, svgY: 160 };
 
     const triggerFocusLock = () => {
       if (bracketGroup) bracketGroup.classList.add('focusing');
@@ -370,9 +363,9 @@ const Channel = {
           focusBadge.classList.add('active');
           setTimeout(() => {
             focusBadge.classList.remove('active');
-          }, 2000);
+          }, 1800);
         }
-      }, 350);
+      }, 300);
     };
 
     const triggerMicWaveformBoost = () => {
@@ -380,125 +373,114 @@ const Channel = {
         micWaveform.classList.add('mic-boost');
         setTimeout(() => {
           micWaveform.classList.remove('mic-boost');
-        }, 1200);
+        }, 1100);
       }
     };
 
-    const drawSignalTrail = (fromCity, toCity) => {
+    const drawSignalTrail = (fromX, fromY, toX, toY) => {
       if (!signalTrail || prefersReducedMotion) return;
 
-      const midX = (fromCity.svgX + toCity.svgX) / 2;
-      const midY = (fromCity.svgY + toCity.svgY) / 2;
-      const dx = toCity.svgX - fromCity.svgX;
-      const dy = toCity.svgY - fromCity.svgY;
+      const midX = (fromX + toX) / 2;
+      const midY = (fromY + toY) / 2;
+      const dx = toX - fromX;
+      const dy = toY - fromY;
       const dist = Math.sqrt(dx * dx + dy * dy);
       const perpX = -dy / (dist || 1);
       const perpY = dx / (dist || 1);
-      const curvature = Math.min(24, dist * 0.22);
+      const curvature = Math.min(22, dist * 0.2);
       const ctrlX = midX + perpX * curvature;
       const ctrlY = midY + perpY * curvature;
 
-      signalTrail.setAttribute('d', `M ${fromCity.svgX} ${fromCity.svgY} Q ${ctrlX} ${ctrlY} ${toCity.svgX} ${toCity.svgY}`);
+      signalTrail.setAttribute('d', `M ${fromX} ${fromY} Q ${ctrlX} ${ctrlY} ${toX} ${toY}`);
       signalTrail.classList.remove('traveling');
-      void signalTrail.offsetWidth; // trigger CSS reflow for animation restart
+      void signalTrail.offsetWidth; // force reflow
       signalTrail.classList.add('traveling');
     };
 
-    const moveToCity = (index) => {
-      const prevCity = CITIES[this.cameraCityIndex];
-      this.cameraCityIndex = (index + CITIES.length) % CITIES.length;
-      const targetCity = CITIES[this.cameraCityIndex];
+    const moveToCoordinates = (targetX, targetY, targetSvgX, targetSvgY, cityObj = null) => {
+      const prevX = currentPos.svgX;
+      const prevY = currentPos.svgY;
 
-      // Highlight active node & mark visited
+      // Update position state
+      currentPos = { x: targetX, y: targetY, svgX: targetSvgX, svgY: targetSvgY };
+
+      // Highlight active city pin if matching
       mapNodes.forEach(node => {
-        const cityId = node.getAttribute('data-city');
+        const nodeCity = node.getAttribute('data-city');
         node.classList.remove('active-city');
-        if (cityId === targetCity.id) {
+        if (cityObj && nodeCity === cityObj.id) {
           node.classList.add('active-city');
-          node.classList.remove('visited-node');
-        } else if (cityId === prevCity.id) {
-          node.classList.add('visited-node');
         }
       });
 
-      // Move camera with hardware-accelerated translate3d
+      // Move camera with smooth GPU translate3d
       if (prefersReducedMotion) {
         layerCam.style.transition = 'none';
+      } else {
+        layerCam.style.transition = 'transform 0.65s cubic-bezier(0.2, 0.9, 0.3, 1)';
       }
-      layerCam.style.transform = `translate3d(calc(${targetCity.x}% - 50%), calc(${targetCity.y}% - 50%), 0)`;
+      layerCam.style.transform = `translate3d(calc(${targetX}% - 50%), calc(${targetY}% - 50%), 0)`;
 
-      // Draw flight signal trail
-      if (prevCity.id !== targetCity.id) {
-        drawSignalTrail(prevCity, targetCity);
+      // Draw dynamic curved signal trail
+      drawSignalTrail(prevX, prevY, targetSvgX, targetSvgY);
+
+      // Update locator tag & ticker
+      if (cityObj) {
+        if (cityTag) cityTag.textContent = cityObj.tag;
+        if (tickerText1) tickerText1.textContent = cityObj.ticker;
+        if (tickerText2) tickerText2.textContent = cityObj.ticker;
+      } else {
+        if (cityTag) cityTag.textContent = 'LIVE FEED';
+        const defaultTicker = '🔴 LIVE GROUND REPORTING • MAHARASHTRA • REAL VOICES, CIVIC ISSUES & LOCAL COMMERCE';
+        if (tickerText1) tickerText1.textContent = defaultTicker;
+        if (tickerText2) tickerText2.textContent = defaultTicker;
       }
 
-      // Update camera city tag badge
-      if (cityTag) {
-        cityTag.textContent = targetCity.tag;
-      }
-
-      // Trigger Focus Lock & Waveform audio surge
+      // Trigger arrival feedback
       triggerFocusLock();
       triggerMicWaveformBoost();
-
-      // Dynamic news ticker update
-      if (tickerText1) tickerText1.textContent = targetCity.ticker;
-      if (tickerText2) tickerText2.textContent = targetCity.ticker;
     };
 
-    const startAutoCycle = () => {
-      if (prefersReducedMotion) return;
-      clearTimers();
-      this.cameraAutoTimer = setInterval(() => {
-        moveToCity(this.cameraCityIndex + 1);
-      }, 4500);
-    };
+    // Initial position at Pune HQ
+    moveToCoordinates(40.28, 53.33, 145, 160, CITIES[0]);
 
-    // Initialize at Pune HQ
-    moveToCity(0);
-    startAutoCycle();
+    // Single Unified Click / Tap Handler on Map Stage
+    stage.addEventListener('click', (e) => {
+      const rect = stage.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
 
-    // Instant Click / Tap Handler on City Pins (Zero conflict with hover)
-    mapNodes.forEach(node => {
-      const cityId = node.getAttribute('data-city');
-      const targetIndex = CITIES.findIndex(c => c.id === cityId);
-      if (targetIndex === -1) return;
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+      const pctX = (clickX / rect.width) * 100;
+      const pctY = (clickY / rect.height) * 100;
 
-      const handleDirectSelect = (e) => {
-        if (e) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        // If clicking currently active city, keep active
-        if (this.cameraCityIndex === targetIndex) return;
+      // Check if clicked a specific city pin or near one
+      const nodeEl = e.target.closest('.map-node');
+      let matchedCity = null;
 
-        clearTimers();
-        moveToCity(targetIndex);
-
-        // Resume auto-cycle after 4.5s of user idle
-        this.cameraResumeTimer = setTimeout(() => {
-          startAutoCycle();
-        }, 4500);
-      };
-
-      // Direct click / tap trigger
-      node.addEventListener('click', handleDirectSelect);
-    });
-
-    // IntersectionObserver: Pause movement when Hero is out of view
-    const heroBanner = document.getElementById('hero-banner-container');
-    if (heroBanner && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            startAutoCycle();
-          } else {
-            clearTimers();
-          }
+      if (nodeEl) {
+        const cityId = nodeEl.getAttribute('data-city');
+        matchedCity = CITIES.find(c => c.id === cityId);
+      } else {
+        // Check proximity to any city pin
+        matchedCity = CITIES.find(c => {
+          const dx = pctX - c.x;
+          const dy = pctY - c.y;
+          return Math.sqrt(dx * dx + dy * dy) < 8; // within 8% radius
         });
-      }, { threshold: 0.15 });
-      observer.observe(heroBanner);
-    }
+      }
+
+      if (matchedCity) {
+        moveToCoordinates(matchedCity.x, matchedCity.y, matchedCity.svgX, matchedCity.svgY, matchedCity);
+      } else {
+        // Clamp custom click within safe stage boundaries
+        const clampedX = Math.max(14, Math.min(86, pctX));
+        const clampedY = Math.max(16, Math.min(84, pctY));
+        const svgX = (clampedX / 100) * 360;
+        const svgY = (clampedY / 100) * 300;
+        moveToCoordinates(clampedX, clampedY, svgX, svgY, null);
+      }
+    });
   },
 
   initHeroStatCounters() {
