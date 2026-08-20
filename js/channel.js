@@ -1428,7 +1428,7 @@ const Channel = {
                 <input type="text" class="form-control" id="inq-name" required>
               </div>
 
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+              <div class="form-row-2col">
                 <div class="form-group">
                   <label class="form-label">${this.t('formPhone')}</label>
                   <input type="tel" class="form-control" id="inq-phone" required>
