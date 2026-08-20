@@ -1330,7 +1330,8 @@ const Channel = {
                   <option value="ad_posters">${this.t('serviceOption2')}</option>
                   <option value="business_spotlight">${this.t('serviceOption3')}</option>
                   <option value="interview_feature">${this.t('serviceOption4')}</option>
-                  <option value="custom_package">${this.t('serviceOptionOther')}</option>
+                  <option value="custom_package">${this.t('serviceOption5')}</option>
+                  <option value="other">${this.t('serviceOptionOther')}</option>
                 </select>
               </div>
 
