@@ -1258,13 +1258,13 @@ const Channel = {
               <div class="perk-item">
                 <span class="perk-icon">🎯</span>
                 <div>
-                  <strong>Targeted Local Reach:</strong> Direct promotional access to 6.6k+ engaged community followers across Pune & Maharashtra.
+                  <strong>Targeted Local Reach:</strong> Direct promotional access to 1.8k+ YouTube subscribers & 4.8k+ Instagram followers across Pune & Maharashtra.
                 </div>
               </div>
               <div class="perk-item">
                 <span class="perk-icon">🎨</span>
                 <div>
-                  <strong>Done-For-You Ad Posters:</strong> Custom promotional posters, banners & social media creatives crafted specifically for busy business owners.
+                  <strong>Done-For-You Ad Posters:</strong> Custom promotional ad posters, banners & social media creatives crafted specifically for busy shopkeepers and local business owners.
                 </div>
               </div>
               <div class="perk-item">
@@ -1280,42 +1280,87 @@ const Channel = {
             <form onsubmit="Channel.handleInquirySubmit(event)" class="inquiry-form">
               <div class="form-group">
                 <label class="form-label">${this.t('formName')}</label>
-                <input type="text" class="form-control" id="inq-name" required>
+                <input type="text" class="form-control" id="inq-name" placeholder="e.g. Rahul Patil" required>
               </div>
 
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                 <div class="form-group">
                   <label class="form-label">${this.t('formPhone')}</label>
-                  <input type="tel" class="form-control" id="inq-phone" required>
+                  <input type="tel" class="form-control" id="inq-phone" placeholder="e.g. +91 98230 12345" required>
                 </div>
                 <div class="form-group">
                   <label class="form-label">${this.t('formEmail')}</label>
-                  <input type="email" class="form-control" id="inq-email" required>
+                  <input type="email" class="form-control" id="inq-email" placeholder="e.g. rahul@mybusiness.com" required>
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="form-label">${this.t('formService')}</label>
                 <select class="form-control" id="inq-service" required>
-                  <option value="business_promo">${this.t('serviceOption1')}</option>
-                  <option value="brand_sponsorship">${this.t('serviceOption2')}</option>
-                  <option value="ngo_coverage">${this.t('serviceOption3')}</option>
-                  <option value="podcast_interview">${this.t('serviceOption4')}</option>
-                  <option value="other">${this.t('serviceOptionOther')}</option>
+                  <option value="digital_ads">${this.t('serviceOption1')}</option>
+                  <option value="ad_posters">${this.t('serviceOption2')}</option>
+                  <option value="business_spotlight">${this.t('serviceOption3')}</option>
+                  <option value="interview_feature">${this.t('serviceOption4')}</option>
+                  <option value="custom_package">${this.t('serviceOptionOther')}</option>
                 </select>
               </div>
 
               <div class="form-group">
                 <label class="form-label">${this.t('formMessage')}</label>
-                <textarea class="form-control" id="inq-message" rows="4" required></textarea>
+                <textarea class="form-control" id="inq-message" rows="3" placeholder="Tell us about your shop, brand, or promotion goals..." required></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; box-shadow: 0 4px 14px rgba(224, 102, 42, 0.4);">
                 ${this.t('btnSubmitInquiry')}
               </button>
+
+              <div class="form-turnaround-note">
+                ${this.t('formExpectationNote')}
+              </div>
             </form>
           </div>
         </div>
+      </div>
+    `;
+  },
+
+  handleInquirySubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('inq-name')?.value?.trim();
+    const phone = document.getElementById('inq-phone')?.value?.trim();
+    const email = document.getElementById('inq-email')?.value?.trim();
+    const serviceSelect = document.getElementById('inq-service');
+    const serviceText = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex].text : '';
+    const message = document.getElementById('inq-message')?.value?.trim();
+
+    if (!name || !phone || !email || !message) {
+      alert('Please fill out all required fields.');
+      return;
+    }
+
+    const formContainer = document.querySelector('.work-form-right');
+    if (!formContainer) return;
+
+    formContainer.innerHTML = `
+      <div class="inquiry-success-card">
+        <div class="success-icon-wrap">🎉</div>
+        <h3 class="success-card-title">${this.t('formConfirmationTitle')}</h3>
+        <p class="success-card-sub">${this.t('formConfirmationSub')}</p>
+        
+        <div class="inquiry-summary-box">
+          <div class="summary-row"><strong>Name:</strong> <span>${name}</span></div>
+          <div class="summary-row"><strong>Phone:</strong> <span>${phone}</span></div>
+          <div class="summary-row"><strong>Email:</strong> <span>${email}</span></div>
+          <div class="summary-row"><strong>Category:</strong> <span>${serviceText}</span></div>
+        </div>
+
+        <div class="success-turnaround-pill">
+          <span>⏱️ Expected Turnaround: 24 Hours via WhatsApp / Phone</span>
+        </div>
+
+        <button class="btn btn-outline" style="margin-top: 1.25rem; width: 100%; border-color: rgba(255,255,255,0.3); color: #fff; background: rgba(255,255,255,0.06);" onclick="Channel.renderWorkWithUs()">
+          ${this.t('btnSubmitAnother')}
+        </button>
       </div>
     `;
   },
