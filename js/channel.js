@@ -793,27 +793,56 @@ const Channel = {
 
     sec.innerHTML = `
       <div class="container">
+        <!-- Section Header with Distinct Slogan Statement -->
         <div class="section-heading-center">
           <span class="badge badge-category">WHO WE ARE</span>
+          <div class="who-slogan-banner">
+            <span class="slogan-lead">Real Stories. Real Reach.</span>
+          </div>
           <h2 class="section-heading-title">${this.t('whoWeAreTitle')}</h2>
           <p class="section-heading-sub">${this.t('whoWeAreSub')}</p>
         </div>
 
+        <!-- Premium Elevated Who We Are Card -->
         <div class="who-we-are-card">
+          
+          <!-- Narrative Overview -->
           <div class="who-story-text">
             <p>${this.t('whoWeAreStory')}</p>
           </div>
 
+          <!-- Dual-Impact Visual Columns (Journalism vs Commercial Ads) -->
+          <div class="who-dual-pillars-grid">
+            <div class="who-pillar-item who-journalism-pillar">
+              <div class="who-pillar-header">
+                <span class="who-pillar-icon">🎙️</span>
+                <h4 class="who-pillar-title">${this.t('whoJournalismTitle')}</h4>
+              </div>
+              <p class="who-pillar-desc">${this.t('whoJournalismDesc')}</p>
+            </div>
+
+            <div class="who-pillar-item who-advertising-pillar">
+              <div class="who-pillar-header">
+                <span class="who-pillar-icon">📢</span>
+                <h4 class="who-pillar-title">${this.t('whoAdvertisingTitle')}</h4>
+              </div>
+              <p class="who-pillar-desc">${this.t('whoAdvertisingDesc')}</p>
+            </div>
+          </div>
+
+          <!-- 4 Redesigned Unambiguous Stat Cards -->
           <div class="stats-counter-grid">
             ${stats.map(s => `
               <div class="stat-box">
-                <div class="stat-counter-val" data-target="${s.value}" data-suffix="${s.suffix}">
-                  0${s.suffix}
+                <div class="stat-box-icon">${s.icon || '⚡'}</div>
+                <div class="stat-counter-val" data-target="${s.value}">
+                  ${s.displayVal || s.value}
                 </div>
                 <div class="stat-counter-label">${this.getI18n(s.label)}</div>
               </div>
             `).join('')}
           </div>
+
         </div>
       </div>
     `;

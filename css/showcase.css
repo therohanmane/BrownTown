@@ -661,25 +661,115 @@
 /* =========================================================================
    3. WHO WE ARE & MILESTONE STATS
    ========================================================================= */
+.who-slogan-banner {
+  margin: 0.5rem auto 0.75rem auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slogan-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+  font-weight: 900;
+  color: var(--brand-brown-600);
+  letter-spacing: -0.01em;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.35rem;
+}
+
+.slogan-lead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--brand-brown-400), #38bdf8, transparent);
+  border-radius: var(--radius-full);
+}
+
 .who-we-are-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-light);
+  border-top: 4px solid transparent;
+  border-image: linear-gradient(90deg, var(--brand-brown-400) 0%, #38bdf8 100%) 1;
   border-radius: var(--radius-xl);
   padding: clamp(1.25rem, 3.5vw, 2.75rem);
   box-shadow: var(--shadow-md);
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  position: relative;
+  overflow: hidden;
 }
 
 .who-story-text {
-  font-size: clamp(0.95rem, 1.2vw, 1.12rem);
+  font-size: clamp(0.92rem, 1.15vw, 1.05rem);
   line-height: 1.75;
   color: var(--text-primary);
   text-align: center;
-  max-width: 860px;
-  margin: 0 auto clamp(1.25rem, 2.5vw, 2.25rem) auto;
+  max-width: 880px;
+  margin: 0 auto clamp(1.25rem, 2.5vw, 2rem) auto;
   font-weight: 500;
 }
 
+/* Dual-Impact Visual Columns (Journalism vs Advertising) */
+.who-dual-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.who-pillar-item {
+  background: var(--bg-surface-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.who-journalism-pillar {
+  border-left: 3px solid #38bdf8;
+}
+
+.who-advertising-pillar {
+  border-left: 3px solid var(--brand-brown-400);
+}
+
+.who-pillar-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--brand-brown-400);
+}
+
+.who-pillar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+
+.who-pillar-icon {
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.who-pillar-title {
+  font-size: clamp(0.96rem, 1.15vw, 1.1rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.who-pillar-desc {
+  font-size: clamp(0.82rem, 0.95vw, 0.88rem);
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* 4 Milestone Stat Cards */
 .stats-counter-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -692,18 +782,29 @@
   background: var(--bg-surface-subtle);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
-  padding: clamp(1rem, 2vw, 1.5rem) 0.75rem;
+  padding: clamp(1rem, 2vw, 1.35rem) 0.75rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
 
 .stat-box:hover {
   transform: translateY(-4px);
   border-color: var(--brand-brown-400);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-box-icon {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  opacity: 0.85;
 }
 
 .stat-counter-val {
-  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-size: clamp(1.5rem, 2.8vw, 2.15rem);
   font-weight: 900;
   color: var(--brand-brown-600);
   line-height: 1.1;
@@ -712,9 +813,9 @@
 }
 
 .stat-counter-label {
-  font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+  font-size: clamp(0.74rem, 0.88vw, 0.84rem);
   color: var(--text-secondary);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.35;
 }
 
@@ -2179,6 +2280,9 @@
 
 /* Mobile & Phablet (481px - 767px) */
 @media (max-width: 767px) {
+  .who-dual-pillars-grid {
+    grid-template-columns: 1fr;
+  }
   .stats-counter-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;

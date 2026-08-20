@@ -19,7 +19,7 @@ window.INB_I18N = {
   // MARATHI (Primary)
   mr: {
     brandName: 'INBrownTown',
-    brandTagline: 'डिजिटल जाहिरात, कम्युनिटी व मीडिया चॅनेल',
+    brandTagline: 'Real Stories. Real Reach.',
     heroTag: '● ON AIR • LIVE REPORTING • REAL VOICES',
     heroHeadline: 'जिथे प्रत्येक गोष्टीला आवाज मिळतो.',
     heroSubheadline: 'ग्राउंड रिपोर्ट्स, लोकांचा आवाज आणि महत्त्वाच्या घडामोडी — INBrownTown समाजातील प्रत्येक सत्य आणि प्रेरक यशोगाथा थेट तुमच्यापर्यंत पोहोचवते.',
@@ -37,8 +37,13 @@ window.INB_I18N = {
 
     // Who We Are
     whoWeAreTitle: 'आम्ही कोण आहोत?',
+    whoWeAreSlogan: 'Real Stories. Real Reach.',
     whoWeAreSub: 'स्थानिक व्यवसायांना डिजिटल ताकद देणारा आणि लोकसहभागावर आधारलेला आधुनिक मीडिया व जाहिरात मंच',
-    whoWeAreStory: 'INBrownTown हा दुहेरी प्रभावावर आधारलेला स्वतंत्र डिजिटल मीडिया मंच आहे: आम्ही संस्थापिका सुश्री आयेशा सय्यद यांच्या नेतृत्वाखाली जमिनीवरील सत्य, सामान्य जनतेचे प्रश्न आणि प्रेरक यशोगाथा ग्राउंड रिपोर्टिंग व थेट व्हिडिओ मुलाखतींद्वारे लोकांपर्यंत पोहोचवतो — आणि त्याचसोबत स्थानिक व्यावसायिक, दुकानदार व ब्रँड्सना डिजिटल जाहिरात, आकर्षक ॲड पोस्टर्स आणि सोशल मीडिया प्रमोशनच्या माध्यमातून लाखो ग्राहकांशी जोडून त्यांचा व्यवसाय वाढवण्यास मदत करतो.',
+    whoWeAreStory: 'INBrownTown हा दुहेरी प्रभावावर आधारलेला स्वतंत्र डिजिटल मीडिया मंच आहे: एका बाजूला आम्ही संस्थापिका सुश्री आयेशा सय्यद यांच्या नेतृत्वाखाली जमिनीवरील सत्य, सामान्य जनतेचे प्रश्न आणि प्रेरक यशोगाथा ग्राउंड रिपोर्टिंग व थेट व्हिडिओ मुलाखतींद्वारे लोकांपर्यंत पोहोचवतो — आणि दुसऱ्या बाजूला स्थानिक दुकानदार, व्यावसायिक व ब्रँड्सना डिजिटल जाहिरात, आकर्षक ॲड पोस्टर्स आणि सोशल मीडिया प्रमोशनच्या माध्यमातून लाखो ग्राहकांशी जोडून त्यांचा व्यवसाय वाढवण्यास मदत करतो.',
+    whoJournalismTitle: '🎙️ जमिनीवरील पत्रकारिता व लोकांचे प्रश्न',
+    whoJournalismDesc: 'संस्थापिका सुश्री आयेशा सय्यद यांच्या नेतृत्वाखाली ग्राउंड रिपोर्टिंग, नागरी समस्या आणि प्रत्यक्ष व्हिडिओ मुलाखतींद्वारे निर्भीक पत्रकारिता.',
+    whoAdvertisingTitle: '📢 व्यावसायिकांसाठी जाहिरात व थेट विक्री वाढ',
+    whoAdvertisingDesc: 'व्यस्त दुकानदार व स्थानिक ब्रँड्ससाठी रेडीमेड ॲड पोस्टर्स, डिजिटल जाहिरात मोहीम आणि लक्ष्यित स्थानिक ग्राहकांपर्यंत थेट पोहोच.',
 
     // What We Do
     whatWeDoTitle: 'आम्ही काय करतो?',
@@ -129,7 +134,7 @@ window.INB_I18N = {
   // HINDI
   hi: {
     brandName: 'INBrownTown',
-    brandTagline: 'डिजिटल विज्ञापन, कम्युनिटी व मीडिया चैनल',
+    brandTagline: 'Real Stories. Real Reach.',
     heroTag: '● ON AIR • LIVE REPORTING • REAL VOICES',
     heroHeadline: 'जहाँ हर कहानी को आवाज़ मिलती है।',
     heroSubheadline: 'ग्राउंड रिपोर्ट्स, आम जनता की आवाज़ और महत्वपूर्ण मुद्दे — INBrownTown समाज की हर सच्ची और प्रेरक गाथा सीधे आप तक पहुँचाता है।',
@@ -147,8 +152,13 @@ window.INB_I18N = {
 
     // Who We Are
     whoWeAreTitle: 'हम कौन हैं?',
+    whoWeAreSlogan: 'Real Stories. Real Reach.',
     whoWeAreSub: 'स्थानीय व्यवसायों को डिजिटल ताक़त देने वाला और जन-सरोकारों से जुड़ा आधुनिक मीडिया व विज्ञापन मंच',
-    whoWeAreStory: 'INBrownTown एक दोहरे प्रभाव वाला स्वतंत्र डिजिटल मीडिया नेटवर्क है: हम संस्थापिका सुश्री आयेशा सय्यद के नेतृत्व में ज़मीनी हकीकत, आम जनता के सवाल और प्रेरक कहानियों को ग्राउंड रिपोर्टिंग व वीडियो साक्षात्कारों के ज़रिए सामने लाते हैं — और साथ ही स्थानीय व्यापारियों, दुकानदारों व ब्रांड्स को डिजिटल विज्ञापन, आकर्षक एड पोस्टर्स और सोशल मीडिया प्रचार के माध्यम से लाखों ग्राहकों तक पहुँचाकर उनका व्यवसाय बढ़ाने में मदद करते हैं।',
+    whoWeAreStory: 'INBrownTown एक दोहरे प्रभाव वाला स्वतंत्र डिजिटल मीडिया नेटवर्क है: एक ओर हम संस्थापिका सुश्री आयेशा सय्यद के नेतृत्व में ज़मीनी हकीकत, आम जनता के सवाल और प्रेरक कहानियों को ग्राउंड रिपोर्टिंग व वीडियो साक्षात्कारों के ज़रिए सामने लाते हैं — और दूसरी ओर स्थानीय दुकानदारों, व्यापारियों व ब्रांड्स को डिजिटल विज्ञापन, आकर्षक एड पोस्टर्स और सोशल मीडिया प्रचार के माध्यम से लाखों ग्राहकों तक पहुँचाकर उनका व्यवसाय बढ़ाने में मदद करते हैं।',
+    whoJournalismTitle: '🎙️ ज़मीनी पत्रकारिता व जन-मुद्दे',
+    whoJournalismDesc: 'संस्थापिका सुश्री आयेशा सय्यद के नेतृत्व में ग्राउंड रिपोर्टिंग, जन-कल्याणकारी विश्लेषण और प्रत्यक्ष वीडियो साक्षात्कारों द्वारा निर्भीक पत्रकारिता।',
+    whoAdvertisingTitle: '📢 व्यापारियों के लिए विज्ञापन व सीधी बिक्री वृद्धि',
+    whoAdvertisingDesc: 'व्यस्त दुकानदारों व स्थानीय ब्रांड्स के लिए रेडीमेड एड पोस्टर्स, सोशल मीडिया विज्ञापन और लक्षित स्थानीय ग्राहकों तक सीधी पहुंच।',
 
     // What We Do
     whatWeDoTitle: 'हम क्या करते हैं?',
@@ -241,7 +251,7 @@ window.INB_I18N = {
   // ENGLISH
   en: {
     brandName: 'INBrownTown',
-    brandTagline: 'Digital Advertising, Media & Community Channel',
+    brandTagline: 'Real Stories. Real Reach.',
     heroTag: '● ON AIR • LIVE REPORTING • REAL VOICES',
     heroHeadline: 'Where Every Story Has a Voice.',
     heroSubheadline: 'Breaking news, ground reports, people\'s voices and stories that matter — INBrownTown brings your community closer to what is happening around you.',
@@ -259,8 +269,13 @@ window.INB_I18N = {
 
     // Who We Are
     whoWeAreTitle: 'Who We Are',
+    whoWeAreSlogan: 'Real Stories. Real Reach.',
     whoWeAreSub: 'A dual-impact digital network delivering fearless community journalism and turnkey advertising for local businesses',
-    whoWeAreStory: 'INBrownTown is a dual-impact independent digital media network: We uncover the truth, highlight civic issues, and share inspiring human stories through on-ground investigative reporting and video interviews hosted by founder Ms. Ayesha Sayyad — and we empower local entrepreneurs, shopkeepers, and growing brands with high-impact digital advertising, custom promotional ad posters, and targeted social media marketing reach.',
+    whoWeAreStory: 'INBrownTown is a dual-impact independent digital media network: On one hand, we uncover the truth, highlight civic issues, and share inspiring human stories through on-ground investigative reporting and video interviews hosted by founder Ms. Ayesha Sayyad — and on the other hand, we empower local entrepreneurs, shopkeepers, and growing brands with high-impact digital advertising, custom promotional ad posters, and targeted social media marketing reach.',
+    whoJournalismTitle: '🎙️ Grassroots Journalism & People’s Voices',
+    whoJournalismDesc: 'Fearless on-ground investigative reporting, civic explainers, and authentic field video interviews hosted by founder Ms. Ayesha Sayyad.',
+    whoAdvertisingTitle: '📢 Turnkey Advertising & Local Business Growth',
+    whoAdvertisingDesc: 'Done-for-you digital advertising, custom promotional ad posters, and targeted social media marketing reach crafted for busy shopkeepers and merchants.',
 
     // What We Do
     whatWeDoTitle: 'What We Do',

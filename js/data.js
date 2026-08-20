@@ -8,12 +8,12 @@ window.INB_BRAND_DATA = {
   channelUrl: 'https://www.youtube.com/@INBrownTown',
   channelInstagram: 'https://www.instagram.com/inbrowntown',
 
-  // Brand Milestone Stats
+  // Brand Milestone Stats (100% Consistent Sitewide)
   stats: [
-    { id: 'stat-subs', value: 1800, suffix: '+', label: { mr: 'युट्यूब सदस्य (YT Subscribers)', hi: 'यूट्यूब सब्सक्राइबर्स', en: 'YouTube Subscribers' } },
-    { id: 'stat-followers', value: 4800, suffix: '+', label: { mr: 'इन्स्टाग्राम फॉलोअर्स (IG Followers)', hi: 'इंस्टाग्राम फॉलोअर्स', en: 'Instagram Followers' } },
-    { id: 'stat-videos', value: 381, suffix: '+', label: { mr: 'एकूण व्हिडिओ स्टोरीज (381 Videos)', hi: 'कुल वीडियो स्टोरीज (381 Videos)', en: 'Total Channel Videos (381)' } },
-    { id: 'stat-cities', value: 18, suffix: '+', label: { mr: 'शहरे व जिल्हे कव्हरेज', hi: 'शहर व ज़िले कवरेज', en: 'Districts & Cities Reached' } }
+    { id: 'stat-subs', icon: '▶', value: 1800, displayVal: '1.8k+', suffix: '', label: { mr: 'युट्यूब सदस्य (YouTube Subscribers)', hi: 'यूट्यूब सब्सक्राइबर्स', en: 'YouTube Subscribers' } },
+    { id: 'stat-followers', icon: '📸', value: 4800, displayVal: '4.8k+', suffix: '', label: { mr: 'इन्स्टाग्राम फॉलोअर्स (Instagram Followers)', hi: 'इंस्टाग्राम फॉलोअर्स', en: 'Instagram Followers' } },
+    { id: 'stat-videos', icon: '🎬', value: 381, displayVal: '381', suffix: '', label: { mr: 'प्रकाशित व्हिडिओ स्टोरीज (Videos Published)', hi: 'प्रकाशित वीडियो स्टोरीज', en: 'Videos Published' } },
+    { id: 'stat-interviews', icon: '🎙️', value: 200, displayVal: '200+', suffix: '', label: { mr: 'प्रत्यक्ष ग्राउंड मुलाखती (Field Interviews)', hi: 'प्रत्यक्ष ग्राउंड साक्षात्कार', en: 'Field Interviews Conducted' } }
   ],
 
   // 1. Commercial Advertising & Marketing Services (For Businesses & Local Advertisers)
