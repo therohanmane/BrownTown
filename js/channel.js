@@ -297,11 +297,39 @@ const Channel = {
     this.renderWorkWithUs();
     this.renderFooter();
 
-    // Trigger stat counters & scrollspy
+    // Trigger stat counters, scrollspy & hero parallax
     setTimeout(() => {
       this.initStatCounters();
       this.initScrollSpy();
+      this.initHeroParallax();
     }, 150);
+  },
+
+  initHeroParallax() {
+    const banner = document.getElementById('hero-banner-container');
+    const bg = document.getElementById('hero-parallax-bg');
+    const content = document.getElementById('hero-parallax-content');
+    if (!banner || !bg) return;
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+          const bannerHeight = banner.offsetHeight || 520;
+          if (scrollY <= bannerHeight + 100) {
+            const factor = scrollY / bannerHeight;
+            bg.style.transform = `translate3d(0, ${scrollY * 0.24}px, 0)`;
+            if (content) {
+              content.style.transform = `translate3d(0, ${scrollY * 0.12}px, 0)`;
+              content.style.opacity = Math.max(0, 1 - factor * 1.12);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
   },
 
   renderHeaderNav() {
@@ -357,24 +385,45 @@ const Channel = {
     if (!heroEl) return;
 
     heroEl.innerHTML = `
-      <div class="hero-cinematic-banner">
-        <div class="hero-backdrop-gradient"></div>
-        <div class="container hero-content-inner">
-          <div class="hero-badge-tag">
-            <span class="pulse-dot"></span> ${this.t('heroTag')}
+      <div class="hero-cinematic-banner" id="hero-banner-container">
+        <!-- Live Studio Ambient Elements -->
+        <div class="hero-backdrop-gradient" id="hero-parallax-bg"></div>
+        <div class="hero-spotlight-glow" aria-hidden="true"></div>
+        <div class="hero-broadcast-grid" aria-hidden="true"></div>
+        
+        <div class="container hero-content-inner" id="hero-parallax-content">
+          <!-- Live On-Air Pill with Audio Waveform -->
+          <div class="hero-badge-tag hero-badge-reveal">
+            <span class="live-rec-dot" aria-hidden="true"></span>
+            <span class="live-on-air-text">ON AIR</span>
+            <div class="hero-live-waveform" aria-hidden="true" title="Audio Feed Active">
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+            </div>
+            <span class="hero-badge-separator">•</span>
+            <span>${this.t('heroTag')}</span>
           </div>
-          <h1 class="hero-title-main">
+
+          <!-- Staggered Focus Headline Reveal -->
+          <h1 class="hero-title-main hero-title-reveal">
             ${this.t('heroHeadline')}
           </h1>
-          <p class="hero-subtext">
+
+          <!-- Staggered Subtext Reveal -->
+          <p class="hero-subtext hero-subtext-reveal">
             ${this.t('heroSubheadline')}
           </p>
-          <div class="hero-action-buttons">
+
+          <!-- Staggered CTA Buttons -->
+          <div class="hero-action-buttons hero-cta-reveal">
             <a href="#videos" class="btn btn-primary btn-lg" onclick="Channel.scrollToSection('videos', event)">
-              ${this.t('ctaWatchVideos')}
+              <span>▶</span> ${this.t('ctaWatchVideos')}
             </a>
-            <a href="#work-with-us" class="btn btn-outline btn-lg" style="color:#fff; border-color:rgba(255,255,255,0.35);" onclick="Channel.scrollToSection('work-with-us', event)">
-              ${this.t('ctaWorkWithUs')}
+            <a href="#work-with-us" class="btn btn-outline btn-lg" style="color:#fff; border-color:rgba(255,255,255,0.35); backdrop-filter:blur(6px);" onclick="Channel.scrollToSection('work-with-us', event)">
+              <span>💼</span> ${this.t('ctaWorkWithUs')}
             </a>
           </div>
         </div>
