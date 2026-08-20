@@ -907,12 +907,12 @@ const Channel = {
     const sec = document.getElementById('how-we-help');
     if (!sec) return;
 
-    const pillars = window.INB_BRAND_DATA.pillars;
+    const pillars = window.INB_BRAND_DATA.pillars || [];
 
     sec.innerHTML = `
       <div class="container">
         <div class="section-heading-center">
-          <span class="badge badge-category">COMMUNITY IMPACT</span>
+          <span class="badge badge-category">THE REAL PAYOFF</span>
           <h2 class="section-heading-title">${this.t('howWeHelpTitle')}</h2>
           <p class="section-heading-sub">${this.t('howWeHelpSub')}</p>
         </div>
@@ -920,7 +920,10 @@ const Channel = {
         <div class="pillars-grid">
           ${pillars.map(p => `
             <div class="pillar-card">
-              <div class="pillar-number">${p.number}</div>
+              <div class="pillar-card-header">
+                <span class="pillar-number">${p.number}</span>
+                ${p.badge ? `<span class="pillar-impact-badge">${this.getI18n(p.badge)}</span>` : ''}
+              </div>
               <h3 class="pillar-title">${this.getI18n(p.title)}</h3>
               <p class="pillar-desc">${this.getI18n(p.desc)}</p>
             </div>
@@ -1245,6 +1248,11 @@ const Channel = {
             <span class="footer-flow-badge">PARTNER WITH US</span>
             <h2 class="work-title">${this.t('workTitle')}</h2>
             <p class="work-sub">${this.t('workSub')}</p>
+
+            <div class="work-trust-strip">
+              <span class="trust-shield">🛡️</span>
+              <span class="trust-text">100% Verified Community Reach • Pune HQ & Maharashtra • Direct Local Inquiries</span>
+            </div>
             
             <div class="work-perks-list">
               <div class="perk-item">

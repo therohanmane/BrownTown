@@ -95,46 +95,66 @@ window.INB_BRAND_DATA = {
     return [...this.businessServices, ...this.journalismContent];
   },
 
-  // 4 Community Pillars
+  // 4 Core Outcomes & Tangible Impact (How We Help = The Payoff & Real-World Benefits)
   pillars: [
     {
       id: 'pil-1',
       number: '01',
-      title: { mr: 'व्यस्त व्यावसायिकांना जाहिरात मदत', hi: 'व्यस्त व्यापारियों को आसान विज्ञापन', en: 'Turnkey Ads for Busy People' },
+      badge: { mr: 'वेळेची बचत', hi: 'समय की बचत', en: 'Time Freedom' },
+      title: { 
+        mr: 'तुम्ही व्यवसायावर लक्ष द्या, मार्केटिंग आम्ही सांभाळतो', 
+        hi: 'आप व्यापार संभालें, मार्केटिंग हम संभालेंगे', 
+        en: 'You Focus on Your Business, We Handle the Marketing' 
+      },
       desc: {
-        mr: 'ज्यांच्याकडे मार्केटिंगसाठी वेळ नसतो, त्यांच्यासाठी तयार ॲड पोस्टर्स, सोशल मीडिया डिझाइन व थेट जाहिरात व्यवस्थापन.',
-        hi: 'जिनके पास प्रचार के लिए समय नहीं है, उनके लिए रेडीमेड विज्ञापन पोस्टर्स, बैनर और सोशल मीडिया कैंपेन।',
-        en: 'Complete done-for-you advertising and creative promotional posters for busy shopkeepers and business owners.'
+        mr: 'जाहिरात सॉफ्टवेअर किंवा डिझाइन शिकण्यात वेळ वाया घालवण्याची गरज नाही. रेडीमेड ॲड पोस्टर्स आणि नियोजनबद्ध कॅम्पेनमुळे थेट ग्राहक तुमच्यापर्यंत येतात.',
+        hi: 'विज्ञापन सॉफ्टवेयर सीखने या डिज़ाइनिंग में समय गंवाने की ज़रूरत नहीं। रेडीमेड एड्स और सुनियोजित कैंपेन से ग्राहक सीधे आप तक पहुँचते हैं।',
+        en: 'Zero wasted hours figuring out design tools or complex ad platforms. We deliver ready-to-publish campaigns that bring direct foot traffic and customer inquiries.'
       }
     },
     {
       id: 'pil-2',
       number: '02',
-      title: { mr: 'स्थानिक ब्रँड्सना डिजिटल बळ', hi: 'स्थानीय ब्रांड्स को डिजिटल ताकत', en: 'Amplifying Local Brands' },
+      badge: { mr: 'ब्रँड ओळख', hi: 'ब्रांड पहचान', en: 'Instant Credibility' },
+      title: { 
+        mr: 'स्थानिक दुकानातून विश्वासार्ह ब्रँडची ओळख निर्माण होते', 
+        hi: 'स्थानीय दुकान से विश्वसनीय ब्रांड की पहचान बनती है', 
+        en: 'From Neighborhood Shop to Recognized Local Brand' 
+      },
       desc: {
-        mr: 'पुणे व महाराष्ट्रातील स्थानिक उद्योजक, ब्रँड्स आणि सेवांना थेट लक्ष्यित ग्राहकांपर्यंत पोहोचवण्याचे प्रभावी व्यासपीठ.',
-        hi: 'पुणे व महाराष्ट्र के स्थानीय व्यवसायों और ब्रांड्स को लक्षित ग्राहकों तक पहुँचाने का विश्वसनीय मंच।',
-        en: 'Helping local merchants, startups, and services gain organic visibility and targeted customer reach.'
+        mr: 'पारंपरिक जाहिरातींच्या गोंधळात हरवून न जाता, पुणे व परिसरातील सक्रिय प्रेक्षकांपर्यंत थेट पोहोच मिळून सामान्य ग्राहक तुमचे निष्ठावंत ग्राहक बनतात.',
+        hi: 'पारंपरिक विज्ञापनों की भीड़ से अलग, पुणे व आसपास के सक्रिय दर्शकों तक सीधी पहुंच पाकर सामान्य दर्शक आपके स्थायी ग्राहक बनते हैं।',
+        en: 'Stand out from noisy generic advertising. Get featured across active regional channels, turning casual community viewers into loyal repeat customers.'
       }
     },
     {
       id: 'pil-3',
       number: '03',
-      title: { mr: 'नागरिकांच्या आवाजाला व्यासपीठ', hi: 'नागरिकों की आवाज़ को मंच', en: 'Amplifying Community Voices' },
+      badge: { mr: 'प्रभावी कृती', hi: 'ठोस असर', en: 'Civic Action' },
+      title: { 
+        mr: 'नागरिकांचे प्रश्न थेट प्रशासनापर्यंत पोहोचून तोडगा मिळतो', 
+        hi: 'नागरिकों की समस्याएं सीधे प्रशासन तक पहुँचकर हल होती हैं', 
+        en: 'Citizen Issues Get Heard & Drive Real Ground Action' 
+      },
       desc: {
-        mr: 'स्थानिक समस्या आणि सामाजिक कार्याला डिजिटल माध्यमातून लोकांपर्यंत पोहोचवून जनजागृती निर्माण करणे.',
-        hi: 'स्थानीय मुद्दों और सामाजिक प्रयासों को डिजिटल माध्यम से जन-जन तक पहुँचाना।',
-        en: 'Giving citizens and grassroots initiatives a trusted digital platform to share their stories.'
+        mr: 'कोणत्याही दिखाऊ दाव्यांशिवाय जमिनीवरील रस्ते, पाणी, शिक्षण, योजना आणि नागरी प्रश्नांचे निर्भीक वृत्तांकन — जे प्रशासनाला तत्परतेने काम करण्यास प्रवृत्त करते.',
+        hi: 'बिना किसी लाग-लपेट के ज़मीनी सड़कों, पानी, शिक्षा, योजनाओं और जन-मुद्दों की निर्भीक रिपोर्टिंग — जो प्रशासन को तुरंत कदम उठाने के लिए प्रेरित करती है।',
+        en: 'Fearless on-ground journalism that cuts through PR spin. Unfiltered coverage of infrastructure, civic, and public welfare issues that demands accountability and real action.'
       }
     },
     {
       id: 'pil-4',
       number: '04',
-      title: { mr: 'विश्वासार्ह व पारदर्शक माहिती', hi: 'सत्यापित और पारदर्शी जानकारी', en: 'Authentic & Verified Reach' },
+      badge: { mr: 'खरा परतावा', hi: 'सटीक परिणाम', en: 'Measurable ROI' },
+      title: { 
+        mr: 'फसव्या व्ह्यूजशिवाय थेट ग्राहक व प्रत्यक्ष व्यावसायिक परतावा', 
+        hi: 'बिना फर्जी व्यूज के सीधा ग्राहक जुड़ाव और ठोस व्यावसायिक लाभ', 
+        en: 'Real Local Customers, Zero Vanity Metrics or Fake Reach' 
+      },
       desc: {
-        mr: 'कोणत्याही दिशाभूल करणाऱ्या सनसनाटीला थारा न देता, खरी माहिती व थेट व्यावसायिक सहकार्य.',
-        hi: 'बिना किसी सनसनी के, प्रामाणिक जानकारी और पारदर्शी डिजिटल सहयोग की प्रतिबद्धता।',
-        en: 'Committed to authentic community trust, factual integrity, and transparent commercial partnerships.'
+        mr: 'तुमच्या जाहिरातीच्या प्रत्येक रुपयाचा फायदा तुमच्या शहरातील खऱ्या स्थानिक ग्राहकांपर्यंत पोहोचतो — कोणतेही बनावट बॉट्स किंवा निरुपयोगी आकडे नाहीत.',
+        hi: 'आपके विज्ञापन के हर रुपये का सीधा लाभ आपके शहर के वास्तविक स्थानीय ग्राहकों तक पहुँचता है — कोई बॉट्स या निष्प्रभावी आंकड़े नहीं।',
+        en: 'Every rupee of your ad budget reaches genuine local residents living in your target city, not dead bot accounts. Transparent, trackable, and tangible commercial growth.'
       }
     }
   ],

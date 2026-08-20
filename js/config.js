@@ -48,9 +48,9 @@ window.INB_I18N = {
     contentGroupTitle: 'पत्रकारिता, मुलाखती व कम्युनिटी कंटेंट',
     contentGroupSub: 'सुश्री आयेशा सय्यद यांचे ऑन-ग्राउंड वृत्तांकन, विशेष मुलाखती आणि सामाजिक विश्लेषण',
 
-    // How We Help
-    howWeHelpTitle: 'आम्ही व्यावसायिकांना व समाजाला कशी मदत करतो?',
-    howWeHelpSub: '४ भक्कम मूल्यस्तंभ जे आमच्या जाहिरात व कम्युनिटी कार्याला दिशा देतात',
+    // How We Help (The Payoff & Tangible Outcomes)
+    howWeHelpTitle: 'आमच्या कार्याचा तुम्हाला कसा फायदा होतो? (The Payoff)',
+    howWeHelpSub: 'केवळ सेवांची यादी नव्हे, तर तुमच्या व्यवसायाला थेट विक्री आणि समाजाला प्रत्यक्ष परिणाम देणारे ४ ठोस फायदे',
 
     // Content Showcase
     contentTitle: 'आमच्या चॅनेलवरील प्रमुख कंटेंट',
@@ -153,9 +153,9 @@ window.INB_I18N = {
     contentGroupTitle: 'पत्रकारिता, साक्षात्कार व कम्युनिटी कंटेंट',
     contentGroupSub: 'सुश्री आयेशा सय्यद द्वारा ऑन-कैमरा ग्राउंड साक्षात्कार, नागरिक विश्लेषण व प्रेरक वृत्तचित्र',
 
-    // How We Help
-    howWeHelpTitle: 'हम व्यापारियों और समाज की कैसे मदद करते हैं?',
-    howWeHelpSub: '४ आधारभूत मूल्य जो हमारी विज्ञापन व कम्युनिटी सेवाओं को दिशा प्रदान करते हैं',
+    // How We Help (The Payoff & Tangible Outcomes)
+    howWeHelpTitle: 'हमारे कार्य से आपको क्या ठोस लाभ मिलता है? (The Payoff)',
+    howWeHelpSub: 'सिर्फ सेवाओं की सूची नहीं, बल्कि आपके व्यवसाय को सीधी वृद्धि और समाज को वास्तविक परिणाम देने वाले ४ बड़े लाभ',
 
     // Content Showcase
     contentTitle: 'चैनल पर मिलने वाला प्रमुख कंटेंट',
@@ -260,9 +260,9 @@ window.INB_I18N = {
     contentGroupTitle: 'Our Journalism & Content (For Viewers)',
     contentGroupSub: 'On-camera field interviews, civic investigations, and inspirational changemaker dialogues hosted by Ms. Ayesha Sayyad',
 
-    // How We Help
-    howWeHelpTitle: 'How We Help Businesses & Community',
-    howWeHelpSub: '4 foundational pillars that guide our advertising services and community publishing',
+    // How We Help (The Payoff & Tangible Outcomes)
+    howWeHelpTitle: 'The Real Impact: How We Help You Win',
+    howWeHelpSub: 'Not just a list of services, but 4 tangible outcomes delivering real business growth and genuine community change',
 
     // Content Showcase
     contentTitle: 'Content You’ll Find Here',
