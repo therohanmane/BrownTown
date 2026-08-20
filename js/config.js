@@ -20,11 +20,11 @@ window.INB_I18N = {
   mr: {
     brandName: 'INBrownTown',
     brandTagline: 'डिजिटल जाहिरात, कम्युनिटी व मीडिया चॅनेल',
-    heroTag: 'लोकांपर्यंत पोहोचणारा आवाज • डिजिटल जाहिरात व प्रमोशन',
-    heroHeadline: 'स्थानिक व्यवसाय जाहिरात, ॲड पोस्टर्स आणि प्रेरणादायी कम्युनिटी स्टोरीजचा डिजिटल मंच.',
-    heroSubheadline: 'INBrownTown व्यस्त व्यावसायिक आणि दुकानदारांसाठी तयार जाहिरात पोस्टर्स, सोशल मीडिया प्रमोशन आणि ब्रँड प्रसिद्धीद्वारे लाखो ग्राहकांपर्यंत पोहोचवणारा विश्वासार्ह डिजिटल मंच आहे.',
-    ctaWatchVideos: '▶ चॅनेलवरील व्हिडिओ पहा',
-    ctaWorkWithUs: '📢 जाहिरात व सहकार्य करा',
+    heroTag: '● ON AIR • LIVE REPORTING • REAL VOICES',
+    heroHeadline: 'जिथे प्रत्येक गोष्टीला आवाज मिळतो.',
+    heroSubheadline: 'ग्राउंड रिपोर्ट्स, लोकांचा आवाज आणि महत्त्वाच्या घडामोडी — INBrownTown समाजातील प्रत्येक सत्य आणि प्रेरक यशोगाथा थेट तुमच्यापर्यंत पोहोचवते.',
+    ctaWatchVideos: '▶ READ LATEST NEWS',
+    ctaWorkWithUs: '🎥 WATCH INBROWNTOWN',
 
     // Nav
     navWhoWeAre: 'आमच्याबद्दल',
@@ -121,11 +121,11 @@ window.INB_I18N = {
   hi: {
     brandName: 'INBrownTown',
     brandTagline: 'डिजिटल विज्ञापन, कम्युनिटी व मीडिया चैनल',
-    heroTag: 'जन-जन तक पहुँच • डिजिटल विज्ञापन व प्रमोशन',
-    heroHeadline: 'स्थानीय व्यापार विज्ञापन, एड पोस्टर्स और प्रेरक कम्युनिटी स्टोरीज का डिजिटल मंच।',
-    heroSubheadline: 'INBrownTown व्यस्त व्यापारियों और ब्रांड्स के लिए रेडीमेड विज्ञापन पोस्टर्स, सोशल मीडिया प्रमोशन और डिजिटल रीच प्रदान करने वाला सशक्त मंच है।',
-    ctaWatchVideos: '▶ चैनल के वीडियो देखें',
-    ctaWorkWithUs: '📢 विज्ञापन व सहयोग करें',
+    heroTag: '● ON AIR • LIVE REPORTING • REAL VOICES',
+    heroHeadline: 'जहाँ हर कहानी को आवाज़ मिलती है।',
+    heroSubheadline: 'ग्राउंड रिपोर्ट्स, आम जनता की आवाज़ और महत्वपूर्ण मुद्दे — INBrownTown समाज की हर सच्ची और प्रेरक गाथा सीधे आप तक पहुँचाता है।',
+    ctaWatchVideos: '▶ READ LATEST NEWS',
+    ctaWorkWithUs: '🎥 WATCH INBROWNTOWN',
 
     // Nav
     navWhoWeAre: 'परिचय',
@@ -224,11 +224,11 @@ window.INB_I18N = {
   en: {
     brandName: 'INBrownTown',
     brandTagline: 'Digital Advertising, Media & Community Channel',
-    heroTag: 'Real Voices • Digital Advertising & Promotional Posters',
-    heroHeadline: 'The Digital Platform for Local Business Advertising, Ad Posters & Community Stories.',
-    heroSubheadline: 'INBrownTown helps busy entrepreneurs, shopkeepers, and local businesses grow with done-for-you ad posters, targeted social media promotions, and curated community reach.',
-    ctaWatchVideos: '▶ Watch Channel Videos',
-    ctaWorkWithUs: '📢 Advertise With Us',
+    heroTag: '● ON AIR • LIVE REPORTING • REAL VOICES',
+    heroHeadline: 'Where Every Story Has a Voice.',
+    heroSubheadline: 'Breaking news, ground reports, people\'s voices and stories that matter — INBrownTown brings your community closer to what is happening around you.',
+    ctaWatchVideos: '▶ READ LATEST NEWS',
+    ctaWorkWithUs: '🎥 WATCH INBROWNTOWN',
 
     // Nav
     navWhoWeAre: 'Who We Are',

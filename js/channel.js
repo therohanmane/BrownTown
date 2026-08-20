@@ -296,12 +296,79 @@ const Channel = {
     this.renderWorkWithUs();
     this.renderFooter();
 
-    // Trigger stat counters, scrollspy & hero parallax
+    // Trigger stat counters, scrollspy & cinematic hero
     setTimeout(() => {
       this.initStatCounters();
       this.initScrollSpy();
       this.initHeroParallax();
+      this.initCinematicHero();
     }, 150);
+  },
+
+  initCinematicHero() {
+    // 1. Live Monospace REC Timecode Counter (00:00:12 -> 00:00:13 ...)
+    const timerEl = document.getElementById('hero-rec-timer');
+    if (timerEl) {
+      let seconds = 12;
+      if (this.recInterval) clearInterval(this.recInterval);
+      this.recInterval = setInterval(() => {
+        seconds++;
+        const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+        const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+        const secs = String(seconds % 60).padStart(2, '0');
+        timerEl.textContent = `${hrs}:${mins}:${secs}`;
+      }, 1000);
+    }
+
+    // 2. Initial Page Load Autofocus Lock Sequence
+    const focusBadge = document.getElementById('hero-focus-badge');
+    if (focusBadge) {
+      setTimeout(() => {
+        focusBadge.classList.add('active');
+        setTimeout(() => {
+          focusBadge.classList.remove('active');
+          focusBadge.classList.add('settled');
+        }, 1200);
+      }, 1100);
+    }
+
+    // 3. Desktop 3D Mouse Parallax
+    const heroBanner = document.getElementById('hero-banner-container');
+    const layerCam = document.getElementById('layer-camera');
+    const layerMic = document.getElementById('layer-mic');
+    const layerMap = document.getElementById('layer-map');
+    const layerHud = document.getElementById('layer-hud');
+    const layerGlow = document.getElementById('hero-parallax-glow');
+
+    if (heroBanner && window.innerWidth >= 1024) {
+      let ticking = false;
+      heroBanner.addEventListener('mousemove', (e) => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const rect = heroBanner.getBoundingClientRect();
+            const relX = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+            const relY = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+
+            if (layerCam) layerCam.style.transform = `translate3d(${relX * 10}px, ${relY * 7}px, 0) rotate(${relX * 0.6}deg)`;
+            if (layerMic) layerMic.style.transform = `translate3d(${relX * 15}px, ${relY * 10}px, 0) rotate(${-relX * 1}deg)`;
+            if (layerMap) layerMap.style.transform = `translate3d(${-relX * 6}px, ${-relY * 4}px, 0)`;
+            if (layerHud) layerHud.style.transform = `translate3d(${relX * 5}px, ${relY * 3}px, 0)`;
+            if (layerGlow) layerGlow.style.transform = `translate3d(${-relX * 12}px, ${-relY * 8}px, 0)`;
+
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      heroBanner.addEventListener('mouseleave', () => {
+        if (layerCam) layerCam.style.transform = 'translate3d(0, 0, 0) rotate(0deg)';
+        if (layerMic) layerMic.style.transform = 'translate3d(0, 0, 0) rotate(0deg)';
+        if (layerMap) layerMap.style.transform = 'translate3d(0, 0, 0)';
+        if (layerHud) layerHud.style.transform = 'translate3d(0, 0, 0)';
+        if (layerGlow) layerGlow.style.transform = 'translate3d(0, 0, 0)';
+      });
+    }
   },
 
   initHeroParallax() {
@@ -318,9 +385,9 @@ const Channel = {
           const bannerHeight = banner.offsetHeight || 520;
           if (scrollY <= bannerHeight + 100) {
             const factor = scrollY / bannerHeight;
-            bg.style.transform = `translate3d(0, ${scrollY * 0.24}px, 0)`;
+            bg.style.transform = `translate3d(0, ${scrollY * 0.22}px, 0)`;
             if (content) {
-              content.style.transform = `translate3d(0, ${scrollY * 0.12}px, 0)`;
+              content.style.transform = `translate3d(0, ${scrollY * 0.10}px, 0)`;
               content.style.opacity = Math.max(0, 1 - factor * 1.12);
             }
           }
@@ -384,46 +451,279 @@ const Channel = {
 
     heroEl.innerHTML = `
       <div class="hero-cinematic-banner" id="hero-banner-container">
-        <!-- Live Studio Ambient Elements -->
+        <!-- Atmospheric Newsroom Background Layers -->
         <div class="hero-backdrop-gradient" id="hero-parallax-bg"></div>
-        <div class="hero-spotlight-glow" aria-hidden="true"></div>
-        <div class="hero-broadcast-grid" aria-hidden="true"></div>
-        
-        <div class="container hero-content-inner" id="hero-parallax-content">
-          <!-- Live On-Air Pill with Audio Waveform -->
-          <div class="hero-badge-tag hero-badge-reveal">
-            <span class="live-rec-dot" aria-hidden="true"></span>
-            <span class="live-on-air-text">ON AIR</span>
-            <div class="hero-live-waveform" aria-hidden="true" title="Audio Feed Active">
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
+        <div class="newsroom-ambient-glow" id="hero-parallax-glow" aria-hidden="true"></div>
+        <div class="newsroom-monitor-grid" aria-hidden="true"></div>
+
+        <div class="container hero-split-layout" id="hero-parallax-content">
+          
+          <!-- LEFT COLUMN: Editorial Headline, Subtext & CTAs -->
+          <div class="hero-text-col">
+            <!-- On Air Eyebrow Pill -->
+            <div class="hero-badge-tag hero-badge-reveal">
+              <span class="live-rec-dot" aria-hidden="true"></span>
+              <span class="live-on-air-text">ON AIR</span>
+              <span class="hero-badge-separator">•</span>
+              <span class="hero-badge-subtitle">LIVE REPORTING • REAL VOICES</span>
             </div>
-            <span class="hero-badge-separator">•</span>
-            <span>${this.t('heroTag')}</span>
+
+            <!-- Main Headline -->
+            <h1 class="hero-title-main hero-title-reveal">
+              ${this.t('heroHeadline')}
+            </h1>
+
+            <!-- Supporting Subtext -->
+            <p class="hero-subtext hero-subtext-reveal">
+              ${this.t('heroSubheadline')}
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="hero-action-buttons hero-cta-reveal">
+              <a href="#videos" class="btn btn-primary btn-lg hero-cta-btn" onclick="Channel.scrollToSection('videos', event)">
+                <span>▶</span> ${this.t('ctaWatchVideos')}
+              </a>
+              <a href="#work-with-us" class="btn btn-outline btn-lg hero-cta-btn" style="color:#fff; border-color:rgba(255,255,255,0.35); backdrop-filter:blur(8px); background:rgba(255,255,255,0.06);" onclick="Channel.scrollToSection('work-with-us', event)">
+                <span>💼</span> ${this.t('ctaWorkWithUs')}
+              </a>
+            </div>
+
+            <!-- Quick Telemetry Stats Strip on Left -->
+            <div class="hero-editorial-stats-row hero-cta-reveal">
+              <div class="hero-stat-pill">
+                <span class="hero-stat-dot"></span>
+                <span>1.8k+ Subscribers</span>
+              </div>
+              <div class="hero-stat-pill">
+                <span class="hero-stat-dot"></span>
+                <span>4.8k+ Followers</span>
+              </div>
+              <div class="hero-stat-pill">
+                <span class="hero-stat-dot"></span>
+                <span>381 Videos</span>
+              </div>
+              <div class="hero-stat-pill">
+                <span class="hero-stat-dot"></span>
+                <span>200+ Interviews</span>
+              </div>
+            </div>
           </div>
 
-          <!-- Staggered Focus Headline Reveal -->
-          <h1 class="hero-title-main hero-title-reveal">
-            ${this.t('heroHeadline')}
-          </h1>
+          <!-- RIGHT COLUMN: INBrownTown LIVE NEWSROOM Visual Composition -->
+          <div class="hero-visual-col">
+            <div class="newsroom-stage-wrap" id="newsroom-stage">
+              
+              <!-- Live HUD Header Overlay -->
+              <div class="newsroom-hud-top" id="layer-hud">
+                <div class="hud-pill hud-rec-pill">
+                  <span class="hud-rec-beacon"></span>
+                  <span class="hud-mono">REC</span>
+                  <span class="hud-timecode" id="hero-rec-timer">00:00:12</span>
+                </div>
+                <div class="hud-pill hud-quality-pill">
+                  <span class="hud-badge-4k">4K 60FPS</span>
+                  <span class="hud-cam-id">CAM 01</span>
+                </div>
+              </div>
 
-          <!-- Staggered Subtext Reveal -->
-          <p class="hero-subtext hero-subtext-reveal">
-            ${this.t('heroSubheadline')}
-          </p>
+              <!-- Layer: Subtle Maharashtra Map with Glowing Hubs -->
+              <div class="newsroom-map-layer" id="layer-map" aria-hidden="true">
+                <svg class="maharashtra-map-svg" viewBox="0 0 360 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Broadcast Signal Waves Arcs -->
+                  <g class="broadcast-waves" opacity="0.45">
+                    <circle cx="280" cy="50" r="22" stroke="var(--brand-brown-400)" stroke-width="1.5" stroke-dasharray="4 4" class="wave-pulse-1" />
+                    <circle cx="280" cy="50" r="42" stroke="var(--brand-brown-400)" stroke-width="1.2" stroke-dasharray="5 5" class="wave-pulse-2" />
+                    <circle cx="280" cy="50" r="62" stroke="var(--brand-brown-400)" stroke-width="1" stroke-dasharray="6 6" class="wave-pulse-3" />
+                  </g>
 
-          <!-- Staggered CTA Buttons -->
-          <div class="hero-action-buttons hero-cta-reveal">
-            <a href="#videos" class="btn btn-primary btn-lg" onclick="Channel.scrollToSection('videos', event)">
-              <span>▶</span> ${this.t('ctaWatchVideos')}
-            </a>
-            <a href="#work-with-us" class="btn btn-outline btn-lg" style="color:#fff; border-color:rgba(255,255,255,0.35); backdrop-filter:blur(6px);" onclick="Channel.scrollToSection('work-with-us', event)">
-              <span>💼</span> ${this.t('ctaWorkWithUs')}
-            </a>
+                  <!-- Maharashtra Map Contour Outline -->
+                  <path class="map-contour-path" d="M45,130 C55,100 80,75 115,70 C145,65 170,45 210,40 C250,35 295,45 320,70 C340,90 330,120 310,135 C290,150 295,170 270,195 C245,220 220,215 190,235 C160,255 130,265 110,250 C95,238 100,210 90,190 C80,170 50,165 45,130 Z" stroke="rgba(216, 138, 88, 0.35)" stroke-width="2" fill="rgba(11, 25, 44, 0.4)" stroke-linejoin="round" />
+                  
+                  <!-- Ground Reporting Network Telemetry Lines -->
+                  <path class="telemetry-line" d="M95,140 L145,160 L130,100 L290,65" stroke="rgba(224, 102, 42, 0.4)" stroke-width="1" stroke-dasharray="3 3" />
+                  <path class="telemetry-line" d="M145,160 L165,180 L135,225" stroke="rgba(224, 102, 42, 0.35)" stroke-width="1" stroke-dasharray="3 3" />
+
+                  <!-- Location Beacon Hubs -->
+                  <!-- Pune HQ -->
+                  <g class="map-node node-pune">
+                    <circle cx="145" cy="160" r="8" fill="rgba(239, 68, 68, 0.25)" class="radar-circle" />
+                    <circle cx="145" cy="160" r="3.5" fill="#ef4444" />
+                    <text x="156" y="164" fill="#f8fafc" font-size="10" font-weight="700" font-family="sans-serif">Pune HQ</text>
+                  </g>
+                  <!-- Mumbai -->
+                  <g class="map-node node-mumbai">
+                    <circle cx="95" cy="140" r="6" fill="rgba(216, 138, 88, 0.25)" class="radar-circle" />
+                    <circle cx="95" cy="140" r="3" fill="var(--brand-brown-400)" />
+                    <text x="50" y="143" fill="#cbd5e1" font-size="9" font-weight="600" font-family="sans-serif">Mumbai</text>
+                  </g>
+                  <!-- Nashik -->
+                  <g class="map-node node-nashik">
+                    <circle cx="130" cy="100" r="3" fill="var(--brand-brown-400)" />
+                    <text x="138" y="98" fill="#94a3b8" font-size="8.5" font-weight="600" font-family="sans-serif">Nashik</text>
+                  </g>
+                  <!-- Nagpur -->
+                  <g class="map-node node-nagpur">
+                    <circle cx="290" cy="65" r="3" fill="var(--brand-brown-400)" />
+                    <text x="248" y="62" fill="#94a3b8" font-size="8.5" font-weight="600" font-family="sans-serif">Nagpur</text>
+                  </g>
+                  <!-- Kolhapur -->
+                  <g class="map-node node-kolhapur">
+                    <circle cx="135" cy="225" r="3" fill="var(--brand-brown-400)" />
+                    <text x="144" y="228" fill="#94a3b8" font-size="8.5" font-weight="600" font-family="sans-serif">Kolhapur</text>
+                  </g>
+                  <!-- Baramati -->
+                  <g class="map-node node-baramati">
+                    <circle cx="165" cy="180" r="2.5" fill="var(--accent-gold)" />
+                    <text x="174" y="183" fill="#cbd5e1" font-size="8" font-weight="600" font-family="sans-serif">Baramati</text>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Layer: Cinematic Broadcast Camera Assembly -->
+              <div class="newsroom-camera-wrap" id="layer-camera">
+                <svg class="broadcast-camera-svg" viewBox="0 0 380 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#222b3a" />
+                      <stop offset="50%" stop-color="#131924" />
+                      <stop offset="100%" stop-color="#0a0f18" />
+                    </linearGradient>
+                    <linearGradient id="lensMetalGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#334155" />
+                      <stop offset="40%" stop-color="#1e293b" />
+                      <stop offset="70%" stop-color="#0f172a" />
+                      <stop offset="100%" stop-color="#334155" />
+                    </linearGradient>
+                    <radialGradient id="lensGlassGrad" cx="45%" cy="40%" r="55%">
+                      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
+                      <stop offset="35%" stop-color="#0284c7" stop-opacity="0.6" />
+                      <stop offset="65%" stop-color="#e0662a" stop-opacity="0.3" />
+                      <stop offset="100%" stop-color="#070e1b" stop-opacity="0.95" />
+                    </radialGradient>
+                    <linearGradient id="lensFlareGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6" />
+                      <stop offset="40%" stop-color="#38bdf8" stop-opacity="0.2" />
+                      <stop offset="100%" stop-color="transparent" />
+                    </linearGradient>
+                    <filter id="cameraShadow" x="-10%" y="-10%" width="130%" height="130%">
+                      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6" />
+                    </filter>
+                  </defs>
+
+                  <!-- Camera Main Body with Shadow -->
+                  <g filter="url(#cameraShadow)">
+                    <!-- Top Accessory Handle & Shotgun Mount -->
+                    <path d="M160,50 L250,50 C256,50 260,54 260,60 L260,75 L150,75 L150,60 C150,54 154,50 160,50 Z" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+                    <rect x="180" y="32" width="60" height="18" rx="4" fill="#0f172a" stroke="#334155" />
+                    <!-- Red Tally Light Indicator -->
+                    <rect x="230" y="38" width="8" height="6" rx="2" fill="#ef4444" class="camera-tally-beacon" />
+
+                    <!-- Main Graphite Camera Body -->
+                    <rect x="140" y="70" width="180" height="140" rx="16" fill="url(#bodyGrad)" stroke="#334155" stroke-width="2" />
+                    
+                    <!-- Ergonomic Grip Accent (Textured Leather / Warm Tone) -->
+                    <path d="M290,85 C308,95 315,115 315,140 C315,165 308,185 290,195 Z" fill="#1c1917" stroke="rgba(216, 138, 88, 0.4)" stroke-width="1.5" />
+                    
+                    <!-- Camera Controls Dial & Buttons -->
+                    <circle cx="285" cy="100" r="10" fill="#334155" stroke="#475569" stroke-width="1.5" />
+                    <circle cx="285" cy="100" r="5" fill="#e0662a" />
+                    <rect x="260" y="170" width="30" height="12" rx="3" fill="#1e293b" stroke="#334155" />
+                    <text x="266" y="179" fill="#94a3b8" font-size="7" font-weight="700" font-family="monospace">MENU</text>
+
+                    <!-- Viewfinder Eyepiece -->
+                    <rect x="200" y="58" width="34" height="14" rx="3" fill="#0b1320" stroke="#334155" />
+
+                    <!-- Lens Mount Flange (Chrome Ring) -->
+                    <circle cx="120" cy="140" r="72" fill="#1e293b" stroke="#cbd5e1" stroke-width="2" />
+                    <circle cx="120" cy="140" r="68" fill="url(#lensMetalGrad)" stroke="#475569" stroke-width="1.5" />
+                    
+                    <!-- Knurled Focus & Zoom Rings -->
+                    <circle cx="120" cy="140" r="60" fill="#0f172a" stroke="#334155" stroke-width="2" stroke-dasharray="4 2" class="lens-aperture-ring" />
+                    <circle cx="120" cy="140" r="52" fill="#1e293b" stroke="#e0662a" stroke-width="1" />
+
+                    <!-- Multi-Element Glass Lens Core -->
+                    <circle cx="120" cy="140" r="46" fill="url(#lensGlassGrad)" class="lens-glass-core" />
+                    
+                    <!-- Lens Optical Flare Shimmer -->
+                    <ellipse cx="106" cy="126" rx="28" ry="16" transform="rotate(-30 106 126)" fill="url(#lensFlareGrad)" class="lens-reflection-shimmer" />
+
+                    <!-- Autofocus HUD Crosshairs & Corner Brackets -->
+                    <g class="autofocus-bracket-group">
+                      <path d="M104,124 L104,116 L112,116" stroke="#38bdf8" stroke-width="2" fill="none" />
+                      <path d="M136,124 L136,116 L128,116" stroke="#38bdf8" stroke-width="2" fill="none" />
+                      <path d="M104,156 L104,164 L112,164" stroke="#38bdf8" stroke-width="2" fill="none" />
+                      <path d="M136,156 L136,164 L128,164" stroke="#38bdf8" stroke-width="2" fill="none" />
+                      <circle cx="120" cy="140" r="3" fill="#38bdf8" />
+                    </g>
+                  </g>
+                </svg>
+
+                <!-- Dynamic Focus Lock Status Pill Overlay -->
+                <div class="focus-lock-status-badge" id="hero-focus-badge">
+                  <span class="focus-lock-icon">⚡</span>
+                  <span class="focus-lock-text">FOCUS LOCKED ✓</span>
+                </div>
+              </div>
+
+              <!-- Layer: Professional Reporter Microphone with INBT Flag & Equalizer -->
+              <div class="newsroom-mic-wrap" id="layer-mic">
+                <svg class="reporter-mic-svg" viewBox="0 0 140 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="micMeshGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#94a3b8" />
+                      <stop offset="50%" stop-color="#475569" />
+                      <stop offset="100%" stop-color="#1e293b" />
+                    </linearGradient>
+                    <linearGradient id="flagGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#1e293b" />
+                      <stop offset="100%" stop-color="#0f172a" />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Handheld Mic Body Shaft -->
+                  <path d="M58,110 L82,110 L78,210 L62,210 Z" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+                  
+                  <!-- Metallic Accent Ring -->
+                  <rect x="58" y="105" width="24" height="6" rx="1" fill="#e0662a" />
+
+                  <!-- INBT Broadcast Microphone Flag -->
+                  <g class="mic-flag-box">
+                    <rect x="42" y="55" width="56" height="48" rx="6" fill="url(#flagGrad)" stroke="#e0662a" stroke-width="1.5" />
+                    <rect x="45" y="58" width="50" height="42" rx="4" fill="#090e17" />
+                    <text x="70" y="84" fill="#ffffff" font-size="14" font-weight="900" font-family="'Plus Jakarta Sans', sans-serif" text-anchor="middle" letter-spacing="1">INBT</text>
+                    <circle cx="88" cy="68" r="2.5" fill="#ef4444" />
+                  </g>
+
+                  <!-- Microphone Capsule Metallic Grille -->
+                  <path d="M52,52 C52,26 60,10 70,10 C80,10 88,26 88,52 Z" fill="url(#micMeshGrad)" stroke="#64748b" stroke-width="1.5" />
+                  <line x1="56" y1="28" x2="84" y2="28" stroke="rgba(255,255,255,0.25)" stroke-width="1" />
+                  <line x1="53" y1="40" x2="87" y2="40" stroke="rgba(255,255,255,0.25)" stroke-width="1" />
+                </svg>
+
+                <!-- 8-Bar Live Audio Waveform Equalizer Strip -->
+                <div class="live-mic-waveform" aria-label="Microphone Live Audio Stream Active">
+                  <span class="mic-wave-bar bar-1"></span>
+                  <span class="mic-wave-bar bar-2"></span>
+                  <span class="mic-wave-bar bar-3"></span>
+                  <span class="mic-wave-bar bar-4"></span>
+                  <span class="mic-wave-bar bar-5"></span>
+                  <span class="mic-wave-bar bar-6"></span>
+                  <span class="mic-wave-bar bar-7"></span>
+                  <span class="mic-wave-bar bar-8"></span>
+                </div>
+              </div>
+
+              <!-- Live HUD Bottom Telemetry Banner -->
+              <div class="newsroom-hud-bottom" id="layer-hud-bottom">
+                <div class="hud-telemetry-strip">
+                  <span class="telemetry-dot"></span>
+                  <span class="telemetry-text">LIVE GROUND REPORTING • PUNE • MUMBAI • MAHARASHTRA</span>
+                </div>
+              </div>
+
+            </div>
           </div>
+
         </div>
       </div>
     `;
