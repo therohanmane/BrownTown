@@ -381,16 +381,16 @@
 .map-node {
   cursor: pointer;
   pointer-events: auto;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  outline: none;
 }
 
-.map-node:hover {
+.map-node * {
+  pointer-events: none; /* Prevents event fragmentation across SVG child paths */
+}
+
+.map-node:hover, .map-node:focus-visible {
   transform: scale(1.15);
-}
-
-.pin-hit-target {
-  cursor: pointer;
-  pointer-events: all;
 }
 
 .node-center-dot {
@@ -403,12 +403,14 @@
 }
 
 .map-node:hover .node-center-dot,
+.map-node:focus-visible .node-center-dot,
 .map-node.active-city .node-center-dot {
   fill: #38bdf8 !important;
   filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.9));
 }
 
 .map-node:hover .node-label,
+.map-node:focus-visible .node-label,
 .map-node.active-city .node-label {
   fill: #38bdf8 !important;
   font-weight: 800 !important;
@@ -474,7 +476,7 @@
   width: clamp(110px, 24vw, 145px);
   z-index: 6;
   pointer-events: none;
-  transition: transform 1.25s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 

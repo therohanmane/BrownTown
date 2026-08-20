@@ -352,10 +352,15 @@ const Channel = {
     // Check prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    let currentCityIndex = 0;
-    let autoCycleTimer = null;
-    let isUserHovered = false;
-    let resumeTimeout = null;
+    // State Single-Source-of-Truth
+    this.cameraCityIndex = 0;
+    if (this.cameraAutoTimer) { clearInterval(this.cameraAutoTimer); this.cameraAutoTimer = null; }
+    if (this.cameraResumeTimer) { clearTimeout(this.cameraResumeTimer); this.cameraResumeTimer = null; }
+
+    const clearTimers = () => {
+      if (this.cameraAutoTimer) { clearInterval(this.cameraAutoTimer); this.cameraAutoTimer = null; }
+      if (this.cameraResumeTimer) { clearTimeout(this.cameraResumeTimer); this.cameraResumeTimer = null; }
+    };
 
     const triggerFocusLock = () => {
       if (bracketGroup) bracketGroup.classList.add('focusing');
@@ -365,9 +370,9 @@ const Channel = {
           focusBadge.classList.add('active');
           setTimeout(() => {
             focusBadge.classList.remove('active');
-          }, 2200);
+          }, 2000);
         }
-      }, 400);
+      }, 350);
     };
 
     const triggerMicWaveformBoost = () => {
@@ -375,14 +380,13 @@ const Channel = {
         micWaveform.classList.add('mic-boost');
         setTimeout(() => {
           micWaveform.classList.remove('mic-boost');
-        }, 1300);
+        }, 1200);
       }
     };
 
     const drawSignalTrail = (fromCity, toCity) => {
       if (!signalTrail || prefersReducedMotion) return;
 
-      // Calculate curved control point for natural flight arc
       const midX = (fromCity.svgX + toCity.svgX) / 2;
       const midY = (fromCity.svgY + toCity.svgY) / 2;
       const dx = toCity.svgX - fromCity.svgX;
@@ -390,7 +394,7 @@ const Channel = {
       const dist = Math.sqrt(dx * dx + dy * dy);
       const perpX = -dy / (dist || 1);
       const perpY = dx / (dist || 1);
-      const curvature = Math.min(25, dist * 0.25);
+      const curvature = Math.min(24, dist * 0.22);
       const ctrlX = midX + perpX * curvature;
       const ctrlY = midY + perpY * curvature;
 
@@ -400,12 +404,12 @@ const Channel = {
       signalTrail.classList.add('traveling');
     };
 
-    const moveToCity = (index, isInteractive = false) => {
-      const prevCity = CITIES[currentCityIndex];
-      currentCityIndex = (index + CITIES.length) % CITIES.length;
-      const targetCity = CITIES[currentCityIndex];
+    const moveToCity = (index) => {
+      const prevCity = CITIES[this.cameraCityIndex];
+      this.cameraCityIndex = (index + CITIES.length) % CITIES.length;
+      const targetCity = CITIES[this.cameraCityIndex];
 
-      // Highlight destination node and mark previous as visited
+      // Highlight active node & mark visited
       mapNodes.forEach(node => {
         const cityId = node.getAttribute('data-city');
         node.classList.remove('active-city');
@@ -417,83 +421,71 @@ const Channel = {
         }
       });
 
-      // Move camera marker with smooth GPU translate3d
+      // Move camera with hardware-accelerated translate3d
       if (prefersReducedMotion) {
         layerCam.style.transition = 'none';
       }
       layerCam.style.transform = `translate3d(calc(${targetCity.x}% - 50%), calc(${targetCity.y}% - 50%), 0)`;
 
-      // Draw dynamic curved signal trail
+      // Draw flight signal trail
       if (prevCity.id !== targetCity.id) {
         drawSignalTrail(prevCity, targetCity);
       }
 
-      // Update camera city pill badge
+      // Update camera city tag badge
       if (cityTag) {
         cityTag.textContent = targetCity.tag;
       }
 
-      // Trigger Focus Lock and Waveform audio surge
+      // Trigger Focus Lock & Waveform audio surge
       triggerFocusLock();
       triggerMicWaveformBoost();
 
-      // Update news ticker dynamically
+      // Dynamic news ticker update
       if (tickerText1) tickerText1.textContent = targetCity.ticker;
       if (tickerText2) tickerText2.textContent = targetCity.ticker;
     };
 
     const startAutoCycle = () => {
       if (prefersReducedMotion) return;
-      if (autoCycleTimer) clearInterval(autoCycleTimer);
-      autoCycleTimer = setInterval(() => {
-        if (!isUserHovered) {
-          moveToCity(currentCityIndex + 1);
-        }
+      clearTimers();
+      this.cameraAutoTimer = setInterval(() => {
+        moveToCity(this.cameraCityIndex + 1);
       }, 4500);
-    };
-
-    const pauseAutoCycle = () => {
-      if (autoCycleTimer) clearInterval(autoCycleTimer);
     };
 
     // Initialize at Pune HQ
     moveToCity(0);
     startAutoCycle();
 
-    // Attach Hover & Tap listeners to each city pin
+    // Instant Click / Tap Handler on City Pins (Zero conflict with hover)
     mapNodes.forEach(node => {
       const cityId = node.getAttribute('data-city');
       const targetIndex = CITIES.findIndex(c => c.id === cityId);
       if (targetIndex === -1) return;
 
-      const handleCitySelect = (e) => {
-        if (e) e.stopPropagation();
-        isUserHovered = true;
-        pauseAutoCycle();
-        if (resumeTimeout) clearTimeout(resumeTimeout);
-        moveToCity(targetIndex, true);
-      };
+      const handleDirectSelect = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        // If clicking currently active city, keep active
+        if (this.cameraCityIndex === targetIndex) return;
 
-      const handleCityRelease = () => {
-        if (resumeTimeout) clearTimeout(resumeTimeout);
-        resumeTimeout = setTimeout(() => {
-          isUserHovered = false;
+        clearTimers();
+        moveToCity(targetIndex);
+
+        // Resume auto-cycle after 4.5s of user idle
+        this.cameraResumeTimer = setTimeout(() => {
           startAutoCycle();
-        }, 2800);
+        }, 4500);
       };
 
-      // Desktop Hover
-      node.addEventListener('mouseenter', handleCitySelect);
-      node.addEventListener('mouseleave', handleCityRelease);
-
-      // Touch / Tap
-      node.addEventListener('click', handleCitySelect);
-      node.addEventListener('touchend', () => {
-        handleCityRelease();
-      }, { passive: true });
+      // Direct click / tap trigger
+      node.addEventListener('click', handleDirectSelect);
     });
 
-    // IntersectionObserver: Pause movement when Hero is out of view to save CPU
+    // IntersectionObserver: Pause movement when Hero is out of view
     const heroBanner = document.getElementById('hero-banner-container');
     if (heroBanner && 'IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
@@ -501,7 +493,7 @@ const Channel = {
           if (entry.isIntersecting) {
             startAutoCycle();
           } else {
-            pauseAutoCycle();
+            clearTimers();
           }
         });
       }, { threshold: 0.15 });
