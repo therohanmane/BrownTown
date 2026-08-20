@@ -306,10 +306,10 @@ const Channel = {
   },
 
   initCinematicHero() {
-    // 1. Live Monospace REC Timecode Counter (00:00:12 -> 00:00:13 ...)
+    // 1. Live Monospace REC Timecode Counter (Starts 00:00:54 -> 00:00:55 ...)
     const timerEl = document.getElementById('hero-rec-timer');
     if (timerEl) {
-      let seconds = 12;
+      let seconds = 54;
       if (this.recInterval) clearInterval(this.recInterval);
       this.recInterval = setInterval(() => {
         seconds++;
@@ -320,19 +320,32 @@ const Channel = {
       }, 1000);
     }
 
-    // 2. Initial Page Load Autofocus Lock Sequence
+    // 2. Continuous Periodic Focus Lock Cycle (~4.5s loop: refocus -> green flash lock -> hold 2.5s -> reset)
     const focusBadge = document.getElementById('hero-focus-badge');
+    const bracketGroup = document.querySelector('.autofocus-bracket-group');
     if (focusBadge) {
-      setTimeout(() => {
-        focusBadge.classList.add('active');
+      const triggerFocusLock = () => {
+        if (bracketGroup) bracketGroup.classList.add('focusing');
         setTimeout(() => {
-          focusBadge.classList.remove('active');
-          focusBadge.classList.add('settled');
-        }, 1200);
-      }, 1100);
+          if (bracketGroup) bracketGroup.classList.remove('focusing');
+          focusBadge.classList.add('active');
+          setTimeout(() => {
+            focusBadge.classList.remove('active');
+          }, 2400);
+        }, 600);
+      };
+
+      // Initial trigger
+      setTimeout(triggerFocusLock, 800);
+      // Periodic refocus loop
+      if (this.focusInterval) clearInterval(this.focusInterval);
+      this.focusInterval = setInterval(triggerFocusLock, 5000);
     }
 
-    // 3. Desktop 3D Mouse Parallax
+    // 3. Stat Pills Count-Up Animation (0 -> target over 1.2s on initial load)
+    this.initHeroStatCounters();
+
+    // 4. Desktop 3D Mouse Parallax
     const heroBanner = document.getElementById('hero-banner-container');
     const layerCam = document.getElementById('layer-camera');
     const layerMic = document.getElementById('layer-mic');
@@ -350,7 +363,7 @@ const Channel = {
             const relY = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
 
             if (layerCam) layerCam.style.transform = `translate3d(${relX * 10}px, ${relY * 7}px, 0) rotate(${relX * 0.6}deg)`;
-            if (layerMic) layerMic.style.transform = `translate3d(${relX * 15}px, ${relY * 10}px, 0) rotate(${-relX * 1}deg)`;
+            if (layerMic) layerMic.style.transform = `translate3d(${relX * 14}px, ${relY * 9}px, 0) rotate(${-relX * 0.8}deg)`;
             if (layerMap) layerMap.style.transform = `translate3d(${-relX * 6}px, ${-relY * 4}px, 0)`;
             if (layerHud) layerHud.style.transform = `translate3d(${relX * 5}px, ${relY * 3}px, 0)`;
             if (layerGlow) layerGlow.style.transform = `translate3d(${-relX * 12}px, ${-relY * 8}px, 0)`;
@@ -369,6 +382,39 @@ const Channel = {
         if (layerGlow) layerGlow.style.transform = 'translate3d(0, 0, 0)';
       });
     }
+  },
+
+  initHeroStatCounters() {
+    const counters = document.querySelectorAll('.hero-counter-num');
+    counters.forEach(counter => {
+      const target = parseFloat(counter.getAttribute('data-target')) || 0;
+      const prefix = counter.getAttribute('data-prefix') || '';
+      const suffix = counter.getAttribute('data-suffix') || '';
+      const isDecimal = String(target).includes('.');
+      const duration = 1200;
+      const startTime = performance.now();
+
+      function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const currentVal = target * easeOut;
+
+        if (isDecimal) {
+          counter.textContent = `${prefix}${currentVal.toFixed(1)}${suffix}`;
+        } else {
+          counter.textContent = `${prefix}${Math.round(currentVal)}${suffix}`;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = isDecimal ? `${prefix}${target.toFixed(1)}${suffix}` : `${prefix}${target}${suffix}`;
+        }
+      }
+
+      requestAnimationFrame(updateCounter);
+    });
   },
 
   initHeroParallax() {
@@ -488,23 +534,27 @@ const Channel = {
               </a>
             </div>
 
-            <!-- Quick Telemetry Stats Strip on Left -->
+            <!-- Animated Stat Pills on Left -->
             <div class="hero-editorial-stats-row hero-cta-reveal">
               <div class="hero-stat-pill">
                 <span class="hero-stat-dot"></span>
-                <span>1.8k+ Subscribers</span>
+                <span class="hero-counter-num" data-target="1.8" data-prefix="" data-suffix="k+">0.0k</span>
+                <span class="hero-stat-lbl">Subscribers</span>
               </div>
               <div class="hero-stat-pill">
                 <span class="hero-stat-dot"></span>
-                <span>4.8k+ Followers</span>
+                <span class="hero-counter-num" data-target="4.8" data-prefix="" data-suffix="k+">0.0k</span>
+                <span class="hero-stat-lbl">Followers</span>
               </div>
               <div class="hero-stat-pill">
                 <span class="hero-stat-dot"></span>
-                <span>381 Videos</span>
+                <span class="hero-counter-num" data-target="381" data-prefix="" data-suffix="">0</span>
+                <span class="hero-stat-lbl">Videos</span>
               </div>
               <div class="hero-stat-pill">
                 <span class="hero-stat-dot"></span>
-                <span>200+ Interviews</span>
+                <span class="hero-counter-num" data-target="200" data-prefix="" data-suffix="+">0</span>
+                <span class="hero-stat-lbl">Interviews</span>
               </div>
             </div>
           </div>
@@ -518,7 +568,7 @@ const Channel = {
                 <div class="hud-pill hud-rec-pill">
                   <span class="hud-rec-beacon"></span>
                   <span class="hud-mono">REC</span>
-                  <span class="hud-timecode" id="hero-rec-timer">00:00:12</span>
+                  <span class="hud-timecode" id="hero-rec-timer">00:00:54</span>
                 </div>
                 <div class="hud-pill hud-quality-pill">
                   <span class="hud-badge-4k">4K 60FPS</span>
@@ -539,40 +589,44 @@ const Channel = {
                   <!-- Maharashtra Map Contour Outline -->
                   <path class="map-contour-path" d="M45,130 C55,100 80,75 115,70 C145,65 170,45 210,40 C250,35 295,45 320,70 C340,90 330,120 310,135 C290,150 295,170 270,195 C245,220 220,215 190,235 C160,255 130,265 110,250 C95,238 100,210 90,190 C80,170 50,165 45,130 Z" stroke="rgba(216, 138, 88, 0.35)" stroke-width="2" fill="rgba(11, 25, 44, 0.4)" stroke-linejoin="round" />
                   
-                  <!-- Ground Reporting Network Telemetry Lines -->
-                  <path class="telemetry-line" d="M95,140 L145,160 L130,100 L290,65" stroke="rgba(224, 102, 42, 0.4)" stroke-width="1" stroke-dasharray="3 3" />
-                  <path class="telemetry-line" d="M145,160 L165,180 L135,225" stroke="rgba(224, 102, 42, 0.35)" stroke-width="1" stroke-dasharray="3 3" />
+                  <!-- Flowing Ground Reporting Telemetry Lines -->
+                  <path class="telemetry-flow-line" d="M95,140 L145,160 L130,100 L290,65" stroke="rgba(224, 102, 42, 0.65)" stroke-width="1.5" stroke-dasharray="5 4" />
+                  <path class="telemetry-flow-line" d="M145,160 L165,180 L135,225" stroke="rgba(224, 102, 42, 0.55)" stroke-width="1.5" stroke-dasharray="5 4" />
 
-                  <!-- Location Beacon Hubs -->
+                  <!-- Location Beacon Hubs with Staggered Radar-Ping Rings -->
                   <!-- Pune HQ -->
                   <g class="map-node node-pune">
-                    <circle cx="145" cy="160" r="8" fill="rgba(239, 68, 68, 0.25)" class="radar-circle" />
+                    <circle cx="145" cy="160" r="12" fill="rgba(239, 68, 68, 0.5)" class="radar-ping-ring ping-pune" />
                     <circle cx="145" cy="160" r="3.5" fill="#ef4444" />
                     <text x="156" y="164" fill="#f8fafc" font-size="10" font-weight="700" font-family="sans-serif">Pune HQ</text>
                   </g>
                   <!-- Mumbai -->
                   <g class="map-node node-mumbai">
-                    <circle cx="95" cy="140" r="6" fill="rgba(216, 138, 88, 0.25)" class="radar-circle" />
+                    <circle cx="95" cy="140" r="10" fill="rgba(224, 102, 42, 0.5)" class="radar-ping-ring ping-mumbai" />
                     <circle cx="95" cy="140" r="3" fill="var(--brand-brown-400)" />
-                    <text x="50" y="143" fill="#cbd5e1" font-size="9" font-weight="600" font-family="sans-serif">Mumbai</text>
+                    <text x="48" y="143" fill="#cbd5e1" font-size="9" font-weight="600" font-family="sans-serif">Mumbai</text>
                   </g>
                   <!-- Nashik -->
                   <g class="map-node node-nashik">
+                    <circle cx="130" cy="100" r="9" fill="rgba(224, 102, 42, 0.45)" class="radar-ping-ring ping-nashik" />
                     <circle cx="130" cy="100" r="3" fill="var(--brand-brown-400)" />
                     <text x="138" y="98" fill="#94a3b8" font-size="8.5" font-weight="600" font-family="sans-serif">Nashik</text>
                   </g>
                   <!-- Nagpur -->
                   <g class="map-node node-nagpur">
+                    <circle cx="290" cy="65" r="9" fill="rgba(224, 102, 42, 0.45)" class="radar-ping-ring ping-nagpur" />
                     <circle cx="290" cy="65" r="3" fill="var(--brand-brown-400)" />
                     <text x="248" y="62" fill="#94a3b8" font-size="8.5" font-weight="600" font-family="sans-serif">Nagpur</text>
                   </g>
                   <!-- Kolhapur -->
                   <g class="map-node node-kolhapur">
+                    <circle cx="135" cy="225" r="9" fill="rgba(224, 102, 42, 0.45)" class="radar-ping-ring ping-kolhapur" />
                     <circle cx="135" cy="225" r="3" fill="var(--brand-brown-400)" />
                     <text x="144" y="228" fill="#94a3b8" font-size="8.5" font-weight="600" font-family="sans-serif">Kolhapur</text>
                   </g>
                   <!-- Baramati -->
                   <g class="map-node node-baramati">
+                    <circle cx="165" cy="180" r="8" fill="rgba(234, 179, 8, 0.45)" class="radar-ping-ring ping-baramati" />
                     <circle cx="165" cy="180" r="2.5" fill="var(--accent-gold)" />
                     <text x="174" y="183" fill="#cbd5e1" font-size="8" font-weight="600" font-family="sans-serif">Baramati</text>
                   </g>
@@ -595,9 +649,9 @@ const Channel = {
                       <stop offset="100%" stop-color="#334155" />
                     </linearGradient>
                     <radialGradient id="lensGlassGrad" cx="45%" cy="40%" r="55%">
-                      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
-                      <stop offset="35%" stop-color="#0284c7" stop-opacity="0.6" />
-                      <stop offset="65%" stop-color="#e0662a" stop-opacity="0.3" />
+                      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95" />
+                      <stop offset="35%" stop-color="#0284c7" stop-opacity="0.65" />
+                      <stop offset="65%" stop-color="#e0662a" stop-opacity="0.35" />
                       <stop offset="100%" stop-color="#070e1b" stop-opacity="0.95" />
                     </radialGradient>
                     <linearGradient id="lensFlareGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -637,23 +691,23 @@ const Channel = {
                     <circle cx="120" cy="140" r="72" fill="#1e293b" stroke="#cbd5e1" stroke-width="2" />
                     <circle cx="120" cy="140" r="68" fill="url(#lensMetalGrad)" stroke="#475569" stroke-width="1.5" />
                     
-                    <!-- Knurled Focus & Zoom Rings -->
-                    <circle cx="120" cy="140" r="60" fill="#0f172a" stroke="#334155" stroke-width="2" stroke-dasharray="4 2" class="lens-aperture-ring" />
+                    <!-- Continuous Rotating Knurled Focus Ring -->
+                    <circle cx="120" cy="140" r="60" fill="#0f172a" stroke="#334155" stroke-width="2.5" stroke-dasharray="5 3" class="lens-aperture-ring" />
                     <circle cx="120" cy="140" r="52" fill="#1e293b" stroke="#e0662a" stroke-width="1" />
 
-                    <!-- Multi-Element Glass Lens Core -->
+                    <!-- Pulsing Multi-Element Glass Sensor Lens Core -->
                     <circle cx="120" cy="140" r="46" fill="url(#lensGlassGrad)" class="lens-glass-core" />
                     
                     <!-- Lens Optical Flare Shimmer -->
                     <ellipse cx="106" cy="126" rx="28" ry="16" transform="rotate(-30 106 126)" fill="url(#lensFlareGrad)" class="lens-reflection-shimmer" />
 
-                    <!-- Autofocus HUD Crosshairs & Corner Brackets -->
+                    <!-- Autofocus HUD Corner Brackets -->
                     <g class="autofocus-bracket-group">
-                      <path d="M104,124 L104,116 L112,116" stroke="#38bdf8" stroke-width="2" fill="none" />
-                      <path d="M136,124 L136,116 L128,116" stroke="#38bdf8" stroke-width="2" fill="none" />
-                      <path d="M104,156 L104,164 L112,164" stroke="#38bdf8" stroke-width="2" fill="none" />
-                      <path d="M136,156 L136,164 L128,164" stroke="#38bdf8" stroke-width="2" fill="none" />
-                      <circle cx="120" cy="140" r="3" fill="#38bdf8" />
+                      <path d="M104,124 L104,116 L112,116" stroke="#38bdf8" stroke-width="2" fill="none" class="bracket-tl" />
+                      <path d="M136,124 L136,116 L128,116" stroke="#38bdf8" stroke-width="2" fill="none" class="bracket-tr" />
+                      <path d="M104,156 L104,164 L112,164" stroke="#38bdf8" stroke-width="2" fill="none" class="bracket-bl" />
+                      <path d="M136,156 L136,164 L128,164" stroke="#38bdf8" stroke-width="2" fill="none" class="bracket-br" />
+                      <circle cx="120" cy="140" r="3" fill="#38bdf8" class="bracket-center" />
                     </g>
                   </g>
                 </svg>
@@ -700,7 +754,7 @@ const Channel = {
                   <line x1="53" y1="40" x2="87" y2="40" stroke="rgba(255,255,255,0.25)" stroke-width="1" />
                 </svg>
 
-                <!-- 8-Bar Live Audio Waveform Equalizer Strip -->
+                <!-- 6-Bar Live Audio Waveform Equalizer Strip on Mic Body -->
                 <div class="live-mic-waveform" aria-label="Microphone Live Audio Stream Active">
                   <span class="mic-wave-bar bar-1"></span>
                   <span class="mic-wave-bar bar-2"></span>
@@ -708,16 +762,18 @@ const Channel = {
                   <span class="mic-wave-bar bar-4"></span>
                   <span class="mic-wave-bar bar-5"></span>
                   <span class="mic-wave-bar bar-6"></span>
-                  <span class="mic-wave-bar bar-7"></span>
-                  <span class="mic-wave-bar bar-8"></span>
                 </div>
               </div>
 
-              <!-- Live HUD Bottom Telemetry Banner -->
+              <!-- Live HUD Bottom Telemetry Continuous Marquee Ticker -->
               <div class="newsroom-hud-bottom" id="layer-hud-bottom">
-                <div class="hud-telemetry-strip">
-                  <span class="telemetry-dot"></span>
-                  <span class="telemetry-text">LIVE GROUND REPORTING • PUNE • MUMBAI • MAHARASHTRA</span>
+                <div class="hud-ticker-viewport">
+                  <div class="hud-ticker-track">
+                    <span class="telemetry-dot"></span>
+                    <span class="telemetry-text">LIVE GROUND REPORTING • PUNE HQ • MUMBAI • NASHIK • NAGPUR • KOLHAPUR • BARAMATI • MAHARASHTRA • </span>
+                    <span class="telemetry-dot"></span>
+                    <span class="telemetry-text">LIVE GROUND REPORTING • PUNE HQ • MUMBAI • NASHIK • NAGPUR • KOLHAPUR • BARAMATI • MAHARASHTRA • </span>
+                  </div>
                 </div>
               </div>
 

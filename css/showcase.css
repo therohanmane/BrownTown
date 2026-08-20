@@ -297,7 +297,14 @@
   height: 7px;
   background: #ef4444;
   border-radius: 50%;
-  animation: liveRecPulse 1.5s infinite;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.8);
+  animation: recDotPulseGlow 1.2s ease-in-out infinite;
+}
+
+@keyframes recDotPulseGlow {
+  0% { transform: scale(1); opacity: 0.7; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 6px 2px rgba(239, 68, 68, 0.9); }
+  100% { transform: scale(1); opacity: 0.7; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
 }
 
 .hud-mono {
@@ -314,6 +321,16 @@
   font-weight: 700;
   color: #f8fafc;
   letter-spacing: 0.08em;
+}
+
+.hud-quality-pill {
+  animation: hudMetadataGlowPulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes hudMetadataGlowPulse {
+  0% { opacity: 0.88; border-color: rgba(255, 255, 255, 0.15); }
+  50% { opacity: 1; border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 0 8px rgba(56, 189, 248, 0.2); }
+  100% { opacity: 0.88; border-color: rgba(255, 255, 255, 0.15); }
 }
 
 .hud-badge-4k {
@@ -349,15 +366,35 @@
   object-fit: contain;
 }
 
-.radar-circle {
-  animation: mapRadarPulse 2.5s ease-out infinite;
+/* Flowing Dotted Signal Route Line */
+.telemetry-flow-line {
+  stroke-dasharray: 6 4;
+  animation: flowTelemetryDash 3.5s linear infinite;
+}
+
+@keyframes flowTelemetryDash {
+  from { stroke-dashoffset: 20; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Staggered City Pin Radar Pings */
+.radar-ping-ring {
+  animation: radarPinPing 2s ease-out infinite;
   transform-origin: center;
 }
 
-@keyframes mapRadarPulse {
-  0% { transform: scale(0.6); opacity: 0.8; }
-  100% { transform: scale(2.6); opacity: 0; }
+@keyframes radarPinPing {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  70% { transform: scale(2.4); opacity: 0.15; }
+  100% { transform: scale(2.8); opacity: 0; }
 }
+
+.ping-pune { animation-delay: 0s; transform-origin: 145px 160px; }
+.ping-mumbai { animation-delay: 0.4s; transform-origin: 95px 140px; }
+.ping-nashik { animation-delay: 0.8s; transform-origin: 130px 100px; }
+.ping-nagpur { animation-delay: 1.2s; transform-origin: 290px 65px; }
+.ping-kolhapur { animation-delay: 1.6s; transform-origin: 135px 225px; }
+.ping-baramati { animation-delay: 0.6s; transform-origin: 165px 180px; }
 
 .wave-pulse-1 { animation: radioArcExpand 3s ease-out infinite 0s; }
 .wave-pulse-2 { animation: radioArcExpand 3s ease-out infinite 0.6s; }
@@ -383,7 +420,7 @@
 
 @keyframes cameraIdleFloat {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-6px) rotate(-0.6deg); }
+  50% { transform: translateY(-5px) rotate(-0.5deg); }
 }
 
 .broadcast-camera-svg {
@@ -393,17 +430,29 @@
 }
 
 .camera-tally-beacon {
-  animation: liveRecPulse 1.8s infinite;
+  animation: recDotPulseGlow 1.4s ease-in-out infinite;
 }
 
+/* Continuous Rotating Knurled Focus Ring (24s cycle) */
 .lens-aperture-ring {
   transform-origin: 120px 140px;
-  animation: apertureRingTurn 12s linear infinite;
+  animation: focusRingTurn 24s linear infinite;
 }
 
-@keyframes apertureRingTurn {
+@keyframes focusRingTurn {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Pulsing Multi-Element Glass Sensor Lens Core */
+.lens-glass-core {
+  animation: lensSensorPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes lensSensorPulse {
+  0% { opacity: 0.85; filter: drop-shadow(0 0 2px rgba(56, 189, 248, 0.2)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5)); }
+  100% { opacity: 0.85; filter: drop-shadow(0 0 2px rgba(56, 189, 248, 0.2)); }
 }
 
 .lens-reflection-shimmer {
@@ -416,15 +465,25 @@
   100% { transform: rotate(-30deg) translate(-12px, -6px); opacity: 0.3; }
 }
 
+/* Autofocus HUD Corner Brackets Tighten Animation */
+.autofocus-bracket-group {
+  transition: transform 0.3s ease;
+}
+
+.autofocus-bracket-group.focusing .bracket-tl { transform: translate(3px, 3px); }
+.autofocus-bracket-group.focusing .bracket-tr { transform: translate(-3px, 3px); }
+.autofocus-bracket-group.focusing .bracket-bl { transform: translate(3px, -3px); }
+.autofocus-bracket-group.focusing .bracket-br { transform: translate(-3px, -3px); }
+
 /* Autofocus Lock Status Badge */
 .focus-lock-status-badge {
   position: absolute;
   top: 48%;
   left: 32%;
   transform: translate(-50%, -50%) scale(0.8);
-  background: rgba(4, 120, 87, 0.9);
+  background: rgba(4, 120, 87, 0.92);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(52, 211, 153, 0.5);
+  border: 1px solid rgba(52, 211, 153, 0.6);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 800;
@@ -444,11 +503,7 @@
 .focus-lock-status-badge.active {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
-}
-
-.focus-lock-status-badge.settled {
-  opacity: 0.65;
-  transform: translate(-50%, -50%) scale(0.85);
+  box-shadow: 0 0 16px rgba(52, 211, 153, 0.6), 0 4px 14px rgba(4, 120, 87, 0.4);
 }
 
 /* Reporter Microphone Assembly Layer */
@@ -459,14 +514,15 @@
   width: 38%;
   max-width: 140px;
   z-index: 5;
-  animation: micIdleFloat 5s ease-in-out infinite alternate;
+  animation: micFloat 3s ease-in-out infinite alternate;
   transition: transform 0.15s cubic-bezier(0, 0, 0.2, 1);
   will-change: transform;
 }
 
-@keyframes micIdleFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-4px) rotate(0.8deg); }
+@keyframes micFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
 }
 
 .reporter-mic-svg {
@@ -475,7 +531,7 @@
   display: block;
 }
 
-/* 8-Bar Live Audio Waveform Equalizer */
+/* 6-Bar Live Audio Waveform Equalizer Strip on Mic Body */
 .live-mic-waveform {
   position: absolute;
   top: 14%;
@@ -497,26 +553,24 @@
   width: 2.5px;
   background: linear-gradient(to top, var(--brand-brown-600) 0%, var(--brand-brown-400) 100%);
   border-radius: 2px;
-  animation: eqWavePulse 1.2s ease-in-out infinite alternate;
+  animation: eqWavePulse 0.8s ease-in-out infinite alternate;
   transform-origin: bottom;
 }
 
 .bar-1 { animation-delay: 0.0s; height: 35%; }
-.bar-2 { animation-delay: 0.2s; height: 75%; }
+.bar-2 { animation-delay: 0.2s; height: 80%; }
 .bar-3 { animation-delay: 0.4s; height: 100%; }
-.bar-4 { animation-delay: 0.1s; height: 50%; }
+.bar-4 { animation-delay: 0.15s; height: 60%; }
 .bar-5 { animation-delay: 0.35s; height: 90%; }
-.bar-6 { animation-delay: 0.15s; height: 60%; }
-.bar-7 { animation-delay: 0.45s; height: 80%; }
-.bar-8 { animation-delay: 0.25s; height: 40%; }
+.bar-6 { animation-delay: 0.25s; height: 50%; }
 
 @keyframes eqWavePulse {
-  0% { transform: scaleY(0.25); opacity: 0.5; }
+  0% { transform: scaleY(0.2); opacity: 0.5; }
   50% { transform: scaleY(1); opacity: 1; }
-  100% { transform: scaleY(0.35); opacity: 0.7; }
+  100% { transform: scaleY(0.3); opacity: 0.7; }
 }
 
-/* Bottom Telemetry HUD Strip */
+/* Bottom Continuous Marquee Telemetry Ticker */
 .newsroom-hud-bottom {
   position: absolute;
   bottom: 8px;
@@ -526,22 +580,40 @@
   pointer-events: none;
 }
 
-.hud-telemetry-strip {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: rgba(7, 14, 27, 0.85);
+.hud-ticker-viewport {
+  overflow: hidden;
+  width: 100%;
+  background: rgba(7, 14, 27, 0.88);
   backdrop-filter: blur(6px);
-  padding: 0.2rem 0.65rem;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.22rem 0;
+  pointer-events: auto;
+}
+
+.hud-ticker-track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: tickerMarquee 26s linear infinite;
+  will-change: transform;
+}
+
+.hud-ticker-viewport:hover .hud-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes tickerMarquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.hud-ticker-track .telemetry-text {
   font-family: monospace;
   font-size: 0.68rem;
   color: #94a3b8;
   letter-spacing: 0.06em;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  padding: 0 0.5rem;
 }
 
 .telemetry-dot {
@@ -552,6 +624,8 @@
   box-shadow: 0 0 6px var(--brand-brown-400);
   flex-shrink: 0;
 }
+
+
 
 /* =========================================================================
    2. SECTION HEADINGS
@@ -1858,11 +1932,15 @@
   .hud-rec-beacon,
   .camera-tally-beacon,
   .lens-aperture-ring,
+  .lens-glass-core,
   .lens-reflection-shimmer,
   .newsroom-camera-wrap,
   .newsroom-mic-wrap,
   .mic-wave-bar,
-  .radar-circle,
+  .radar-ping-ring,
+  .telemetry-flow-line,
+  .hud-quality-pill,
+  .hud-ticker-track,
   .wave-pulse-1,
   .wave-pulse-2,
   .wave-pulse-3,
