@@ -37,12 +37,16 @@ window.INB_I18N = {
 
     // Who We Are
     whoWeAreTitle: 'आम्ही कोण आहोत?',
-    whoWeAreSub: 'स्थानिक व्यवसायांना डिजिटल बळ देणारा आणि लोकसहभागावर आधारलेला आधुनिक मीडिया व जाहिरात मंच',
-    whoWeAreStory: 'INBrownTown हा व्यस्त व्यावसायिक, दुकानदार आणि ब्रँड्सना डिजिटल जाहिरात, ॲड पोस्टर्स आणि सोशल मीडिया प्रमोशनच्या माध्यमातून लाखो ग्राहकांपर्यंत पोहोचवणारा मंच आहे. आम्ही स्वतः व्हिडिओ शूटिंग करत नाही, तर व्यावसायिकांचे प्रमोशन करण्यासाठी दर्जेदार जाहिरात पोस्टर्स आणि डिजिटल मार्केटिंग कॅम्पेन तयार करतो.',
+    whoWeAreSub: 'स्थानिक व्यवसायांना डिजिटल ताकद देणारा आणि लोकसहभागावर आधारलेला आधुनिक मीडिया व जाहिरात मंच',
+    whoWeAreStory: 'INBrownTown हा दुहेरी प्रभावावर आधारलेला स्वतंत्र डिजिटल मीडिया मंच आहे: आम्ही संस्थापिका सुश्री आयेशा सय्यद यांच्या नेतृत्वाखाली जमिनीवरील सत्य, सामान्य जनतेचे प्रश्न आणि प्रेरक यशोगाथा ग्राउंड रिपोर्टिंग व थेट व्हिडिओ मुलाखतींद्वारे लोकांपर्यंत पोहोचवतो — आणि त्याचसोबत स्थानिक व्यावसायिक, दुकानदार व ब्रँड्सना डिजिटल जाहिरात, आकर्षक ॲड पोस्टर्स आणि सोशल मीडिया प्रमोशनच्या माध्यमातून लाखो ग्राहकांशी जोडून त्यांचा व्यवसाय वाढवण्यास मदत करतो.',
 
     // What We Do
     whatWeDoTitle: 'आम्ही काय करतो?',
-    whatWeDoSub: 'व्यस्त व्यावसायिकांसाठी डिजिटल जाहिरात, ॲड पोस्टर्स डिझाइन आणि सोशल मीडिया प्रमोशन',
+    whatWeDoSub: 'स्थानिक व्यवसायांसाठी प्रभावी जाहिरात सेवा आणि प्रेक्षकांसाठी निर्भीक ग्राउंड पत्रकारिता',
+    servicesGroupTitle: 'व्यावसायिकांसाठी जाहिरात व प्रमोशन सेवा',
+    servicesGroupSub: 'व्यस्त दुकानदार व उद्योजकांसाठी रेडीमेड ॲड पोस्टर्स, सोशल मीडिया कॅम्पेन्स आणि डिजिटल विक्री वाढ',
+    contentGroupTitle: 'पत्रकारिता, मुलाखती व कम्युनिटी कंटेंट',
+    contentGroupSub: 'सुश्री आयेशा सय्यद यांचे ऑन-ग्राउंड वृत्तांकन, विशेष मुलाखती आणि सामाजिक विश्लेषण',
 
     // How We Help
     howWeHelpTitle: 'आम्ही व्यावसायिकांना व समाजाला कशी मदत करतो?',
@@ -138,12 +142,16 @@ window.INB_I18N = {
 
     // Who We Are
     whoWeAreTitle: 'हम कौन हैं?',
-    whoWeAreSub: 'स्थानीय व्यवसायों को डिजिटल ताक़त देने वाला आधुनिक मीडिया व विज्ञापन मंच',
-    whoWeAreStory: 'INBrownTown व्यस्त व्यापारियों, दुकानदारों और ब्रांड्स को डिजिटल विज्ञापन, एड पोस्टर्स और सोशल मीडिया प्रचार के माध्यम से लाखों ग्राहकों तक पहुँचाने में मदद करता है। हम स्वयं वीडियो शूटिंग नहीं करते, बल्कि व्यवसायों के प्रचार हेतु उच्च-गुणवत्ता वाले विज्ञापन पोस्टर्स और डिजिटल मार्केटिंग अभियान तैयार करते हैं।',
+    whoWeAreSub: 'स्थानीय व्यवसायों को डिजिटल ताक़त देने वाला और जन-सरोकारों से जुड़ा आधुनिक मीडिया व विज्ञापन मंच',
+    whoWeAreStory: 'INBrownTown एक दोहरे प्रभाव वाला स्वतंत्र डिजिटल मीडिया नेटवर्क है: हम संस्थापिका सुश्री आयेशा सय्यद के नेतृत्व में ज़मीनी हकीकत, आम जनता के सवाल और प्रेरक कहानियों को ग्राउंड रिपोर्टिंग व वीडियो साक्षात्कारों के ज़रिए सामने लाते हैं — और साथ ही स्थानीय व्यापारियों, दुकानदारों व ब्रांड्स को डिजिटल विज्ञापन, आकर्षक एड पोस्टर्स और सोशल मीडिया प्रचार के माध्यम से लाखों ग्राहकों तक पहुँचाकर उनका व्यवसाय बढ़ाने में मदद करते हैं।',
 
     // What We Do
     whatWeDoTitle: 'हम क्या करते हैं?',
-    whatWeDoSub: 'व्यस्त व्यापारियों के लिए डिजिटल विज्ञापन, एड पोस्टर्स डिज़ाईन और सोशल मीडिया प्रमोशन',
+    whatWeDoSub: 'स्थानीय व्यवसायों के लिए प्रभावी विज्ञापन सेवाएं और दर्शकों के लिए निर्भीक ग्राउंड पत्रकारिता',
+    servicesGroupTitle: 'व्यापारियों के लिए विज्ञापन व प्रमोशन सेवाएं',
+    servicesGroupSub: 'व्यस्त दुकानदारों व उद्यमियों के लिए रेडीमेड एड पोस्टर्स, सोशल मीडिया कैंपेन और डिजिटल बिक्री वृद्धि',
+    contentGroupTitle: 'पत्रकारिता, साक्षात्कार व कम्युनिटी कंटेंट',
+    contentGroupSub: 'सुश्री आयेशा सय्यद द्वारा ऑन-कैमरा ग्राउंड साक्षात्कार, नागरिक विश्लेषण व प्रेरक वृत्तचित्र',
 
     // How We Help
     howWeHelpTitle: 'हम व्यापारियों और समाज की कैसे मदद करते हैं?',
@@ -241,12 +249,16 @@ window.INB_I18N = {
 
     // Who We Are
     whoWeAreTitle: 'Who We Are',
-    whoWeAreSub: 'An advertising, creative promotion, and digital media platform empowering local businesses',
-    whoWeAreStory: 'INBrownTown is dedicated to helping busy business owners, merchants, and professionals reach thousands of local customers through creative ad posters, digital banners, and social media promotions. We do not do video shoots or camera recordings; instead, we craft high-impact promotional advertising and marketing campaigns so busy entrepreneurs can grow effortlessly.',
+    whoWeAreSub: 'A dual-impact digital network delivering fearless community journalism and turnkey advertising for local businesses',
+    whoWeAreStory: 'INBrownTown is a dual-impact independent digital media network: We uncover the truth, highlight civic issues, and share inspiring human stories through on-ground investigative reporting and video interviews hosted by founder Ms. Ayesha Sayyad — and we empower local entrepreneurs, shopkeepers, and growing brands with high-impact digital advertising, custom promotional ad posters, and targeted social media marketing reach.',
 
     // What We Do
     whatWeDoTitle: 'What We Do',
-    whatWeDoSub: 'Done-for-you digital advertising, promotional posters, and social media campaigns for busy business owners',
+    whatWeDoSub: 'High-impact advertising services for local businesses and fearless ground journalism for our community',
+    servicesGroupTitle: 'Our Advertising Services (For Businesses)',
+    servicesGroupSub: 'Done-for-you digital advertising, promotional ad posters, and targeted reach to grow your local sales',
+    contentGroupTitle: 'Our Journalism & Content (For Viewers)',
+    contentGroupSub: 'On-camera field interviews, civic investigations, and inspirational changemaker dialogues hosted by Ms. Ayesha Sayyad',
 
     // How We Help
     howWeHelpTitle: 'How We Help Businesses & Community',

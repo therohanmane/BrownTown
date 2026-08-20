@@ -16,69 +16,84 @@ window.INB_BRAND_DATA = {
     { id: 'stat-cities', value: 18, suffix: '+', label: { mr: 'शहरे व जिल्हे कव्हरेज', hi: 'शहर व ज़िले कवरेज', en: 'Districts & Cities Reached' } }
   ],
 
-  // Core Activities (Advertising, Ad Posters, Promotions & Curated Insights)
-  activities: [
+  // 1. Commercial Advertising & Marketing Services (For Businesses & Local Advertisers)
+  businessServices: [
     {
-      id: 'act-ads',
+      id: 'srv-ads',
       icon: '📢',
-      title: { mr: 'डिजिटल जाहिरात व प्रमोशन', hi: 'डिजिटल विज्ञापन व प्रमोशन', en: 'Digital Ads & Promotions' },
+      badge: { mr: 'सोशल मीडिया जाहिरात', hi: 'सोशल मीडिया विज्ञापन', en: 'For Advertisers' },
+      title: { mr: 'डिजिटल जाहिरात व मोहीम', hi: 'डिजिटल विज्ञापन व कैंपेन', en: 'Digital Ads & Campaign Promotions' },
       desc: {
-        mr: 'व्यस्त व्यावसायिक आणि दुकानदारांसाठी डिजिटल जाहिरात मोहीम आणि लाखो स्थानिक ग्राहकांपर्यंत थेट पोहोच.',
-        hi: 'व्यस्त व्यापारियों और स्थानीय ब्रांड्स के लिए लक्षित डिजिटल विज्ञापन व व्यापक प्रचार।',
-        en: 'Targeted digital advertising and promotional campaigns connecting local businesses with thousands of customers.'
+        mr: 'व्यस्त व्यावसायिक, दुकानदार आणि ब्रँड्ससाठी लक्ष्यित सोशल मीडिया जाहिरात मोहीम आणि लाखो स्थानिक ग्राहकांपर्यंत थेट पोहोच.',
+        hi: 'व्यस्त व्यापारियों, दुकानदारों और स्थानीय ब्रांड्स के लिए लक्षित सोशल मीडिया विज्ञापन व व्यापक ग्राहक पहुंच।',
+        en: 'Targeted digital advertising and promotional campaigns designed to connect local businesses with thousands of high-intent customers.'
       }
     },
     {
-      id: 'act-posters',
+      id: 'srv-posters',
       icon: '🎨',
-      title: { mr: 'ॲड पोस्टर्स व क्रिएटिव्ह डिझाइन', hi: 'विज्ञापन पोस्टर व क्रिएटिव डिज़ाईन', en: 'Ad Posters & Visual Creatives' },
+      badge: { mr: 'क्रिएटिव्ह डिझाइन', hi: 'क्रिएटिव डिज़ाईन', en: 'Done-For-You' },
+      title: { mr: 'ॲड पोस्टर्स व व्हिज्युअल डिझाइन', hi: 'विज्ञापन पोस्टर व विज़ुअल डिज़ाईन', en: 'Ad Posters & Visual Creatives' },
       desc: {
-        mr: 'ज्यांच्याकडे मार्केटिंगसाठी वेळ नाही अशांसाठी आकर्षक जाहिरात पोस्टर्स, बॅनर्स आणि सोशल मीडिया डिझाइन.',
-        hi: 'जिनके पास समय की कमी है, उनके लिए पेशेवर विज्ञापन पोस्टर्स, बैनर्स और सोशल मीडिया ग्राफिक्स।',
-        en: 'Done-for-you promotional posters, eye-catching ad graphics, and social media flyers for busy entrepreneurs.'
+        mr: 'ज्यांच्याकडे मार्केटिंगसाठी वेळ नसतो अशा व्यावसायिकांसाठी आकर्षक तयार जाहिरात पोस्टर्स, डिजिटल बॅनर्स आणि सोशल मीडिया ग्राफिक्स.',
+        hi: 'जिनके पास समय की कमी है, उनके लिए पेशेवर विज्ञापन पोस्टर्स, बैनर्स और सोशल मीडिया ग्राफिक्स तैयार करना।',
+        en: 'Ready-to-share promotional ad posters, social media banners, and graphic flyers tailored specifically for busy business owners.'
       }
     },
     {
-      id: 'act-community',
-      icon: '🤝',
-      title: { mr: 'कम्युनिटी स्टोरीज व मुलाखती', hi: 'कम्युनिटी स्टोरीज व साक्षात्कार', en: 'Community Stories & Interviews' },
-      desc: {
-        mr: 'समाजातील प्रेरणादायी व्यक्ती, सामाजिक कार्यकर्ते आणि प्रसिद्ध मान्यवरांच्या विशेष मुलाखतींचा डिजिटल मंच.',
-        hi: 'स्थानीय नायकों, सामाजिक कार्यकर्ताओं और प्रमुख हस्तियों के साक्षात्कारों का मंच।',
-        en: 'Exclusive interviews with public icons, grassroots changemakers, and inspirational figures.'
-      }
-    },
-    {
-      id: 'act-spotlight',
+      id: 'srv-spotlight',
       icon: '🚀',
-      title: { mr: 'स्थानिक व्यवसाय स्पॉटलाइट', hi: 'स्थानीय व्यापार स्पॉटलाइट', en: 'Local Business Spotlights' },
+      badge: { mr: 'स्थानिक प्रसिद्धी', hi: 'स्थानीय विजिबिलिटी', en: 'Brand Reach' },
+      title: { mr: 'स्थानिक व्यवसाय स्पॉटलाइट', hi: 'स्थानीय व्यापार स्पॉटलाइट', en: 'Local Business Spotlights & Reach' },
       desc: {
-        mr: 'पुणे व परिसरातील नवीन कॅफे, दुकाने आणि सेवांचे विशेष जाहिरात प्रमोशन व डिजिटल प्रसिद्धी.',
-        hi: 'पुणे व आसपास के नए कैफ़े, दुकानों और सेवाओं का विशेष प्रचार व ब्रांड विजिबिलिटी।',
-        en: 'Showcasing local businesses, stores, and services with dedicated promotional highlights and audience reach.'
-      }
-    },
-    {
-      id: 'act-explainers',
-      icon: '💡',
-      title: { mr: 'योजना व माहिती विश्लेषण', hi: 'योजना व नागरिक विश्लेषण', en: 'Civic & Policy Explainers' },
-      desc: {
-        mr: 'सरकारी योजना, कायदे आणि सामाजिक घडामोडींचे नागरिकांसाठी सोप्या भाषेतील अभ्यासपूर्ण विश्लेषणात्मक व्हिडिओ.',
-        hi: 'सरकारी योजनाओं, जन-कल्याणकारी नीतियों और नियमों का सरल भाषा में विश्लेषणात्मक संकलन।',
-        en: 'Curating clear, simplified explainers on government schemes, public policies, and civic updates.'
-      }
-    },
-    {
-      id: 'act-interviews',
-      icon: '🎙️',
-      title: { mr: 'राजकारण व नेतृत्व संवाद', hi: 'राजनीति व नेतृत्व संवाद', en: 'Leadership Dialogues' },
-      desc: {
-        mr: 'तज्ज्ञ, उद्योजक आणि लोकप्रतिनिधींशी झालेल्या महत्त्वाच्या चर्चा आणि पॉडकास्टचे संकलन.',
-        hi: 'विशेषज्ञों, सफल उद्यमियों और जन-प्रतिनिधियों की सार्थक चर्चाओं और पॉडकास्ट का संग्रह।',
-        en: 'Curated long-form discussions and podcasts featuring decision-makers, innovators, and leaders.'
+        mr: 'पुणे व महाराष्ट्रातील नवीन कॅफे, स्टोअर्स आणि सेवांची ब्रँड प्रसिद्धी, रिव्ह्यू हायलाइट्स आणि डिजिटल मार्केटिंग रीच.',
+        hi: 'पुणे व महाराष्ट्र के नए कैफ़े, रिटेल स्टोर्स और सेवाओं का विशेष प्रचार, हाइलाइट्स व डिजिटल विजिबिलिटी।',
+        en: 'Dedicated promotional highlights, local product launches, and brand reach campaigns across our engaged regional network.'
       }
     }
   ],
+
+  // 2. Journalism & Community Content Pillars (For Viewers & Society — leads directly to Video Gallery)
+  journalismContent: [
+    {
+      id: 'cnt-interviews',
+      icon: '🎙️',
+      badge: { mr: 'ग्राउंड जर्नलिझम', hi: 'ग्राउंड जर्नलिज्म', en: 'Field Journalism' },
+      title: { mr: 'कम्युनिटी स्टोरीज व विशेष मुलाखती', hi: 'कम्युनिटी स्टोरीज व साक्षात्कार', en: 'Community Stories & Ground Interviews' },
+      desc: {
+        mr: 'संस्थापिका आयेशा सय्यद यांच्या माध्यमातून जमिनीवरील सत्य, सामान्य जनतेचे प्रश्न, यशोगाथा आणि प्रत्यक्ष ग्राउंड मुलाखती.',
+        hi: 'संस्थापिका आयेशा सय्यद द्वारा ज़मीनी हकीकत, आम जनता के सवाल, प्रेरक गाथाएं और प्रत्यक्ष ग्राउंड इंटरव्यूज़।',
+        en: 'On-ground investigative reporting, grassroots people stories, and exclusive field interviews hosted by founder Ayesha Sayyad.'
+      }
+    },
+    {
+      id: 'cnt-explainers',
+      icon: '💡',
+      badge: { mr: 'नागरी विश्लेषण', hi: 'नागरिक विश्लेषण', en: 'Civic Impact' },
+      title: { mr: 'नागरी प्रश्न व योजना विश्लेषण', hi: 'नागरिक मुद्दे व योजना विश्लेषण', en: 'Civic & Policy Explainers' },
+      desc: {
+        mr: 'सरकारी योजना, कायदे, जनहित आणि सामाजिक घडामोडींचे नागरिकांसाठी सोप्या भाषेत अभ्यासपूर्ण विश्लेषणात्मक व्हिडिओ वृत्तांकन.',
+        hi: 'सरकारी योजनाओं, जन-कल्याणकारी नीतियों, नियमों और सामाजिक मुद्दों का सरल भाषा में तथ्यात्मक वीडियो विश्लेषण।',
+        en: 'Deep-dive analytical coverage of public welfare schemes, government policies, legal rights, and civic developments.'
+      }
+    },
+    {
+      id: 'cnt-leadership',
+      icon: '🤝',
+      badge: { mr: 'नेतृत्व संवाद', hi: 'नेतृत्व संवाद', en: 'Thought Leadership' },
+      title: { mr: 'नेतृत्व, विचारवंत व प्रेरक संवाद', hi: 'नेतृत्व, चिंतक व प्रेरक संवाद', en: 'Leadership & Changemaker Dialogues' },
+      desc: {
+        mr: 'उद्योजक, सामाजिक कार्यकर्ते, विचारवंत आणि लोकप्रतिनिधींशी झालेले वैचारिक मंथन, पॉडकास्ट आणि दिशा देणारे संवाद.',
+        hi: 'उद्यमियों, सामाजिक कार्यकर्ताओं, विचारकों और जन-प्रतिनिधियों के साथ सार्थक मंथन, पॉडकास्ट व प्रेरक संवाद।',
+        en: 'Long-form podcast conversations and in-depth dialogues with political leaders, changemakers, and pioneering entrepreneurs.'
+      }
+    }
+  ],
+
+  // Combined Activities Fallback
+  get activities() {
+    return [...this.businessServices, ...this.journalismContent];
+  },
 
   // 4 Community Pillars
   pillars: [

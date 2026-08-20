@@ -12,13 +12,19 @@
 
 ## 📌 About INBrownTown
 
-**INBrownTown** is a modern Indian digital news, grassroots journalism, community media, and digital advertising network based in Maharashtra. We bridge the gap between people's stories, local culture, ground reporting, and digital marketing reach for local businesses and entrepreneurs.
+**INBrownTown** is a dual-impact Indian digital news, grassroots journalism, community media, and digital advertising network based in Maharashtra. We bridge the gap between people's stories, local culture, ground reporting, and digital marketing reach for local businesses and entrepreneurs.
 
-### 📢 Core Business Model & Offerings
-* **Done-For-You Digital Advertising**: Tailored social media campaigns and digital reach for shopkeepers, entrepreneurs, and growing brands.
-* **Custom Promotional Ad Posters**: High-impact, ready-to-share promotional poster designs crafted for busy business owners.
-* **Community & Business Spotlights**: Inspiring grassroots coverage, entrepreneur stories, and local updates.
-* ⚠️ **Important Policy**: *INBrownTown does not provide raw video shoot or camera recording services for clients. We focus exclusively on creative digital advertising, promotional posters, and targeted social media marketing reach.*
+### 📢 Dual-Track Model: Journalism & Advertising
+
+1. **💼 Our Advertising Services (For Local Businesses & Advertisers)**:
+   * **Done-For-You Digital Advertising**: Tailored social media campaigns and digital reach for shopkeepers, entrepreneurs, and growing brands.
+   * **Custom Promotional Ad Posters**: High-impact, ready-to-share promotional poster designs crafted for busy business owners.
+   * **Local Business Spotlights**: Dedicated promotional highlights, brand reach, and product launch features.
+
+2. **🎙️ Our Journalism & Community Content (For Viewers & Society)**:
+   * **On-Ground Field Interviews**: Exclusive conversations with public figures, changemakers, and citizens hosted by Founder **Ms. Ayesha Sayyad**.
+   * **Civic & Policy Explainers**: Clear, fact-checked video breakdowns of welfare schemes, public policies, and civic issues.
+   * **Leadership & Changemaker Dialogues**: In-depth podcasts and discussions with thought leaders and entrepreneurs.
 
 ---
 

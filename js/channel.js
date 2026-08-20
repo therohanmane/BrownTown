@@ -823,25 +823,82 @@ const Channel = {
     const sec = document.getElementById('what-we-do');
     if (!sec) return;
 
-    const acts = window.INB_BRAND_DATA.activities;
+    const services = window.INB_BRAND_DATA.businessServices || [];
+    const journalism = window.INB_BRAND_DATA.journalismContent || [];
 
     sec.innerHTML = `
       <div class="container">
+        <!-- Main Section Header -->
         <div class="section-heading-center">
           <span class="badge badge-category">WHAT WE DO</span>
           <h2 class="section-heading-title">${this.t('whatWeDoTitle')}</h2>
           <p class="section-heading-sub">${this.t('whatWeDoSub')}</p>
         </div>
 
-        <div class="activities-grid">
-          ${acts.map(act => `
-            <div class="activity-card">
-              <div class="activity-icon-wrap">${act.icon}</div>
-              <h3 class="activity-title">${this.getI18n(act.title)}</h3>
-              <p class="activity-desc">${this.getI18n(act.desc)}</p>
+        <!-- TRACK 1: Commercial Advertising & Promotional Services (For Businesses & Merchants) -->
+        <div class="dual-track-block business-services-block">
+          <div class="track-header-bar">
+            <div class="track-header-left">
+              <span class="track-audience-pill business-pill">💼 FOR BUSINESSES & ADVERTISERS</span>
+              <h3 class="track-title">${this.t('servicesGroupTitle')}</h3>
+              <p class="track-sub">${this.t('servicesGroupSub')}</p>
             </div>
-          `).join('')}
+            <a href="#work-with-us" class="btn btn-primary btn-sm track-cta-btn" onclick="Channel.scrollToSection('work-with-us', event)">
+              📢 ${this.t('ctaWorkWithUs')} →
+            </a>
+          </div>
+
+          <div class="activities-grid">
+            ${services.map(srv => `
+              <div class="activity-card service-card">
+                <div class="card-top-row">
+                  <div class="activity-icon-wrap">${srv.icon}</div>
+                  <span class="service-type-badge">${this.getI18n(srv.badge)}</span>
+                </div>
+                <h4 class="activity-title">${this.getI18n(srv.title)}</h4>
+                <p class="activity-desc">${this.getI18n(srv.desc)}</p>
+                <div class="service-card-action">
+                  <a href="#work-with-us" class="service-link-btn" onclick="Channel.scrollToSection('work-with-us', event)">
+                    ${this.t('ctaWorkWithUs')} ↗
+                  </a>
+                </div>
+              </div>
+            `).join('')}
+          </div>
         </div>
+
+        <!-- TRACK 2: Ground Journalism & Community Content (For Viewers & Public) -->
+        <div class="dual-track-block journalism-content-block">
+          <div class="track-header-bar">
+            <div class="track-header-left">
+              <span class="track-audience-pill journalism-pill">🎙️ JOURNALISM & COMMUNITY CONTENT</span>
+              <h3 class="track-title">${this.t('contentGroupTitle')}</h3>
+              <p class="track-sub">${this.t('contentGroupSub')}</p>
+            </div>
+            <a href="#videos" class="btn btn-outline btn-sm track-cta-btn" onclick="Channel.scrollToSection('videos', event)">
+              ▶ ${this.t('ctaWatchVideos')} →
+            </a>
+          </div>
+
+          <div class="activities-grid">
+            ${journalism.map(cnt => `
+              <div class="activity-card content-card">
+                <div class="card-top-row">
+                  <div class="activity-icon-wrap journalism-icon-wrap">${cnt.icon}</div>
+                  <span class="journalism-type-badge">${this.getI18n(cnt.badge)}</span>
+                </div>
+                <h4 class="activity-title">${this.getI18n(cnt.title)}</h4>
+                <p class="activity-desc">${this.getI18n(cnt.desc)}</p>
+                <div class="service-card-action">
+                  <a href="#videos" class="service-link-btn journalism-link-btn" onclick="Channel.scrollToSection('videos', event)">
+                    ${this.t('ctaWatchVideos')} ↗
+                  </a>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
       </div>
     `;
   },
