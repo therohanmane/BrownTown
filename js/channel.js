@@ -1309,17 +1309,17 @@ const Channel = {
             <form onsubmit="Channel.handleInquirySubmit(event)" class="inquiry-form">
               <div class="form-group">
                 <label class="form-label">${this.t('formName')}</label>
-                <input type="text" class="form-control" id="inq-name" placeholder="e.g. Rahul Patil" required>
+                <input type="text" class="form-control" id="inq-name" required>
               </div>
 
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                 <div class="form-group">
                   <label class="form-label">${this.t('formPhone')}</label>
-                  <input type="tel" class="form-control" id="inq-phone" placeholder="e.g. +91 98230 12345" required>
+                  <input type="tel" class="form-control" id="inq-phone" required>
                 </div>
                 <div class="form-group">
                   <label class="form-label">${this.t('formEmail')}</label>
-                  <input type="email" class="form-control" id="inq-email" placeholder="e.g. rahul@mybusiness.com" required>
+                  <input type="email" class="form-control" id="inq-email" required>
                 </div>
               </div>
 
@@ -1336,7 +1336,7 @@ const Channel = {
 
               <div class="form-group">
                 <label class="form-label">${this.t('formMessage')}</label>
-                <textarea class="form-control" id="inq-message" rows="3" placeholder="Tell us about your shop, brand, or promotion goals..." required></textarea>
+                <textarea class="form-control" id="inq-message" rows="3" required></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; box-shadow: 0 4px 14px rgba(224, 102, 42, 0.4);">
