@@ -643,7 +643,7 @@ const Channel = {
             <div class="yt-play-badge">▶</div>
             <div>
               <div class="yt-banner-title">INBrownTown Official Channels</div>
-              <div class="yt-banner-sub">@INBrownTown YouTube • @inbrowntown Instagram • 250k+ Community Reach</div>
+              <div class="yt-banner-sub">@INBrownTown (1.8k+ Subscribers) • @inbrowntown (4.8k+ Followers) • Ground Reporting</div>
             </div>
           </div>
           <div style="display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
@@ -852,7 +852,7 @@ const Channel = {
               <div class="perk-item">
                 <span class="perk-icon">🎯</span>
                 <div>
-                  <strong>Targeted Local Reach:</strong> Direct promotional access to 250k+ active community members across Pune & Maharashtra.
+                  <strong>Targeted Local Reach:</strong> Direct promotional access to 6.6k+ engaged community followers across Pune & Maharashtra.
                 </div>
               </div>
               <div class="perk-item">

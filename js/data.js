@@ -10,10 +10,10 @@ window.INB_BRAND_DATA = {
 
   // Brand Milestone Stats
   stats: [
-    { id: 'stat-subs', value: 250000, suffix: '+', label: { mr: 'युट्यूब व सोशल सदस्य', hi: 'यूट्यूब व सोशल सदस्य', en: 'Subscribers & Community' } },
+    { id: 'stat-subs', value: 1800, suffix: '+', label: { mr: 'युट्यूब सदस्य (YT Subscribers)', hi: 'यूट्यूब सब्सक्राइबर्स', en: 'YouTube Subscribers' } },
+    { id: 'stat-followers', value: 4800, suffix: '+', label: { mr: 'इन्स्टाग्राम फॉलोअर्स (IG Followers)', hi: 'इंस्टाग्राम फॉलोअर्स', en: 'Instagram Followers' } },
     { id: 'stat-videos', value: 450, suffix: '+', label: { mr: 'क्यूरेटेड व्हिडिओ स्टोरीज', hi: 'क्यूरेटेड वीडियो स्टोरीज', en: 'Curated Video Stories' } },
-    { id: 'stat-cities', value: 18, suffix: '+', label: { mr: 'शहरे व जिल्हे कव्हरेज', hi: 'शहर व ज़िले कवरेज', en: 'Districts & Cities Reached' } },
-    { id: 'stat-views', value: 5000000, suffix: '+', label: { mr: 'मासिक जाहिरात व चॅनेल व्ह्यूज', hi: 'मासिक विज्ञापन व चैनल व्यूज़', en: 'Monthly Advertising & Channel Views' } }
+    { id: 'stat-cities', value: 18, suffix: '+', label: { mr: 'शहरे व जिल्हे कव्हरेज', hi: 'शहर व ज़िले कवरेज', en: 'Districts & Cities Reached' } }
   ],
 
   // Core Activities (Advertising, Ad Posters, Promotions & Curated Insights)
@@ -97,9 +97,9 @@ window.INB_BRAND_DATA = {
       number: '02',
       title: { mr: 'स्थानिक ब्रँड्सना डिजिटल बळ', hi: 'स्थानीय ब्रांड्स को डिजिटल ताकत', en: 'Amplifying Local Brands' },
       desc: {
-        mr: 'पुणे व महाराष्ट्रातील उद्योजक, ब्रँड्स आणि सेवांना २५०k+ स्थानिक ग्राहकांपर्यंत पोहोचवण्याचे प्रभावी व्यासपीठ.',
-        hi: 'पुणे व महाराष्ट्र के व्यवसायों और ब्रांड्स को २५०k+ लक्षित ग्राहकों तक पहुँचाने का विश्वसनीय मंच।',
-        en: 'Helping local merchants, startups, and services gain massive organic visibility and targeted customer reach.'
+        mr: 'पुणे व महाराष्ट्रातील स्थानिक उद्योजक, ब्रँड्स आणि सेवांना थेट लक्ष्यित ग्राहकांपर्यंत पोहोचवण्याचे प्रभावी व्यासपीठ.',
+        hi: 'पुणे व महाराष्ट्र के स्थानीय व्यवसायों और ब्रांड्स को लक्षित ग्राहकों तक पहुँचाने का विश्वसनीय मंच।',
+        en: 'Helping local merchants, startups, and services gain organic visibility and targeted customer reach.'
       }
     },
     {
@@ -464,6 +464,22 @@ window.INB_BRAND_DATA = {
     },
     stats: [
       {
+        value: '1.8k+',
+        label: {
+          mr: 'युट्यूब सदस्य (YT Subscribers)',
+          hi: 'यूट्यूब सब्सक्राइबर्स',
+          en: 'YouTube Subscribers'
+        }
+      },
+      {
+        value: '4.8k+',
+        label: {
+          mr: 'इन्स्टाग्राम फॉलोअर्स (IG Followers)',
+          hi: 'इंस्टाग्राम फॉलोअर्स',
+          en: 'Instagram Followers'
+        }
+      },
+      {
         value: '150+',
         label: {
           mr: 'विशेष मुलाखती व संवाद',
@@ -474,17 +490,9 @@ window.INB_BRAND_DATA = {
       {
         value: '5+ Years',
         label: {
-          mr: 'ग्राउंड रिपोर्टिंग व मीडिया अनुभव',
-          hi: 'ग्राउंड रिपोर्टिंग व मीडिया अनुभव',
+          mr: 'ग्राउंड मीडिया अनुभव',
+          hi: 'ग्राउंड मीडिया अनुभव',
           en: 'Years in Grassroots Media'
-        }
-      },
-      {
-        value: '250k+',
-        label: {
-          mr: 'सक्रिय प्रेक्षक व डिजिटल रीच',
-          hi: 'सक्रिय दर्शक व डिजिटल रीच',
-          en: 'Engaged Community Reach'
         }
       }
     ],
