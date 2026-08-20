@@ -377,7 +377,49 @@
   to { stroke-dashoffset: 0; }
 }
 
-/* Staggered City Pin Radar Pings */
+/* Staggered City Pin Radar Pings & Interactive Nodes */
+.map-node {
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.2s ease;
+}
+
+.map-node:hover {
+  transform: scale(1.15);
+}
+
+.pin-hit-target {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.node-center-dot {
+  transition: r 0.3s ease, fill 0.3s ease, filter 0.3s ease;
+}
+
+.node-label {
+  transition: fill 0.3s ease, font-weight 0.3s ease, filter 0.3s ease;
+  user-select: none;
+}
+
+.map-node:hover .node-center-dot,
+.map-node.active-city .node-center-dot {
+  fill: #38bdf8 !important;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.9));
+}
+
+.map-node:hover .node-label,
+.map-node.active-city .node-label {
+  fill: #38bdf8 !important;
+  font-weight: 800 !important;
+  filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.6));
+}
+
+.map-node.visited-node .radar-ping-ring {
+  opacity: 0.35;
+  fill: rgba(56, 189, 248, 0.35);
+}
+
 .radar-ping-ring {
   animation: radarPinPing 2s ease-out infinite;
   transform-origin: center;
@@ -396,6 +438,25 @@
 .ping-kolhapur { animation-delay: 1.6s; transform-origin: 135px 225px; }
 .ping-baramati { animation-delay: 0.6s; transform-origin: 165px 180px; }
 
+/* Dynamic Traveling Signal Trail */
+.camera-signal-trail {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.camera-signal-trail.traveling {
+  opacity: 0.9;
+  animation: signalTrailDraw 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes signalTrailDraw {
+  0% { stroke-dashoffset: 120; opacity: 1; }
+  70% { stroke-dashoffset: 0; opacity: 0.9; }
+  100% { stroke-dashoffset: 0; opacity: 0.25; }
+}
+
 .wave-pulse-1 { animation: radioArcExpand 3s ease-out infinite 0s; }
 .wave-pulse-2 { animation: radioArcExpand 3s ease-out infinite 0.6s; }
 .wave-pulse-3 { animation: radioArcExpand 3s ease-out infinite 1.2s; }
@@ -405,22 +466,47 @@
   100% { opacity: 0; transform: scale(1.3); }
 }
 
-/* Broadcast Camera Assembly Layer */
+/* Traveling Broadcast Camera Marker Assembly (~45% Scale) */
 .newsroom-camera-wrap {
   position: absolute;
-  bottom: 6px;
-  left: 6px;
-  width: 78%;
-  max-width: 390px;
-  z-index: 4;
-  animation: cameraIdleFloat 6s ease-in-out infinite alternate;
-  transition: transform 0.15s cubic-bezier(0, 0, 0.2, 1);
+  top: 0;
+  left: 0;
+  width: clamp(110px, 24vw, 145px);
+  z-index: 6;
+  pointer-events: none;
+  transition: transform 1.25s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
 }
 
-@keyframes cameraIdleFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-5px) rotate(-0.5deg); }
+/* Floating City Indicator Badge above Camera */
+.cam-city-badge {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(7, 14, 27, 0.92);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  backdrop-filter: blur(8px);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  font-family: monospace;
+  color: #38bdf8;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.cam-live-indicator {
+  width: 5px;
+  height: 5px;
+  background: #ef4444;
+  border-radius: 50%;
+  animation: recDotPulseGlow 1s ease-in-out infinite;
 }
 
 .broadcast-camera-svg {
@@ -485,15 +571,15 @@
   backdrop-filter: blur(8px);
   border: 1px solid rgba(52, 211, 153, 0.6);
   color: #fff;
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 800;
   font-family: monospace;
-  padding: 0.25rem 0.65rem;
+  padding: 0.2rem 0.55rem;
   border-radius: var(--radius-full);
   box-shadow: 0 4px 14px rgba(4, 120, 87, 0.4);
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.25rem;
   opacity: 0;
   pointer-events: none;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -511,8 +597,8 @@
   position: absolute;
   bottom: -4px;
   right: 8px;
-  width: 38%;
-  max-width: 140px;
+  width: 32%;
+  max-width: 120px;
   z-index: 5;
   animation: micFloat 3s ease-in-out infinite alternate;
   transition: transform 0.15s cubic-bezier(0, 0, 0.2, 1);
@@ -568,6 +654,17 @@
   0% { transform: scaleY(0.2); opacity: 0.5; }
   50% { transform: scaleY(1); opacity: 1; }
   100% { transform: scaleY(0.3); opacity: 0.7; }
+}
+
+/* Microphone Audio Surge upon Camera Arrival at New City */
+.live-mic-waveform.mic-boost {
+  border-color: rgba(56, 189, 248, 0.8);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.45);
+}
+
+.live-mic-waveform.mic-boost .mic-wave-bar {
+  background: linear-gradient(to top, #0284c7 0%, #38bdf8 100%);
+  animation-duration: 0.35s;
 }
 
 /* Bottom Continuous Marquee Telemetry Ticker */

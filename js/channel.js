@@ -320,67 +320,192 @@ const Channel = {
       }, 1000);
     }
 
-    // 2. Continuous Periodic Focus Lock Cycle (~4.5s loop: refocus -> green flash lock -> hold 2.5s -> reset)
-    const focusBadge = document.getElementById('hero-focus-badge');
-    const bracketGroup = document.querySelector('.autofocus-bracket-group');
-    if (focusBadge) {
-      const triggerFocusLock = () => {
-        if (bracketGroup) bracketGroup.classList.add('focusing');
-        setTimeout(() => {
-          if (bracketGroup) bracketGroup.classList.remove('focusing');
-          focusBadge.classList.add('active');
-          setTimeout(() => {
-            focusBadge.classList.remove('active');
-          }, 2400);
-        }, 600);
-      };
-
-      // Initial trigger
-      setTimeout(triggerFocusLock, 800);
-      // Periodic refocus loop
-      if (this.focusInterval) clearInterval(this.focusInterval);
-      this.focusInterval = setInterval(triggerFocusLock, 5000);
-    }
+    // 2. Traveling Multi-City Live Feed Engine
+    this.initTravelingCameraEngine();
 
     // 3. Stat Pills Count-Up Animation (0 -> target over 1.2s on initial load)
     this.initHeroStatCounters();
+  },
 
-    // 4. Desktop 3D Mouse Parallax
-    const heroBanner = document.getElementById('hero-banner-container');
+  initTravelingCameraEngine() {
+    const CITIES = [
+      { id: 'pune', name: 'Pune HQ', tag: 'PUNE HQ', ticker: '🔴 LIVE GROUND REPORTING • PUNE HQ • CITIZEN VOICES, CIVIC ISSUES & LOCAL COMMERCE', x: 40.28, y: 53.33, svgX: 145, svgY: 160 },
+      { id: 'mumbai', name: 'Mumbai', tag: 'MUMBAI', ticker: '🔴 LIVE GROUND REPORTING • MUMBAI • COASTAL MEDIA & REGIONAL COMMERCE', x: 26.39, y: 46.67, svgX: 95, svgY: 140 },
+      { id: 'nashik', name: 'Nashik', tag: 'NASHIK', ticker: '🔴 LIVE GROUND REPORTING • NASHIK • NORTH MAHARASHTRA & AGRI-TECH HUB', x: 36.11, y: 33.33, svgX: 130, svgY: 100 },
+      { id: 'nagpur', name: 'Nagpur', tag: 'NAGPUR', ticker: '🔴 LIVE GROUND REPORTING • NAGPUR • VIDARBHA REGIONAL COVERAGE & CIVIC ACTION', x: 80.56, y: 21.67, svgX: 290, svgY: 65 },
+      { id: 'kolhapur', name: 'Kolhapur', tag: 'KOLHAPUR', ticker: '🔴 LIVE GROUND REPORTING • KOLHAPUR • HERITAGE, INDUSTRY & TRADE SPOTLIGHT', x: 37.50, y: 75.00, svgX: 135, svgY: 225 },
+      { id: 'baramati', name: 'Baramati', tag: 'BARAMATI', ticker: '🔴 LIVE GROUND REPORTING • BARAMATI • RURAL ENTERPRISE & PROGRESS', x: 45.83, y: 60.00, svgX: 165, svgY: 180 }
+    ];
+
     const layerCam = document.getElementById('layer-camera');
-    const layerMic = document.getElementById('layer-mic');
-    const layerMap = document.getElementById('layer-map');
-    const layerHud = document.getElementById('layer-hud');
-    const layerGlow = document.getElementById('hero-parallax-glow');
+    const cityTag = document.getElementById('cam-active-city-name');
+    const focusBadge = document.getElementById('hero-focus-badge');
+    const bracketGroup = document.querySelector('.autofocus-bracket-group');
+    const micWaveform = document.getElementById('hero-mic-waveform');
+    const signalTrail = document.getElementById('camera-signal-trail');
+    const tickerText1 = document.getElementById('hero-live-ticker-text');
+    const tickerText2 = document.getElementById('hero-live-ticker-text-copy');
+    const mapNodes = document.querySelectorAll('.map-node');
 
-    if (heroBanner && window.innerWidth >= 1024) {
-      let ticking = false;
-      heroBanner.addEventListener('mousemove', (e) => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            const rect = heroBanner.getBoundingClientRect();
-            const relX = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-            const relY = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+    if (!layerCam) return;
 
-            if (layerCam) layerCam.style.transform = `translate3d(${relX * 10}px, ${relY * 7}px, 0) rotate(${relX * 0.6}deg)`;
-            if (layerMic) layerMic.style.transform = `translate3d(${relX * 14}px, ${relY * 9}px, 0) rotate(${-relX * 0.8}deg)`;
-            if (layerMap) layerMap.style.transform = `translate3d(${-relX * 6}px, ${-relY * 4}px, 0)`;
-            if (layerHud) layerHud.style.transform = `translate3d(${relX * 5}px, ${relY * 3}px, 0)`;
-            if (layerGlow) layerGlow.style.transform = `translate3d(${-relX * 12}px, ${-relY * 8}px, 0)`;
+    // Check prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            ticking = false;
-          });
-          ticking = true;
+    let currentCityIndex = 0;
+    let autoCycleTimer = null;
+    let isUserHovered = false;
+    let resumeTimeout = null;
+
+    const triggerFocusLock = () => {
+      if (bracketGroup) bracketGroup.classList.add('focusing');
+      setTimeout(() => {
+        if (bracketGroup) bracketGroup.classList.remove('focusing');
+        if (focusBadge) {
+          focusBadge.classList.add('active');
+          setTimeout(() => {
+            focusBadge.classList.remove('active');
+          }, 2200);
+        }
+      }, 400);
+    };
+
+    const triggerMicWaveformBoost = () => {
+      if (micWaveform) {
+        micWaveform.classList.add('mic-boost');
+        setTimeout(() => {
+          micWaveform.classList.remove('mic-boost');
+        }, 1300);
+      }
+    };
+
+    const drawSignalTrail = (fromCity, toCity) => {
+      if (!signalTrail || prefersReducedMotion) return;
+
+      // Calculate curved control point for natural flight arc
+      const midX = (fromCity.svgX + toCity.svgX) / 2;
+      const midY = (fromCity.svgY + toCity.svgY) / 2;
+      const dx = toCity.svgX - fromCity.svgX;
+      const dy = toCity.svgY - fromCity.svgY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const perpX = -dy / (dist || 1);
+      const perpY = dx / (dist || 1);
+      const curvature = Math.min(25, dist * 0.25);
+      const ctrlX = midX + perpX * curvature;
+      const ctrlY = midY + perpY * curvature;
+
+      signalTrail.setAttribute('d', `M ${fromCity.svgX} ${fromCity.svgY} Q ${ctrlX} ${ctrlY} ${toCity.svgX} ${toCity.svgY}`);
+      signalTrail.classList.remove('traveling');
+      void signalTrail.offsetWidth; // trigger CSS reflow for animation restart
+      signalTrail.classList.add('traveling');
+    };
+
+    const moveToCity = (index, isInteractive = false) => {
+      const prevCity = CITIES[currentCityIndex];
+      currentCityIndex = (index + CITIES.length) % CITIES.length;
+      const targetCity = CITIES[currentCityIndex];
+
+      // Highlight destination node and mark previous as visited
+      mapNodes.forEach(node => {
+        const cityId = node.getAttribute('data-city');
+        node.classList.remove('active-city');
+        if (cityId === targetCity.id) {
+          node.classList.add('active-city');
+          node.classList.remove('visited-node');
+        } else if (cityId === prevCity.id) {
+          node.classList.add('visited-node');
         }
       });
 
-      heroBanner.addEventListener('mouseleave', () => {
-        if (layerCam) layerCam.style.transform = 'translate3d(0, 0, 0) rotate(0deg)';
-        if (layerMic) layerMic.style.transform = 'translate3d(0, 0, 0) rotate(0deg)';
-        if (layerMap) layerMap.style.transform = 'translate3d(0, 0, 0)';
-        if (layerHud) layerHud.style.transform = 'translate3d(0, 0, 0)';
-        if (layerGlow) layerGlow.style.transform = 'translate3d(0, 0, 0)';
-      });
+      // Move camera marker with smooth GPU translate3d
+      if (prefersReducedMotion) {
+        layerCam.style.transition = 'none';
+      }
+      layerCam.style.transform = `translate3d(calc(${targetCity.x}% - 50%), calc(${targetCity.y}% - 50%), 0)`;
+
+      // Draw dynamic curved signal trail
+      if (prevCity.id !== targetCity.id) {
+        drawSignalTrail(prevCity, targetCity);
+      }
+
+      // Update camera city pill badge
+      if (cityTag) {
+        cityTag.textContent = targetCity.tag;
+      }
+
+      // Trigger Focus Lock and Waveform audio surge
+      triggerFocusLock();
+      triggerMicWaveformBoost();
+
+      // Update news ticker dynamically
+      if (tickerText1) tickerText1.textContent = targetCity.ticker;
+      if (tickerText2) tickerText2.textContent = targetCity.ticker;
+    };
+
+    const startAutoCycle = () => {
+      if (prefersReducedMotion) return;
+      if (autoCycleTimer) clearInterval(autoCycleTimer);
+      autoCycleTimer = setInterval(() => {
+        if (!isUserHovered) {
+          moveToCity(currentCityIndex + 1);
+        }
+      }, 4500);
+    };
+
+    const pauseAutoCycle = () => {
+      if (autoCycleTimer) clearInterval(autoCycleTimer);
+    };
+
+    // Initialize at Pune HQ
+    moveToCity(0);
+    startAutoCycle();
+
+    // Attach Hover & Tap listeners to each city pin
+    mapNodes.forEach(node => {
+      const cityId = node.getAttribute('data-city');
+      const targetIndex = CITIES.findIndex(c => c.id === cityId);
+      if (targetIndex === -1) return;
+
+      const handleCitySelect = (e) => {
+        if (e) e.stopPropagation();
+        isUserHovered = true;
+        pauseAutoCycle();
+        if (resumeTimeout) clearTimeout(resumeTimeout);
+        moveToCity(targetIndex, true);
+      };
+
+      const handleCityRelease = () => {
+        if (resumeTimeout) clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(() => {
+          isUserHovered = false;
+          startAutoCycle();
+        }, 2800);
+      };
+
+      // Desktop Hover
+      node.addEventListener('mouseenter', handleCitySelect);
+      node.addEventListener('mouseleave', handleCityRelease);
+
+      // Touch / Tap
+      node.addEventListener('click', handleCitySelect);
+      node.addEventListener('touchend', () => {
+        handleCityRelease();
+      }, { passive: true });
+    });
+
+    // IntersectionObserver: Pause movement when Hero is out of view to save CPU
+    const heroBanner = document.getElementById('hero-banner-container');
+    if (heroBanner && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            startAutoCycle();
+          } else {
+            pauseAutoCycle();
+          }
+        });
+      }, { threshold: 0.15 });
+      observer.observe(heroBanner);
     }
   },
 
@@ -576,9 +701,17 @@ const Channel = {
                 </div>
               </div>
 
-              <!-- Layer: Subtle Maharashtra Map with Glowing Hubs -->
-              <div class="newsroom-map-layer" id="layer-map" aria-hidden="true">
+              <!--              <!-- Layer: Subtle Maharashtra Map with Interactive Glowing Hubs & Dynamic Signal Trail -->
+              <div class="newsroom-map-layer" id="layer-map">
                 <svg class="maharashtra-map-svg" viewBox="0 0 360 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="trailGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.1" />
+                      <stop offset="65%" stop-color="#38bdf8" stop-opacity="0.9" />
+                      <stop offset="100%" stop-color="#e0662a" stop-opacity="1" />
+                    </linearGradient>
+                  </defs>
+
                   <!-- Broadcast Signal Waves Arcs -->
                   <g class="broadcast-waves" opacity="0.45">
                     <circle cx="280" cy="50" r="22" stroke="var(--brand-brown-400)" stroke-width="1.5" stroke-dasharray="4 4" class="wave-pulse-1" />
@@ -589,52 +722,67 @@ const Channel = {
                   <!-- Maharashtra Map Contour Outline -->
                   <path class="map-contour-path" d="M45,130 C55,100 80,75 115,70 C145,65 170,45 210,40 C250,35 295,45 320,70 C340,90 330,120 310,135 C290,150 295,170 270,195 C245,220 220,215 190,235 C160,255 130,265 110,250 C95,238 100,210 90,190 C80,170 50,165 45,130 Z" stroke="rgba(216, 138, 88, 0.35)" stroke-width="2" fill="rgba(11, 25, 44, 0.4)" stroke-linejoin="round" />
                   
-                  <!-- Flowing Ground Reporting Telemetry Lines -->
-                  <path class="telemetry-flow-line" d="M95,140 L145,160 L130,100 L290,65" stroke="rgba(224, 102, 42, 0.65)" stroke-width="1.5" stroke-dasharray="5 4" />
-                  <path class="telemetry-flow-line" d="M145,160 L165,180 L135,225" stroke="rgba(224, 102, 42, 0.55)" stroke-width="1.5" stroke-dasharray="5 4" />
+                  <!-- Flowing Ground Reporting Telemetry Base Lines -->
+                  <path class="telemetry-flow-line" d="M95,140 L145,160 L130,100 L290,65" stroke="rgba(224, 102, 42, 0.45)" stroke-width="1.2" stroke-dasharray="4 4" />
+                  <path class="telemetry-flow-line" d="M145,160 L165,180 L135,225" stroke="rgba(224, 102, 42, 0.45)" stroke-width="1.2" stroke-dasharray="4 4" />
 
-                  <!-- Location Beacon Hubs with Staggered Radar-Ping Rings -->
+                  <!-- Dynamic Traveling Signal Trail Path -->
+                  <path id="camera-signal-trail" class="camera-signal-trail" d="" stroke="url(#trailGrad)" stroke-width="2.5" fill="none" stroke-linecap="round" />
+
+                  <!-- Interactive Location Beacon Hubs (Hover/Tap enabled) -->
                   <!-- Pune HQ -->
-                  <g class="map-node node-pune">
+                  <g class="map-node node-pune active-city" data-city="pune" role="button" tabindex="0" aria-label="Live feed Pune HQ">
+                    <circle cx="145" cy="160" r="22" fill="transparent" class="pin-hit-target" />
                     <circle cx="145" cy="160" r="12" fill="rgba(239, 68, 68, 0.5)" class="radar-ping-ring ping-pune" />
-                    <circle cx="145" cy="160" r="3.5" fill="#ef4444" />
-                    <text x="156" y="164" fill="#f8fafc" font-size="10" font-weight="700" font-family="sans-serif">Pune HQ</text>
+                    <circle cx="145" cy="160" r="3.5" fill="#ef4444" class="node-center-dot" />
+                    <text x="156" y="164" fill="#f8fafc" font-size="10" font-weight="700" font-family="sans-serif" class="node-label">Pune HQ</text>
                   </g>
                   <!-- Mumbai -->
-                  <g class="map-node node-mumbai">
+                  <g class="map-node node-mumbai" data-city="mumbai" role="button" tabindex="0" aria-label="Live feed Mumbai">
+                    <circle cx="95" cy="140" r="22" fill="transparent" class="pin-hit-target" />
                     <circle cx="95" cy="140" r="10" fill="rgba(224, 102, 42, 0.5)" class="radar-ping-ring ping-mumbai" />
-                    <circle cx="95" cy="140" r="3" fill="var(--brand-brown-400)" />
-                    <text x="48" y="143" fill="#cbd5e1" font-size="9" font-weight="600" font-family="sans-serif">Mumbai</text>
+                    <circle cx="95" cy="140" r="3" fill="var(--brand-brown-400)" class="node-center-dot" />
+                    <text x="46" y="143" fill="#cbd5e1" font-size="9" font-weight="600" font-family="sans-serif" class="node-label">Mumbai</text>
                   </g>
                   <!-- Nashik -->
-                  <g class="map-node node-nashik">
+                  <g class="map-node node-nashik" data-city="nashik" role="button" tabindex="0" aria-label="Live feed Nashik">
+                    <circle cx="130" cy="100" r="22" fill="transparent" class="pin-hit-target" />
                     <circle cx="130" cy="100" r="9" fill="rgba(224, 102, 42, 0.45)" class="radar-ping-ring ping-nashik" />
-                    <circle cx="130" cy="100" r="3" fill="var(--brand-brown-400)" />
-                    <text x="138" y="98" fill="#94a3b8" font-size="8.5" font-weight="600" font-family="sans-serif">Nashik</text>
+                    <circle cx="130" cy="100" r="3" fill="var(--brand-brown-400)" class="node-center-dot" />
+                    <text x="138" y="98" fill="#94a3b8" font-size="8.5" font-weight="600" font-family="sans-serif" class="node-label">Nashik</text>
                   </g>
                   <!-- Nagpur -->
-                  <g class="map-node node-nagpur">
+                  <g class="map-node node-nagpur" data-city="nagpur" role="button" tabindex="0" aria-label="Live feed Nagpur">
+                    <circle cx="290" cy="65" r="22" fill="transparent" class="pin-hit-target" />
                     <circle cx="290" cy="65" r="9" fill="rgba(224, 102, 42, 0.45)" class="radar-ping-ring ping-nagpur" />
-                    <circle cx="290" cy="65" r="3" fill="var(--brand-brown-400)" />
-                    <text x="248" y="62" fill="#94a3b8" font-size="8.5" font-weight="600" font-family="sans-serif">Nagpur</text>
+                    <circle cx="290" cy="65" r="3" fill="var(--brand-brown-400)" class="node-center-dot" />
+                    <text x="246" y="62" fill="#94a3b8" font-size="8.5" font-weight="600" font-family="sans-serif" class="node-label">Nagpur</text>
                   </g>
                   <!-- Kolhapur -->
-                  <g class="map-node node-kolhapur">
+                  <g class="map-node node-kolhapur" data-city="kolhapur" role="button" tabindex="0" aria-label="Live feed Kolhapur">
+                    <circle cx="135" cy="225" r="22" fill="transparent" class="pin-hit-target" />
                     <circle cx="135" cy="225" r="9" fill="rgba(224, 102, 42, 0.45)" class="radar-ping-ring ping-kolhapur" />
-                    <circle cx="135" cy="225" r="3" fill="var(--brand-brown-400)" />
-                    <text x="144" y="228" fill="#94a3b8" font-size="8.5" font-weight="600" font-family="sans-serif">Kolhapur</text>
+                    <circle cx="135" cy="225" r="3" fill="var(--brand-brown-400)" class="node-center-dot" />
+                    <text x="144" y="228" fill="#94a3b8" font-size="8.5" font-weight="600" font-family="sans-serif" class="node-label">Kolhapur</text>
                   </g>
                   <!-- Baramati -->
-                  <g class="map-node node-baramati">
+                  <g class="map-node node-baramati" data-city="baramati" role="button" tabindex="0" aria-label="Live feed Baramati">
+                    <circle cx="165" cy="180" r="22" fill="transparent" class="pin-hit-target" />
                     <circle cx="165" cy="180" r="8" fill="rgba(234, 179, 8, 0.45)" class="radar-ping-ring ping-baramati" />
-                    <circle cx="165" cy="180" r="2.5" fill="var(--accent-gold)" />
-                    <text x="174" y="183" fill="#cbd5e1" font-size="8" font-weight="600" font-family="sans-serif">Baramati</text>
+                    <circle cx="165" cy="180" r="2.5" fill="var(--accent-gold)" class="node-center-dot" />
+                    <text x="174" y="183" fill="#cbd5e1" font-size="8" font-weight="600" font-family="sans-serif" class="node-label">Baramati</text>
                   </g>
                 </svg>
               </div>
 
-              <!-- Layer: Cinematic Broadcast Camera Assembly -->
+              <!-- Layer: Traveling Broadcast Camera Marker Assembly (~45% Scale) -->
               <div class="newsroom-camera-wrap" id="layer-camera">
+                <!-- Floating City Locator Badge -->
+                <div class="cam-city-badge" id="cam-city-badge">
+                  <span class="cam-live-indicator"></span>
+                  <span id="cam-active-city-name">PUNE HQ</span>
+                </div>
+
                 <svg class="broadcast-camera-svg" viewBox="0 0 380 260" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -660,7 +808,7 @@ const Channel = {
                       <stop offset="100%" stop-color="transparent" />
                     </linearGradient>
                     <filter id="cameraShadow" x="-10%" y="-10%" width="130%" height="130%">
-                      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6" />
+                      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.65" />
                     </filter>
                   </defs>
 
@@ -675,15 +823,9 @@ const Channel = {
                     <!-- Main Graphite Camera Body -->
                     <rect x="140" y="70" width="180" height="140" rx="16" fill="url(#bodyGrad)" stroke="#334155" stroke-width="2" />
                     
-                    <!-- Ergonomic Grip Accent (Textured Leather / Warm Tone) -->
+                    <!-- Ergonomic Grip Accent -->
                     <path d="M290,85 C308,95 315,115 315,140 C315,165 308,185 290,195 Z" fill="#1c1917" stroke="rgba(216, 138, 88, 0.4)" stroke-width="1.5" />
                     
-                    <!-- Camera Controls Dial & Buttons -->
-                    <circle cx="285" cy="100" r="10" fill="#334155" stroke="#475569" stroke-width="1.5" />
-                    <circle cx="285" cy="100" r="5" fill="#e0662a" />
-                    <rect x="260" y="170" width="30" height="12" rx="3" fill="#1e293b" stroke="#334155" />
-                    <text x="266" y="179" fill="#94a3b8" font-size="7" font-weight="700" font-family="monospace">MENU</text>
-
                     <!-- Viewfinder Eyepiece -->
                     <rect x="200" y="58" width="34" height="14" rx="3" fill="#0b1320" stroke="#334155" />
 
@@ -755,7 +897,7 @@ const Channel = {
                 </svg>
 
                 <!-- 6-Bar Live Audio Waveform Equalizer Strip on Mic Body -->
-                <div class="live-mic-waveform" aria-label="Microphone Live Audio Stream Active">
+                <div class="live-mic-waveform" id="hero-mic-waveform" aria-label="Microphone Live Audio Stream Active">
                   <span class="mic-wave-bar bar-1"></span>
                   <span class="mic-wave-bar bar-2"></span>
                   <span class="mic-wave-bar bar-3"></span>
@@ -765,14 +907,14 @@ const Channel = {
                 </div>
               </div>
 
-              <!-- Live HUD Bottom Telemetry Continuous Marquee Ticker -->
+              <!-- Live HUD Bottom Telemetry Dynamic Live Feed Marquee Ticker -->
               <div class="newsroom-hud-bottom" id="layer-hud-bottom">
                 <div class="hud-ticker-viewport">
-                  <div class="hud-ticker-track">
+                  <div class="hud-ticker-track" id="hero-live-ticker-track">
                     <span class="telemetry-dot"></span>
-                    <span class="telemetry-text">LIVE GROUND REPORTING • PUNE HQ • MUMBAI • NASHIK • NAGPUR • KOLHAPUR • BARAMATI • MAHARASHTRA • </span>
+                    <span class="telemetry-text" id="hero-live-ticker-text">🔴 LIVE GROUND REPORTING • PUNE HQ • REAL VOICES, CIVIC ISSUES & LOCAL COMMERCE</span>
                     <span class="telemetry-dot"></span>
-                    <span class="telemetry-text">LIVE GROUND REPORTING • PUNE HQ • MUMBAI • NASHIK • NAGPUR • KOLHAPUR • BARAMATI • MAHARASHTRA • </span>
+                    <span class="telemetry-text" id="hero-live-ticker-text-copy">🔴 LIVE GROUND REPORTING • PUNE HQ • REAL VOICES, CIVIC ISSUES & LOCAL COMMERCE</span>
                   </div>
                 </div>
               </div>
