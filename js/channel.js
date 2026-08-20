@@ -729,30 +729,100 @@ const Channel = {
     const sec = document.getElementById('testimonials');
     if (!sec) return;
 
+    const currentLang = this.currentLang || 'mr';
+    const founder = window.INB_BRAND_DATA.founder;
     const tests = window.INB_BRAND_DATA.testimonials;
+
+    const founderName = (founder.nameLocalized && founder.nameLocalized[currentLang]) || founder.name;
+    const founderRoles = (founder.roles && founder.roles[currentLang]) || founder.roles['en'] || [];
+    const founderQuote = (founder.bioQuote && founder.bioQuote[currentLang]) || founder.bioQuote['mr'];
+    const founderStory = (founder.story && founder.story[currentLang]) || founder.story['mr'];
 
     sec.innerHTML = `
       <div class="container">
+        <!-- Section Heading -->
         <div class="section-heading-center">
-          <span class="badge badge-category">SOCIAL PROOF</span>
-          <h2 class="section-heading-title">${this.t('testTitle')}</h2>
-          <p class="section-heading-sub">${this.t('testSub')}</p>
+          <span class="badge badge-category" style="background:var(--brand-brown-600); color:#fff;">${this.t('founderEyebrow')}</span>
+          <h2 class="section-heading-title">${this.t('founderSectionTitle')}</h2>
+          <p class="section-heading-sub">${this.t('founderSectionSub')}</p>
         </div>
 
-        <div class="testimonials-grid">
-          ${tests.map(t => `
-            <div class="testimonial-card">
-              <div class="testimonial-quote-mark">“</div>
-              <p class="testimonial-quote-text">${this.getI18n(t.quote)}</p>
-              <div class="testimonial-author-row">
-                <img src="${t.avatar}" alt="${t.author}" class="testimonial-avatar" loading="lazy">
-                <div>
-                  <div class="testimonial-author-name">${t.author}</div>
-                  <div class="testimonial-author-role">${this.getI18n(t.role)}</div>
-                </div>
+        <!-- Founder Spotlight Feature (Asymmetric Split) -->
+        <div class="founder-spotlight-card">
+          <!-- Left: Large Editorial Portrait Photo -->
+          <div class="founder-portrait-col">
+            <div class="founder-portrait-frame">
+              <img src="${founder.photo}" alt="${founderName}" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Right: Editorial Content -->
+          <div class="founder-content-col">
+            <div>
+              <h3 class="founder-name">${founderName}</h3>
+              <div class="founder-badges-row" style="margin-top:0.4rem;">
+                ${founderRoles.map(role => `<span class="founder-role-badge">${role}</span>`).join('')}
               </div>
             </div>
-          `).join('')}
+
+            <!-- Pull-Quote Vision -->
+            <div class="founder-quote-block">
+              <p class="founder-quote-text">${founderQuote}</p>
+            </div>
+
+            <!-- Narrative Story -->
+            <p class="founder-story-text">${founderStory}</p>
+
+            <!-- Credibility Stats Grid -->
+            <div class="founder-stats-grid">
+              ${founder.stats.map(s => {
+                const sLabel = (s.label && s.label[currentLang]) || s.label['mr'] || '';
+                return `
+                  <div class="founder-stat-item">
+                    <div class="founder-stat-num">${s.value}</div>
+                    <div class="founder-stat-lbl">${sLabel}</div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+
+            <!-- Social Connect Row -->
+            <div class="founder-connect-row">
+              <span style="font-size:0.78rem; font-weight:700; color:var(--text-muted);">${this.t('founderConnect')}</span>
+              <div class="founder-social-pills">
+                ${founder.social.map(soc => `
+                  <a href="${soc.url}" target="_blank" rel="noreferrer" class="founder-social-btn">
+                    <span>${soc.icon}</span> ${soc.platform}
+                  </a>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary Compact Testimonials Strip (What People Say) -->
+        <div class="compact-testimonials-section">
+          <div class="compact-testimonials-header">
+            <div>
+              <span class="badge badge-category" style="font-size:0.68rem; padding:2px 8px;">${this.t('founderTestimonialsEyebrow')}</span>
+              <h3 style="font-size:1.15rem; font-weight:800; margin-top:0.3rem; margin-bottom:0;">${this.t('founderTestimonialsTitle')}</h3>
+            </div>
+          </div>
+
+          <div class="compact-test-grid">
+            ${tests.map(t => `
+              <div class="compact-test-card">
+                <p class="compact-test-quote">“${this.getI18n(t.quote)}”</p>
+                <div class="compact-test-author-row">
+                  <img src="${t.avatar}" alt="${t.author}" class="compact-test-avatar" loading="lazy">
+                  <div>
+                    <div class="compact-test-name">${t.author}</div>
+                    <div class="compact-test-role">${this.getI18n(t.role)}</div>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
         </div>
       </div>
     `;

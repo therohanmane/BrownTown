@@ -77,9 +77,13 @@ window.INB_I18N = {
     modalNowPlaying: 'सुरू असलेला व्हिडिओ:',
     modalCloseText: 'बंद करा (Esc)',
     modalEscHint: 'बाहेर पडण्यासाठी कुठेही क्लिक करा किंवा Esc दाबा',
-    modalYoutubeBtn: 'YouTube चॅनेलवर जा ↗',
-
-    // Testimonials
+    // Founder Spotlight & Testimonials
+    founderEyebrow: 'संपादकीय ओळख • मुख्य मुलाखतकार',
+    founderSectionTitle: 'द व्हॉइस बिहाइंड INBrownTown',
+    founderSectionSub: 'जमिनीवर जाऊन समाजाचे वास्तव, जनहित आणि स्थानिक उद्योग जगासमोर मांडणारा प्रामाणिक आवाज',
+    founderConnect: 'संस्थापिकेशी कनेक्ट व्हा:',
+    founderTestimonialsEyebrow: 'कम्युनिटी व भागीदार प्रतिक्रिया',
+    founderTestimonialsTitle: 'आमच्या कार्याविषयी लोकांचे मत',
     testTitle: 'कम्युनिटी व भागीदारांच्या प्रतिक्रिया',
     testSub: 'स्थानिक व्यावसायिक, नागरिक आणि तज्ज्ञांनी व्यक्त केलेला विश्वास',
 
@@ -130,7 +134,7 @@ window.INB_I18N = {
     navHowWeHelp: 'कम्युनिटी मूल्य',
     navContent: 'कंटेंट',
     navVideos: 'वीडियो गैलरी',
-    navTestimonials: 'प्रतिक्रियाएं',
+    navTestimonials: 'संस्थापिका व राय',
     navWorkWithUs: 'विज्ञापन व सहयोग',
     navContact: 'संपर्क',
 
@@ -177,7 +181,13 @@ window.INB_I18N = {
     modalEscHint: 'बंद करने के लिए कहीं भी क्लिक करें या Esc दबाएं',
     modalYoutubeBtn: 'YouTube चैनल पर जाएं ↗',
 
-    // Testimonials
+    // Founder Spotlight & Testimonials
+    founderEyebrow: 'संपादकीय परिचय • मुख्य साक्षात्कारकर्ता',
+    founderSectionTitle: 'INBrownTown की प्रेरक आवाज़',
+    founderSectionSub: 'जमीन से जुड़कर समाज और स्थानीय व्यापार की सच्ची कहानियां सामने लाने वाली स्वतंत्र पत्रकार',
+    founderConnect: 'संस्थापिका से जुड़ें:',
+    founderTestimonialsEyebrow: 'सहयोगी व दर्शक राय',
+    founderTestimonialsTitle: 'हमारे काम पर लोगों का विश्वास',
     testTitle: 'कम्युनिटी व पार्टनर राय',
     testSub: 'स्थानीय व्यापारियों, नागरिकों और विशेषज्ञों का अटूट भरोसा',
 
@@ -228,7 +238,7 @@ window.INB_I18N = {
     navHowWeHelp: 'How We Help',
     navContent: 'Content',
     navVideos: 'Video Gallery',
-    navTestimonials: 'Testimonials',
+    navTestimonials: 'Founder & Voices',
     navWorkWithUs: 'Advertise With Us',
     navContact: 'Contact',
 
@@ -275,7 +285,13 @@ window.INB_I18N = {
     modalEscHint: 'Click outside or press Esc to close',
     modalYoutubeBtn: 'Visit YouTube Channel ↗',
 
-    // Testimonials
+    // Founder Spotlight & Testimonials
+    founderEyebrow: 'THE VOICE BEHIND INBROWNTOWN',
+    founderSectionTitle: 'Meet The Founder & Lead Reporter',
+    founderSectionSub: 'The dedicated on-camera interviewer and independent journalist putting real stories and local enterprises on the map',
+    founderConnect: 'Connect with Ms. Aayesh:',
+    founderTestimonialsEyebrow: 'WHAT PEOPLE SAY',
+    founderTestimonialsTitle: 'Community & Partner Endorsements',
     testTitle: 'Community & Partner Voices',
     testSub: 'What local business owners, citizens, and policy leaders say about our platform',
 

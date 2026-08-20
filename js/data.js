@@ -437,6 +437,63 @@ window.INB_BRAND_DATA = {
     }
   ],
 
+  // Founder Spotlight & Lead Journalist Profile
+  founder: {
+    name: 'Ms. Aayesh Sayyad',
+    nameLocalized: {
+      mr: 'कु. आयेश सय्यद',
+      hi: 'सुश्री आयेश सय्यद',
+      en: 'Ms. Aayesh Sayyad'
+    },
+    roles: {
+      mr: ['संस्थापिका (Founder)', 'मुख्य मुलाखतकार (Lead Interviewer)', 'ग्राउंड रिपोर्टर'],
+      hi: ['संस्थापिका (Founder)', 'मुख्य साक्षात्कारकर्ता (Lead Interviewer)', 'ग्राउंड रिपोर्टर'],
+      en: ['Founder & Editor', 'Lead On-Camera Interviewer', 'Grassroots Reporter']
+    },
+    photo: 'assets/founder_aayesh_sayyad.jpg',
+    bioQuote: {
+      mr: '“INBrownTown ची निर्मिती अशा खऱ्या समाजनायकांना, पर्यावरण कार्यकर्त्यांना आणि स्थानिक उद्योजकांना एक निर्भय व प्रामाणिक आवाज देण्यासाठी झाली आहे. लोकांमध्ये जाऊन त्यांचे वास्तव ऐकणे आणि विश्वासाचे नाते जोडणे हीच आमची ताकद आहे.”',
+      hi: '“INBrownTown की स्थापना उन सच्चे सामाजिक बदलाव लाने वाले लोगों, पर्यावरण योद्धाओं और स्थानीय उद्यमियों को एक सशक्त व प्रामाणिक मंच प्रदान करने के उद्देश्य से की गई है। जमीन से जुड़कर वास्तविक कहानियां सामने लाना ही हमारा ध्येय है।”',
+      en: '“INBrownTown was born from a deep conviction to give a fearless, authentic platform to grassroots changemakers, eco-pioneers, and local businesses whose stories inspire real community action. Ground-level listening and honest storytelling are at the heart of everything we publish.”'
+    },
+    story: {
+      mr: 'आयेश सय्यद या महाराष्ट्रातील विविध भागांत प्रत्यक्ष जाऊन जनसामान्यांचे प्रश्न, पर्यावरण संवर्धन, शिक्षण, महिला सक्षमीकरण आणि स्थानिक व्यापार वृद्धी यांवर सखोल मुलाखती व अभ्यासपूर्ण चर्चा घडवून आणतात.',
+      hi: 'आयेश सय्यद महाराष्ट्र के विभिन्न क्षेत्रों में व्यक्तिगत रूप से जाकर जनसरोकार, पर्यावरण संरक्षण, शिक्षा और स्थानीय व्यापार संवर्धन पर विचारोत्तेजक साक्षात्कार और परिचर्चाएं संचालित करती हैं।',
+      en: 'As the on-camera voice and investigative interviewer behind INBrownTown, Aayesh travels across Maharashtra to unearth transformative stories across environmental conservation, community resilience, governance, and grassroots enterprise.'
+    },
+    stats: [
+      {
+        value: '150+',
+        label: {
+          mr: 'विशेष मुलाखती व संवाद',
+          hi: 'विशेष साक्षात्कार व संवाद',
+          en: 'Interviews Conducted'
+        }
+      },
+      {
+        value: '5+ Years',
+        label: {
+          mr: 'ग्राउंड रिपोर्टिंग व मीडिया अनुभव',
+          hi: 'ग्राउंड रिपोर्टिंग व मीडिया अनुभव',
+          en: 'Years in Grassroots Media'
+        }
+      },
+      {
+        value: '250k+',
+        label: {
+          mr: 'सक्रिय प्रेक्षक व डिजिटल रीच',
+          hi: 'सक्रिय दर्शक व डिजिटल रीच',
+          en: 'Engaged Community Reach'
+        }
+      }
+    ],
+    social: [
+      { platform: 'YouTube', url: 'https://youtube.com/@inbrowntown', icon: '▶' },
+      { platform: 'Instagram', url: 'https://instagram.com/inbrowntown', icon: '📸' },
+      { platform: 'LinkedIn', url: 'https://linkedin.com', icon: '💼' }
+    ]
+  },
+
   // Social Proof & Community Testimonials
   testimonials: [
     {
