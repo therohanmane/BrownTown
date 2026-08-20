@@ -1036,42 +1036,5 @@ window.INB_BRAND_DATA = {
       { platform: 'Official INBrownTown IG (@inbrowntown)', url: 'https://www.instagram.com/inbrowntown', icon: '✨' },
       { platform: 'YouTube (@INBrownTown)', url: 'https://youtube.com/@inbrowntown', icon: '▶' }
     ]
-  },
-
-  // Social Proof & Community Testimonials
-  testimonials: [
-    {
-      id: 'test-1',
-      quote: {
-        mr: 'INBrownTown च्या ग्राउंड कव्हरेज आणि व्हिडिओ रिपोर्टमुळे आमच्या परिसरातील प्रश्न महापालिकेकडून अवघ्या ४ दिवसांत सोडवला गेला!',
-        hi: 'INBrownTown की ग्राउंड कवरेज और वीडियो रिपोर्ट के बाद हमारे इलाके की समस्या का नगर निगम ने तुरंत समाधान किया!',
-        en: 'Thanks to INBrownTown’s community spotlight, our locality’s drinking water issue was resolved in just 4 days!'
-      },
-      author: 'राजेश कुलकर्णी (Rajesh Kulkarni)',
-      role: { mr: 'स्थानिक रहिवासी, कोथरूड, पुणे', hi: 'स्थानीय निवासी, कोथरूड, पुणे', en: 'Resident, Kothrud, Pune' },
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80'
-    },
-    {
-      id: 'test-2',
-      quote: {
-        mr: 'INBrownTown च्या जाहिरात पोस्टर्स आणि डिजिटल प्रमोशनमुळे आमच्या पुण्याच्या कॅफेला पहिल्याच महिन्यात ५०,००० पेक्षा जास्त स्थानिक ग्राहक पोहोच मिळाले.',
-        hi: 'INBrownTown के विज्ञापन पोस्टर्स और डिजिटल प्रमोशन से हमारे कैफ़े को पहले ही महीने में ५०,००० से अधिक नए ग्राहकों तक पहुँच मिली।',
-        en: 'INBrownTown’s promotional ad posters and digital marketing campaign gave our organic café an authentic reach of 50k+ targeted local customers.'
-      },
-      author: 'अमृता शिंदे (Amrita Shinde)',
-      role: { mr: 'संस्थापक, द ग्रीन कप कॅफे, पुणे', hi: 'संस्थापक, द ग्रीन कप कैफ़े, पुणे', en: 'Founder, The Green Cup Café, Pune' },
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'
-    },
-    {
-      id: 'test-3',
-      quote: {
-        mr: 'कोणताही सनसनाटीपणा न आणता खरी माहिती आणि व्यक्तिमत्त्वांचे संवाद मांडणारा हा महाराष्ट्रातील सर्वाधिक विश्वासार्ह डिजिटल चॅनेल आहे.',
-        hi: 'बिना किसी सनसनी के वास्तविक जानकारी और व्यक्तित्वों के संवाद प्रस्तुत करने वाला प्रामाणिक डिजिटल मंच।',
-        en: 'One of the rare media channels that focuses purely on grounded facts, authentic conversations, and community stories.'
-      },
-      author: 'अॅड. सचिन पाटील (Adv. Sachin Patil)',
-      role: { mr: 'कायदेतज्ज्ञ व विश्लेषक', hi: 'विधिक विशेषज्ञ व विश्लेषक', en: 'Legal Advisor & Public Policy Analyst' },
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80'
-    }
-  ]
+  }
 };

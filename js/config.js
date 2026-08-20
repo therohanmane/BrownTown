@@ -30,9 +30,8 @@ window.INB_I18N = {
     navWhoWeAre: 'आमच्याबद्दल',
     navWhatWeDo: 'आम्ही काय करतो',
     navHowWeHelp: 'कम्युनिटी मूल्ये',
-    navContent: 'कंटेंट दालन',
     navVideos: 'व्हिडिओ गॅलरी',
-    navTestimonials: 'प्रतिक्रिया',
+    navTestimonials: 'संस्थापिका (Founder)',
     navWorkWithUs: 'जाहिरात व सहकार्य',
     navContact: 'संपर्क',
 
@@ -132,9 +131,8 @@ window.INB_I18N = {
     navWhoWeAre: 'परिचय',
     navWhatWeDo: 'गतिविधियां',
     navHowWeHelp: 'कम्युनिटी मूल्य',
-    navContent: 'कंटेंट',
     navVideos: 'वीडियो गैलरी',
-    navTestimonials: 'संस्थापिका व राय',
+    navTestimonials: 'संस्थापिका (Founder)',
     navWorkWithUs: 'विज्ञापन व सहयोग',
     navContact: 'संपर्क',
 
@@ -236,9 +234,8 @@ window.INB_I18N = {
     navWhoWeAre: 'Who We Are',
     navWhatWeDo: 'What We Do',
     navHowWeHelp: 'How We Help',
-    navContent: 'Content',
     navVideos: 'Video Gallery',
-    navTestimonials: 'Founder & Voices',
+    navTestimonials: 'Founder Spotlight',
     navWorkWithUs: 'Advertise With Us',
     navContact: 'Contact',
 

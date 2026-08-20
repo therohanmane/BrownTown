@@ -291,7 +291,6 @@ const Channel = {
     this.renderWhoWeAre();
     this.renderWhatWeDo();
     this.renderHowWeHelp();
-    this.renderContentShowcase();
     this.renderVideoSection();
     this.renderTestimonials();
     this.renderWorkWithUs();
@@ -341,7 +340,6 @@ const Channel = {
       { id: 'who-we-are', label: this.t('navWhoWeAre') },
       { id: 'what-we-do', label: this.t('navWhatWeDo') },
       { id: 'how-we-help', label: this.t('navHowWeHelp') },
-      { id: 'content', label: this.t('navContent') },
       { id: 'videos', label: this.t('navVideos'), isPrimary: true },
       { id: 'testimonials', label: this.t('navTestimonials') },
       { id: 'work-with-us', label: this.t('navWorkWithUs') },
@@ -517,43 +515,6 @@ const Channel = {
         </div>
       </div>
     `;
-  },
-
-  renderContentShowcase() {
-    const sec = document.getElementById('content');
-    if (!sec) return;
-
-    const cats = window.INB_BRAND_DATA.categories;
-
-    sec.innerHTML = `
-      <div class="container">
-        <div class="section-heading-center">
-          <span class="badge badge-category">PROGRAMMING</span>
-          <h2 class="section-heading-title">${this.t('contentTitle')}</h2>
-          <p class="section-heading-sub">${this.t('contentSub')}</p>
-        </div>
-
-        <div class="content-tiles-grid">
-          ${cats.map(c => `
-            <div class="content-tile-card" onclick="Channel.filterAndScrollVideos('${c.id}')" style="cursor:pointer;">
-              <img src="${c.image}" alt="${this.getI18n(c.name)}" loading="lazy">
-              <div class="content-tile-overlay">
-                <span class="tile-count-badge">${c.count}</span>
-                <h3 class="tile-title">${this.getI18n(c.name)}</h3>
-                <p class="tile-tagline">${this.getI18n(c.tagline)}</p>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    `;
-  },
-
-  filterAndScrollVideos(catId) {
-    this.activeCategory = catId;
-    this.sortBy = 'all';
-    this.renderVideoSection();
-    this.scrollToSection('videos');
   },
 
   sortVideos(sortType, btnEl) {
@@ -854,31 +815,6 @@ const Channel = {
                 `).join('')}
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Secondary Compact Testimonials Strip (What People Say) -->
-        <div class="compact-testimonials-section">
-          <div class="compact-testimonials-header">
-            <div>
-              <span class="badge badge-category" style="font-size:0.68rem; padding:2px 8px;">${this.t('founderTestimonialsEyebrow')}</span>
-              <h3 style="font-size:1.15rem; font-weight:800; margin-top:0.3rem; margin-bottom:0;">${this.t('founderTestimonialsTitle')}</h3>
-            </div>
-          </div>
-
-          <div class="compact-test-grid">
-            ${tests.map(t => `
-              <div class="compact-test-card">
-                <p class="compact-test-quote">“${this.getI18n(t.quote)}”</p>
-                <div class="compact-test-author-row">
-                  <img src="${t.avatar}" alt="${t.author}" class="compact-test-avatar" loading="lazy">
-                  <div>
-                    <div class="compact-test-name">${t.author}</div>
-                    <div class="compact-test-role">${this.getI18n(t.role)}</div>
-                  </div>
-                </div>
-              </div>
-            `).join('')}
           </div>
         </div>
       </div>
