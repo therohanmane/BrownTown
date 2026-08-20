@@ -637,18 +637,23 @@ const Channel = {
           ${this.getVideoCardsHtml()}
         </div>
 
-        <!-- Official YouTube Channel Banner Showcase -->
+        <!-- Official YouTube & Instagram Channel Banner Showcase -->
         <div class="youtube-channel-banner">
           <div class="yt-banner-left">
             <div class="yt-play-badge">▶</div>
             <div>
-              <div class="yt-banner-title">INBrownTown Official YouTube Channel</div>
-              <div class="yt-banner-sub">@INBrownTown • 250k+ Community • Ground Reporting & Documentaries</div>
+              <div class="yt-banner-title">INBrownTown Official Channels</div>
+              <div class="yt-banner-sub">@INBrownTown YouTube • @inbrowntown Instagram • 250k+ Community Reach</div>
             </div>
           </div>
-          <a href="${window.INB_BRAND_DATA.channelUrl}" target="_blank" rel="noreferrer" class="btn btn-primary" style="background:#ff0000; border-color:#ff0000;">
-            ${this.t('watchOnYoutube')}
-          </a>
+          <div style="display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+            <a href="https://www.instagram.com/inbrowntown" target="_blank" rel="noreferrer" class="btn btn-outline" style="color:#fff; border-color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.08);">
+              📸 Official Instagram
+            </a>
+            <a href="${window.INB_BRAND_DATA.channelUrl}" target="_blank" rel="noreferrer" class="btn btn-primary" style="background:#ff0000; border-color:#ff0000;">
+              ${this.t('watchOnYoutube')}
+            </a>
+          </div>
         </div>
       </div>
     `;

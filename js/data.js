@@ -6,6 +6,7 @@
 
 window.INB_BRAND_DATA = {
   channelUrl: 'https://www.youtube.com/@INBrownTown',
+  channelInstagram: 'https://www.instagram.com/inbrowntown',
 
   // Brand Milestone Stats
   stats: [
@@ -439,11 +440,11 @@ window.INB_BRAND_DATA = {
 
   // Founder Spotlight & Lead Journalist Profile
   founder: {
-    name: 'Ayesha Sayyad',
+    name: 'Ms. Ayesha Sayyad',
     nameLocalized: {
-      mr: 'आयेशा सय्यद (Ayesha Sayyad)',
-      hi: 'आयेशा सय्यद (Ayesha Sayyad)',
-      en: 'Ayesha Sayyad'
+      mr: 'सुश्री आयेशा सय्यद (Ms. Ayesha Sayyad)',
+      hi: 'सुश्री आयेशा सय्यद (Ms. Ayesha Sayyad)',
+      en: 'Ms. Ayesha Sayyad'
     },
     roles: {
       mr: ['संस्थापिका (Founder - INBrownTown)', 'पत्रकार व मुलाखतकार (Journalist & YouTuber)', 'माजी पत्रकार (Ex: ABP Majha, TV9 Marathi)'],
@@ -488,7 +489,8 @@ window.INB_BRAND_DATA = {
       }
     ],
     social: [
-      { platform: 'Instagram (@ayesha.sayyad)', url: 'https://www.instagram.com/ayesha.sayyad/', icon: '📸' },
+      { platform: 'Founder IG (@ayesha.sayyad)', url: 'https://www.instagram.com/ayesha.sayyad/', icon: '📸' },
+      { platform: 'Official INBrownTown IG (@inbrowntown)', url: 'https://www.instagram.com/inbrowntown', icon: '✨' },
       { platform: 'YouTube (@INBrownTown)', url: 'https://youtube.com/@inbrowntown', icon: '▶' }
     ]
   },
