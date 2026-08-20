@@ -982,12 +982,12 @@
 .founder-portrait-frame {
   position: relative;
   width: 100%;
-  max-width: 340px;
-  aspect-ratio: 3 / 4;
-  border-radius: var(--radius-lg);
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 3px solid var(--border-medium);
   background: var(--brand-navy-950);
 }
 
@@ -1000,7 +1000,37 @@
 }
 
 .founder-portrait-frame:hover img {
-  transform: scale(1.03);
+  transform: scale(1.05);
+}
+
+.founder-ig-pill {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(7, 14, 27, 0.85);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.founder-ig-pill:hover {
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #fff;
+  border-color: transparent;
+  transform: translateX(-50%) translateY(-2px);
 }
 
 /* Content Column */

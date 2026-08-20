@@ -439,27 +439,27 @@ window.INB_BRAND_DATA = {
 
   // Founder Spotlight & Lead Journalist Profile
   founder: {
-    name: 'Ms. Aayesh Sayyad',
+    name: 'Ayesha Sayyad',
     nameLocalized: {
-      mr: 'कु. आयेश सय्यद',
-      hi: 'सुश्री आयेश सय्यद',
-      en: 'Ms. Aayesh Sayyad'
+      mr: 'आयेशा सय्यद (Ayesha Sayyad)',
+      hi: 'आयेशा सय्यद (Ayesha Sayyad)',
+      en: 'Ayesha Sayyad'
     },
     roles: {
-      mr: ['संस्थापिका (Founder)', 'मुख्य मुलाखतकार (Lead Interviewer)', 'ग्राउंड रिपोर्टर'],
-      hi: ['संस्थापिका (Founder)', 'मुख्य साक्षात्कारकर्ता (Lead Interviewer)', 'ग्राउंड रिपोर्टर'],
-      en: ['Founder & Editor', 'Lead On-Camera Interviewer', 'Grassroots Reporter']
+      mr: ['संस्थापिका (Founder - INBrownTown)', 'पत्रकार व मुलाखतकार (Journalist & YouTuber)', 'माजी पत्रकार (Ex: ABP Majha, TV9 Marathi)'],
+      hi: ['संस्थापिका (Founder - INBrownTown)', 'पत्रकार व साक्षात्कारकर्ता (Journalist & YouTuber)', 'पूर्व पत्रकार (Ex: ABP Majha, TV9 Marathi)'],
+      en: ['Founder - INBrownTown', 'Journalist & Lead Interviewer', 'Ex-Journalist (ABP Majha, TV9 Marathi)']
     },
-    photo: 'assets/founder_aayesh_sayyad.jpg',
+    photo: 'assets/founder_ayesha_sayyad.jpg',
     bioQuote: {
-      mr: '“INBrownTown ची निर्मिती अशा खऱ्या समाजनायकांना, पर्यावरण कार्यकर्त्यांना आणि स्थानिक उद्योजकांना एक निर्भय व प्रामाणिक आवाज देण्यासाठी झाली आहे. लोकांमध्ये जाऊन त्यांचे वास्तव ऐकणे आणि विश्वासाचे नाते जोडणे हीच आमची ताकद आहे.”',
-      hi: '“INBrownTown की स्थापना उन सच्चे सामाजिक बदलाव लाने वाले लोगों, पर्यावरण योद्धाओं और स्थानीय उद्यमियों को एक सशक्त व प्रामाणिक मंच प्रदान करने के उद्देश्य से की गई है। जमीन से जुड़कर वास्तविक कहानियां सामने लाना ही हमारा ध्येय है।”',
-      en: '“INBrownTown was born from a deep conviction to give a fearless, authentic platform to grassroots changemakers, eco-pioneers, and local businesses whose stories inspire real community action. Ground-level listening and honest storytelling are at the heart of everything we publish.”'
+      mr: '“लोकांशी थेट संवाद साधणे, समाजातील खऱ्या नायकांचे कार्य समोर आणणे आणि प्रामाणिक पत्रकारितेतून विश्वासाचे नाते जोडणे हेच INBrownTown चे ध्येय आहे.”',
+      hi: '“जमीन से जुड़कर वास्तविक कहानियां सामने लाना, सामाजिक नायकों को मंच देना और निष्पक्ष पत्रकारिता से विश्वास कायम रखना ही INBrownTown का ध्येय है।”',
+      en: '“To give a fearless, authentic platform to grassroots changemakers, eco-pioneers, and local businesses whose stories inspire real community action.”'
     },
     story: {
-      mr: 'आयेश सय्यद या महाराष्ट्रातील विविध भागांत प्रत्यक्ष जाऊन जनसामान्यांचे प्रश्न, पर्यावरण संवर्धन, शिक्षण, महिला सक्षमीकरण आणि स्थानिक व्यापार वृद्धी यांवर सखोल मुलाखती व अभ्यासपूर्ण चर्चा घडवून आणतात.',
-      hi: 'आयेश सय्यद महाराष्ट्र के विभिन्न क्षेत्रों में व्यक्तिगत रूप से जाकर जनसरोकार, पर्यावरण संरक्षण, शिक्षा और स्थानीय व्यापार संवर्धन पर विचारोत्तेजक साक्षात्कार और परिचर्चाएं संचालित करती हैं।',
-      en: 'As the on-camera voice and investigative interviewer behind INBrownTown, Aayesh travels across Maharashtra to unearth transformative stories across environmental conservation, community resilience, governance, and grassroots enterprise.'
+      mr: 'आयेशा सय्यद या अनुभवी पत्रकार आणि युट्यूबर असून त्यांनी यापूर्वी ABP माझा आणि TV9 मराठी यांसारख्या नामांकित वृत्तवाहिन्यांमध्ये काम केले आहे. सध्या त्या INBrownTown च्या माध्यमातून पुणे, मुंबई व संपूर्ण महाराष्ट्रातील सामाजिक, पर्यावरण, सांस्कृतिक व स्थानिक व्यापाराच्या यशोगाथा लोकांपर्यंत पोहोचवत आहेत.',
+      hi: 'आयेशा सय्यद एक अनुभवी पत्रकार और यूट्यूबर हैं जिन्होंने पूर्व में ABP माझा और TV9 मराठी में अपनी सेवाएं दी हैं। वर्तमान में वे INBrownTown के माध्यम से महाराष्ट्र के जनसरोकार, पर्यावरण व स्थानीय व्यापार की प्रेरक गाथाएं प्रस्तुत कर रही हैं।',
+      en: 'Ayesha Sayyad is a seasoned journalist and YouTuber with extensive broadcast reporting experience at top news networks including ABP Majha and TV9 Marathi. Through INBrownTown, she leads ground-level reporting and transformative interviews across Maharashtra.'
     },
     stats: [
       {
@@ -488,9 +488,8 @@ window.INB_BRAND_DATA = {
       }
     ],
     social: [
-      { platform: 'YouTube', url: 'https://youtube.com/@inbrowntown', icon: '▶' },
-      { platform: 'Instagram', url: 'https://instagram.com/inbrowntown', icon: '📸' },
-      { platform: 'LinkedIn', url: 'https://linkedin.com', icon: '💼' }
+      { platform: 'Instagram (@ayesha.sayyad)', url: 'https://www.instagram.com/ayesha.sayyad/', icon: '📸' },
+      { platform: 'YouTube (@INBrownTown)', url: 'https://youtube.com/@inbrowntown', icon: '▶' }
     ]
   },
 

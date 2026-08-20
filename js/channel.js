@@ -753,6 +753,9 @@ const Channel = {
           <div class="founder-portrait-col">
             <div class="founder-portrait-frame">
               <img src="${founder.photo}" alt="${founderName}" loading="lazy">
+              <a href="https://www.instagram.com/ayesha.sayyad/" target="_blank" rel="noreferrer" class="founder-ig-pill">
+                <span>📸</span> @ayesha.sayyad
+              </a>
             </div>
           </div>
 
