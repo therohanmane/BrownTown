@@ -1,0 +1,10 @@
+/* Long-form document pages (privacy notice). */
+.doc { max-width: 46rem; }
+.doc h1 { margin-bottom: 12px; }
+.doc h2 { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 600; margin: 36px 0 10px; }
+.doc p, .doc li { color: var(--text-2); }
+.doc ul { padding-left: 1.3em; display: grid; gap: 6px; }
+.doc code { font-size: .9em; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+.doc .btn { margin-top: 32px; }
+.doc-status { padding: 12px 14px; border-left: 3px solid var(--orange); background: var(--surface); font-size: .9rem; color: var(--muted) !important; }
+.doc-page .header-row { justify-content: space-between; }

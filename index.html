@@ -1,138 +1,491 @@
-<!DOCTYPE html>
-<html lang="mr" data-theme="light">
+<!doctype html>
+<html lang="mr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>INBrownTown — Digital Advertising, Media &amp; Community Channel</title>
-  <meta name="description" content="INBrownTown: Digital advertising, promotional posters, and social media campaigns for local businesses, merchants, and community stories across Pune &amp; Maharashtra.">
-  <meta name="keywords" content="INBrownTown, Digital Advertising, Ad Posters, Local Business Promotion, Pune, Maharashtra, Community Media">
-  <meta name="author" content="INBrownTown Media Network">
-
-  <!-- OpenGraph / Social Cards -->
-  <meta property="og:title" content="INBrownTown — Digital Advertising &amp; Community Channel">
-  <meta property="og:description" content="Empowering local businesses with promotional ad posters, targeted digital advertising, and curated community stories.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>INBrownTown — महाराष्ट्रातील खऱ्या गोष्टी, ब्रँड्ससाठी खरी पोहोच</title>
+  <meta name="description" content="INBrownTown is a Maharashtra community media network led by journalist Ayesha Sayyad: ground interviews and community stories in Marathi, Hindi and English, plus clearly labelled promotion for local businesses.">
+  <meta name="theme-color" content="#101827">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1200&auto=format&fit=crop&q=80">
+  <meta property="og:site_name" content="INBrownTown">
+  <meta property="og:title" content="INBrownTown — Real stories from Maharashtra. Real reach for brands.">
+  <meta property="og:description" content="Ground interviews and community stories in Marathi, Hindi and English — and clearly labelled promotion for local businesses.">
+  <meta property="og:locale" content="mr_IN">
+  <meta property="og:locale:alternate" content="hi_IN">
+  <meta property="og:locale:alternate" content="en_IN">
   <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Platform Stylesheets -->
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/showcase.css">
-
-  <!-- Schema.org Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INBrownTown",
-    "url": "https://inbrowntown.com",
-    "logo": "https://inbrowntown.com/assets/logo.png",
-    "slogan": "Real Voices • Ground Truth • Cinematic Stories",
-    "sameAs": [
-      "https://youtube.com/@inbrowntown",
-      "https://instagram.com/inbrowntown",
-      "https://facebook.com/inbrowntown"
-    ]
-  }
-  </script>
+  <!--SITE_META-->
+  <!--JSON_LD-->
+  <script>(function(){try{var d=document.documentElement,t=localStorage.getItem('inb_brand_theme'),l=localStorage.getItem('inb_brand_lang');if(t==='dark'||t==='light')d.setAttribute('data-theme',t);if(l==='mr'||l==='hi'||l==='en')d.lang=l;}catch(e){}})();</script>
+  <script type="module" src="/src/main.js"></script>
 </head>
 <body>
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13a.5.5 0 0 0 .77.42l10.2-6.5a.5.5 0 0 0 0-.84L8.77 5.08A.5.5 0 0 0 8 5.5Z" fill="currentColor"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3L10 15Z" fill="currentColor"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5v5.5M12 16.4v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.3" fill="currentColor"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 19.5a6 6 0 0 1 12 0M16 5.6a3.2 3.2 0 0 1 0 5.8M17.5 14.2a6 6 0 0 1 3.5 5.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z M14 3v5h5M9 13h6M9 17h6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 9.5h8M8 12.5h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10 9.5v5l4.5-2.5L10 9.5Z" fill="currentColor"/></symbol>
+    <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M4 10v4h3l8 4V6L7 10H4ZM18 9.5a3.5 3.5 0 0 1 0 5M8 14.5l1.2 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-brush" viewBox="0 0 24 24"><path d="M14.5 4.5l5 5-8 8-5-5 8-8ZM6.5 12.5 4 20l7.5-2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-shop" viewBox="0 0 24 24"><path d="M4 9.5 5.5 4h13L20 9.5M4 9.5h16M4 9.5a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0M5.5 12v8h13v-8M10 20v-4.5h4V20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16 10.5 21 8v8l-5-2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M3 11l4-4 4 2 3-2 7 4M3 11l5 5.5a1.6 1.6 0 0 0 2.3 0l.7-.7.7.7a1.6 1.6 0 0 0 2.3 0l4-4.5M21 11l-3 3M12 9l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  </svg>
 
-  <!-- ==================== 1. SITE HEADER (STICKY WITH SCROLL TRANSFORMATION) ==================== -->
-  <header class="site-header" id="site-header">
-    <div class="container main-header-row">
-      <!-- Mobile Menu Toggle Button -->
-      <button class="mobile-menu-toggle" id="mobile-drawer-toggle" onclick="Channel.toggleMobileDrawer()" aria-label="Open Navigation Menu">
-        ☰
-      </button>
+  <a class="skip-link" href="#main" data-i18n="skip">मुख्य मजकुराकडे जा</a>
 
-      <!-- Brand Identity -->
-      <a href="#hero" class="brand-logo-wrap" title="INBrownTown Home" onclick="Channel.scrollToSection('hero', event)">
-        <div class="brand-symbol">IN</div>
-        <div class="brand-text-block">
-          <h1><span class="in-prefix">IN</span>BrownTown</h1>
-          <div class="brand-tagline-sub">Real Stories. Real Reach.</div>
-        </div>
+  <header class="site-header" id="top">
+    <div class="container header-row">
+      <a class="brand" href="#top" aria-label="INBrownTown">
+        <span class="brand-mark" aria-hidden="true">IN</span>
+        <span class="brand-word">INBrown<span>Town</span></span>
       </a>
 
-      <!-- Desktop Navigation Menu -->
-      <nav class="nav-scroll-wrap">
-        <ul class="main-nav-list" id="main-nav-list">
-          <!-- Injected via Channel.renderHeaderNav() -->
+      <nav class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#stories" data-i18n="navStories">गोष्टी</a></li>
+          <li><a href="#coverage" data-i18n="navCoverage">कव्हरेज</a></li>
+          <li><a href="#services" data-i18n="navServices">आमचे काम</a></li>
+          <li><a href="#work" data-i18n="navWork">प्रमोशन</a></li>
+          <li><a href="#founder" data-i18n="navAbout">आमच्याविषयी</a></li>
         </ul>
       </nav>
 
-      <!-- Header Utilities: Language & Theme -->
-      <div class="header-action-group">
-        <div class="lang-switcher">
-          <button class="lang-btn active" data-lang="mr">मराठी</button>
-          <button class="lang-btn" data-lang="hi">हिन्दी</button>
-          <button class="lang-btn" data-lang="en">EN</button>
+      <div class="header-tools">
+        <div class="lang-switch" role="group" data-i18n-attr="aria-label:langLabel" aria-label="भाषा निवडा">
+          <button type="button" class="lang-btn" data-lang="mr" lang="mr" aria-pressed="true">मराठी</button>
+          <button type="button" class="lang-btn" data-lang="hi" lang="hi" aria-pressed="false">हिन्दी</button>
+          <button type="button" class="lang-btn" data-lang="en" lang="en" aria-pressed="false">EN</button>
         </div>
-
-        <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle Dark/Light Mode">
-          🌙
+        <button type="button" class="icon-btn theme-btn" id="theme-btn" data-i18n-attr="aria-label:themeToDark" aria-label="गडद थीम वापरा">
+          <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+        <a class="btn btn-primary btn-sm header-cta" href="#partner" data-i18n="navPartner">भागीदारी करा</a>
+        <button type="button" class="icon-btn menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-nav" data-i18n-attr="aria-label:menuOpen" aria-label="मेनू उघडा">
+          <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Glowing Dynamic Scroll Progress Bar -->
-    <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+    <div class="mobile-nav" id="mobile-nav" hidden>
+      <nav class="container" aria-label="Mobile">
+        <ul>
+          <li><a href="#stories" data-i18n="navStories">गोष्टी</a></li>
+          <li><a href="#coverage" data-i18n="navCoverage">कव्हरेज</a></li>
+          <li><a href="#services" data-i18n="navServices">आमचे काम</a></li>
+          <li><a href="#work" data-i18n="navWork">प्रमोशन</a></li>
+          <li><a href="#founder" data-i18n="navAbout">आमच्याविषयी</a></li>
+          <li><a href="#partner" class="btn btn-primary" data-i18n="navPartner">भागीदारी करा</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- ==================== 2. MOBILE DRAWER SLIDE-OVER ==================== -->
-  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" onclick="Channel.closeMobileDrawer()">
-    <div class="mobile-drawer" onclick="event.stopPropagation()">
-      <div class="drawer-header">
-        <div style="display:flex; align-items:center; gap:0.5rem;">
-          <div class="brand-symbol" style="width:32px; height:32px; font-size:1rem;">IN</div>
-          <div>
-            <strong style="font-size:1.05rem; display:block; line-height:1.2;">INBrownTown</strong>
-            <span style="font-size:0.68rem; color:var(--text-muted); font-weight:700; letter-spacing:0.04em;">Real Stories. Real Reach.</span>
+  <main id="main" tabindex="-1">
+    <!-- ============ 1. HERO ============ -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow eyebrow-onair"><span class="rec-dot" aria-hidden="true"></span><span data-i18n="heroEyebrow">कम्युनिटी मीडिया • ग्राउंड रिपोर्टिंग</span></p>
+          <h1 class="hero-title" id="hero-title">
+            <span data-i18n="heroTitleA">महाराष्ट्रातील खऱ्या गोष्टी.</span>
+            <span class="accent" data-i18n="heroTitleB">ब्रँड्ससाठी खरी पोहोच.</span>
+          </h1>
+          <p class="hero-brandline" data-i18n="brandLine">जिथे प्रत्येक गोष्टीला आवाज मिळतो.</p>
+          <p class="hero-lead" data-i18n="heroLead">INBrownTown हे पत्रकार आयेशा सय्यद यांच्या नेतृत्वाखालील महाराष्ट्र-केंद्रित कम्युनिटी मीडिया नेटवर्क आहे. आम्ही मराठी, हिंदी आणि इंग्रजीत ग्राउंड मुलाखती व समाजातील गोष्टी चित्रित करतो — आणि स्पष्टपणे ‘प्रायोजित’ म्हणून नमूद केलेल्या प्रमोशनद्वारे स्थानिक व्यवसायांना ओळख मिळवून देतो.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-lg" href="#stories">
+              <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>
+              <span data-i18n="ctaWatch">आमच्या गोष्टी पहा</span>
+            </a>
+            <a class="btn btn-ghost btn-lg" href="#partner">
+              <span data-i18n="ctaPromote">तुमच्या व्यवसायाचे प्रमोशन करा</span>
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
           </div>
+          <!-- Proof strip: only facts this site itself can stand behind.
+               Channel audience stats appear here automatically once marked verified in src/data/site.js. -->
+          <dl class="proof-strip" id="proof-strip">
+            <div><dt data-i18n-num="30">३०</dt><dd data-i18n="proofStories">निवडक व्हिडिओ गोष्टी</dd></div>
+            <div><dt data-i18n-num="6">६</dt><dd data-i18n="proofHubs">कव्हरेज केंद्रे</dd></div>
+            <div><dt data-i18n-num="3">३</dt><dd data-i18n="proofLangs">भाषा</dd></div>
+            <div><dt class="proof-platforms" data-i18n="proofPlatforms">YouTube • Instagram</dt><dd data-i18n="proofPlatformsLabel">आम्ही इथे प्रकाशित करतो</dd></div>
+          </dl>
         </div>
-        <button class="modal-close-btn" onclick="Channel.closeMobileDrawer()">&times;</button>
+
+        <div class="hero-visual" id="hero-visual" role="img" data-i18n-attr="aria-label:heroVisualLabel" aria-label="स्थानिक केंद्रांमधून व्यापक प्रेक्षकांपर्यंत पोहोचणाऱ्या गोष्टींचे प्रतीकात्मक चित्र">
+          <!-- Static composition: shown immediately, and kept when WebGL is unavailable,
+               on small/low-power devices, or as the base layer under the 3D canvas. -->
+          <svg class="hero-fallback" viewBox="0 0 600 560" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="hf-glow" cx="60%" cy="34%" r="60%">
+                <stop offset="0" stop-color="#E0662A" stop-opacity=".22"/>
+                <stop offset=".5" stop-color="#1b2a44" stop-opacity=".35"/>
+                <stop offset="1" stop-color="#101827" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="hf-glass" cx="42%" cy="38%" r="70%">
+                <stop offset="0" stop-color="#3a5276"/>
+                <stop offset=".55" stop-color="#16223a"/>
+                <stop offset="1" stop-color="#0b1220"/>
+              </radialGradient>
+              <linearGradient id="hf-arc" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".15"/>
+                <stop offset="1" stop-color="#E0662A" stop-opacity=".75"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="560" fill="url(#hf-glow)"/>
+            <g fill="none" stroke="#ffffff" stroke-opacity=".08">
+              <ellipse cx="300" cy="372" rx="260" ry="92"/>
+              <ellipse cx="300" cy="372" rx="190" ry="64"/>
+              <ellipse cx="300" cy="372" rx="120" ry="38"/>
+            </g>
+            <g fill="none" stroke="url(#hf-arc)" stroke-width="1.4" stroke-linecap="round">
+              <path d="M100 345 Q190 160 360 190"/>
+              <path d="M163 366 Q230 190 360 190"/>
+              <path d="M209 380 Q270 210 360 190"/>
+              <path d="M159 309 Q220 150 360 190"/>
+              <path d="M497 265 Q470 150 360 190"/>
+              <path d="M188 435 Q240 230 360 190"/>
+            </g>
+            <g>
+              <circle cx="360" cy="190" r="150" fill="none" stroke="#ffffff" stroke-opacity=".1"/>
+              <circle cx="360" cy="190" r="122" fill="none" stroke="#ffffff" stroke-opacity=".28" stroke-dasharray="1.5 7"/>
+              <circle cx="360" cy="190" r="96" fill="none" stroke="#E0662A" stroke-opacity=".85" stroke-width="2.5" stroke-dasharray="300 303" transform="rotate(-70 360 190)"/>
+              <circle cx="360" cy="190" r="70" fill="url(#hf-glass)" stroke="#ffffff" stroke-opacity=".18"/>
+              <ellipse cx="338" cy="166" rx="26" ry="14" fill="#ffffff" fill-opacity=".09" transform="rotate(-30 338 166)"/>
+              <circle cx="360" cy="190" r="7" fill="#E0662A"/>
+            </g>
+            <g fill="#ffffff">
+              <circle cx="100" cy="345" r="4.5"/>
+              <circle cx="209" cy="380" r="4"/>
+              <circle cx="159" cy="309" r="4"/>
+              <circle cx="497" cy="265" r="4.5"/>
+              <circle cx="188" cy="435" r="4"/>
+              <circle cx="163" cy="366" r="16" fill="#E0662A" fill-opacity=".22"/>
+              <circle cx="163" cy="366" r="6.5" fill="#E0662A"/>
+            </g>
+          </svg>
+        </div>
       </div>
-      <div class="drawer-body" id="mobile-drawer-links">
-        <!-- Injected via Channel.renderHeaderNav() -->
+    </section>
+
+    <!-- ============ 2. STORIES ============ -->
+    <section class="section stories" id="stories" aria-labelledby="stories-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="storiesEyebrow">आमच्या YouTube चॅनेलवरून</p>
+          <h2 id="stories-title" class="section-title" data-i18n="storiesTitle">जमिनीवरच्या गोष्टी</h2>
+          <p class="section-lead" data-i18n="storiesLead">मुलाखती, ग्राउंड रिपोर्ट्स आणि संवाद. शीर्षके YouTube वर प्रकाशित झाल्याप्रमाणेच दिली आहेत.</p>
+        </header>
+
+        <div class="featured-grid" id="featured-stories"></div>
+
+        <div class="catalogue" id="catalogue">
+          <div class="catalogue-head">
+            <h3 class="catalogue-title" data-i18n="browseTitle">सर्व गोष्टी</h3>
+            <div class="catalogue-controls">
+              <div class="chip-group" role="group" id="filter-group" data-i18n-attr="aria-label:filterLabel" aria-label="विषयानुसार गाळा"></div>
+              <label class="sort-control" id="sort-control" hidden>
+                <span data-i18n="sortLabel">क्रम</span>
+                <select id="sort-select">
+                  <option value="curated" data-i18n="sortCurated">निवडक क्रम</option>
+                  <option value="latest" data-i18n="sortLatest">नवीन आधी</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <p class="catalogue-count" id="catalogue-count" aria-live="polite"></p>
+          <ul class="video-grid" id="video-grid"></ul>
+          <div class="catalogue-foot">
+            <button type="button" class="btn btn-outline" id="show-more" data-i18n="showMore">आणखी गोष्टी दाखवा</button>
+            <a class="btn btn-text" href="https://www.youtube.com/@INBrownTown" target="_blank" rel="noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-youtube"/></svg>
+              <span data-i18n="allOnYoutube">संपूर्ण चॅनेल YouTube वर पहा</span>
+              <span class="visually-hidden" data-i18n="newTab">(नवीन टॅबमध्ये उघडते)</span>
+            </a>
+          </div>
+          <noscript><p class="catalogue-count">The story list needs JavaScript. Watch every story on <a href="https://www.youtube.com/@INBrownTown">YouTube</a>.</p></noscript>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- ==================== 3. MAIN SHOWCASE SECTIONS ==================== -->
-  <main>
-    <!-- Section 1: Hero Cinematic Banner -->
-    <section id="hero"></section>
+    <!-- ============ 3. COVERAGE ============ -->
+    <section class="section coverage" id="coverage" aria-labelledby="coverage-title">
+      <div class="container coverage-grid">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="coverageEyebrow">कव्हरेज</p>
+          <h2 id="coverage-title" class="section-title" data-i18n="coverageTitle">आम्ही कुठे रिपोर्टिंग करतो</h2>
+          <p class="section-lead" data-i18n="coverageLead">कोकण किनारपट्टीपासून विदर्भापर्यंत महाराष्ट्रातील सहा कव्हरेज केंद्रे. पुणे हा आमचा मुख्य तळ आहे.</p>
+          <ul class="hub-list" id="hub-list"></ul>
+        </header>
+        <figure class="coverage-figure">
+          <div class="coverage-diagram" id="coverage-diagram"></div>
+          <figcaption data-i18n="coverageNote">शहरांची स्थाने अक्षांश-रेखांशानुसार दाखवली आहेत. ही आकृती आहे, सीमारेषा दाखवणारा नकाशा नाही.</figcaption>
+        </figure>
+      </div>
+    </section>
 
-    <!-- Section 2: Who We Are & Live Stats -->
-    <section id="who-we-are"></section>
+    <!-- ============ 4. SERVICES ============ -->
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section-head section-head-center">
+          <p class="eyebrow" data-i18n="servicesEyebrow">आम्ही काय करतो</p>
+          <h2 id="services-title" class="section-title" data-i18n="servicesTitle">एक मंच, दोन स्पष्ट भूमिका</h2>
+          <p class="section-lead" data-i18n="servicesLead">स्वतंत्र पत्रकारिता आणि सशुल्क प्रमोशन वेगवेगळे ठेवले जातात. प्रायोजित काम नेहमी ‘पेड पार्टनरशिप’ म्हणून नमूद केले जाते.</p>
+        </header>
+        <div class="tracks">
+          <article class="track track-editorial" aria-labelledby="track-j-title">
+            <div class="track-head">
+              <h3 id="track-j-title" data-i18n="journalismTitle">पत्रकारिता व समाज</h3>
+              <p data-i18n="journalismLead">प्रेक्षक आणि नागरिकांसाठी — कोणतेही शुल्क नाही.</p>
+            </div>
+            <ul class="service-list" id="journalism-list"></ul>
+            <a class="btn btn-outline" href="#stories"><span data-i18n="ctaJournalism">आमची पत्रकारिता पहा</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="track track-commercial" aria-labelledby="track-b-title">
+            <div class="track-head">
+              <p class="paid-badge" data-i18n="paidLabel">पेड पार्टनरशिप</p>
+              <h3 id="track-b-title" data-i18n="businessTitle">व्यवसाय प्रमोशन व मीडिया सेवा</h3>
+              <p data-i18n="businessLead">दुकानदार, उद्योजक, ब्रँड्स आणि संस्थांसाठी.</p>
+            </div>
+            <ul class="service-list" id="business-list"></ul>
+            <a class="btn btn-primary" href="#partner"><span data-i18n="ctaBusiness">मोहिमेविषयी चर्चा करा</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <!-- Section 3: What We Do -->
-    <section id="what-we-do"></section>
+    <!-- ============ 5. WORK ============ -->
+    <section class="section work" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow eyebrow-paid" data-i18n="workEyebrow">प्रमोशनल काम</p>
+          <h2 id="work-title" class="section-title" data-i18n="workTitle">निवडक काम व व्यावसायिक सहकार्य</h2>
+          <p class="section-lead" data-i18n="workLead">आम्ही केलेल्या प्रमोशनल कामाचे केस स्टडीज इथे प्रकाशित होतील.</p>
+        </header>
+        <div id="work-body"></div>
+      </div>
+    </section>
 
-    <!-- Section 4: How We Help (Pillars) -->
-    <section id="how-we-help"></section>
+    <!-- ============ 6. FOUNDER ============ -->
+    <section class="section founder" id="founder" aria-labelledby="founder-title">
+      <div class="container founder-grid">
+        <div class="founder-portrait">
+          <img src="/media/founder_ayesha_sayyad.jpg" width="320" height="320" alt="Ayesha Sayyad" id="founder-photo" loading="lazy" decoding="async">
+        </div>
+        <div class="founder-copy">
+          <p class="eyebrow" data-i18n="founderEyebrow">संस्थापिका</p>
+          <h2 id="founder-title" class="section-title" data-i18n="founderTitle">INBrownTown मागचा आवाज</h2>
+          <p class="founder-name"><strong id="founder-name">आयेशा सय्यद</strong> <span id="founder-role">संस्थापिका व मुख्य मुलाखतकार</span></p>
+          <blockquote class="founder-quote"><p id="founder-quote"></p></blockquote>
+          <p class="founder-bio" id="founder-bio"></p>
+          <a class="btn btn-text" href="https://www.instagram.com/ayesha.sayyad/" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+            <span data-i18n="founderConnect">Instagram वर फॉलो करा</span> <span>@ayesha.sayyad</span>
+            <span class="visually-hidden" data-i18n="newTab">(नवीन टॅबमध्ये उघडते)</span>
+          </a>
+        </div>
+        <div class="founder-gallery">
+          <h3 class="gallery-title" data-i18n="founderGallery">फिल्डवरून</h3>
+          <ul id="founder-gallery"></ul>
+        </div>
+      </div>
+    </section>
 
-    <!-- Section 5: Curated Video Gallery & In-Page Modal Player -->
-    <section id="videos"></section>
+    <!-- ============ 7. PRINCIPLES ============ -->
+    <section class="section principles" id="principles" aria-labelledby="principles-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="trustEyebrow">आम्ही कसे काम करतो</p>
+          <h2 id="principles-title" class="section-title" data-i18n="trustTitle">आमची तत्त्वे</h2>
+          <p class="section-lead" data-i18n="trustLead">ही तत्त्वे INBrownTown कोणत्या पद्धतीने काम करू इच्छिते ते सांगतात.</p>
+        </header>
+        <ol class="principle-list" id="principle-list"></ol>
+        <p class="principles-note" id="principles-note"></p>
+      </div>
+    </section>
 
-    <!-- Section 7: Social Proof / Testimonials -->
-    <section id="testimonials"></section>
+    <!-- ============ 8. PARTNER ============ -->
+    <section class="section partner" id="partner" aria-labelledby="partner-title">
+      <div class="container partner-grid">
+        <div class="partner-copy">
+          <p class="eyebrow" data-i18n="partnerEyebrow">व्यवसायांसाठी</p>
+          <h2 id="partner-title" class="section-title" data-i18n="partnerTitle">चला, तुमच्या व्यवसायाची गोष्ट सांगूया</h2>
+          <p class="section-lead" data-i18n="partnerLead">प्रमोशन, क्रिएटिव्ह किंवा मीडिया भागीदारीसाठी तुमची माहिती पाठवा. ही माहिती थेट INBrownTown टीमकडे जाते.</p>
+          <ol class="steps">
+            <li><strong data-i18n="step1Title">तुमच्याविषयी सांगा</strong><span data-i18n="step1Body">तुमचा व्यवसाय, उद्दिष्ट आणि मोहिमेची कल्पना.</span></li>
+            <li><strong data-i18n="step2Title">योग्य सेवेवर चर्चा</strong><span data-i18n="step2Body">क्रिएटिव्ह, जाहिरात किंवा मीडिया — काय योग्य आहे ते ठरवू.</span></li>
+            <li><strong data-i18n="step3Title">काम निश्चित करा</strong><span data-i18n="step3Body">मोहीम, डिलिव्हरेबल्स आणि व्यावसायिक अटींवर सहमती.</span></li>
+          </ol>
+          <p class="editorial-note" id="editorial-note"></p>
+        </div>
 
-    <!-- Section 8: Work With Us / Sponsorships & Business Inquiry -->
-    <section id="work-with-us"></section>
+        <div class="form-card" id="enquiry-card">
+          <form class="enquiry-form" id="enquiry-form" novalidate>
+            <div class="form-head">
+              <h3 data-i18n="formTitle">भागीदारी चौकशी</h3>
+              <span class="form-required" data-i18n="formRequired">* आवश्यक</span>
+            </div>
+            <div class="form-alert" id="form-alert" role="alert" tabindex="-1" hidden></div>
+
+            <div class="field">
+              <label for="f-name"><span data-i18n="fName">तुमचे नाव</span> <span aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" maxlength="80" required aria-describedby="f-name-err">
+              <p class="field-error" id="f-name-err"></p>
+            </div>
+            <div class="field">
+              <label for="f-business"><span data-i18n="fBusiness">व्यवसाय / संस्थेचे नाव</span> <span aria-hidden="true">*</span></label>
+              <input id="f-business" name="business" type="text" autocomplete="organization" maxlength="120" required aria-describedby="f-business-err">
+              <p class="field-error" id="f-business-err"></p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-phone"><span data-i18n="fPhone">मोबाईल / WhatsApp नंबर</span> <span aria-hidden="true">*</span></label>
+                <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" required aria-describedby="f-phone-hint f-phone-err">
+                <p class="field-hint" id="f-phone-hint" data-i18n="fPhoneHint">उदा. +91 98xxxxxxxx</p>
+                <p class="field-error" id="f-phone-err"></p>
+              </div>
+              <div class="field">
+                <label for="f-email" data-i18n="fEmail">ईमेल (ऐच्छिक)</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" maxlength="120" aria-describedby="f-email-err">
+                <p class="field-error" id="f-email-err"></p>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-service"><span data-i18n="fService">तुम्हाला कशात रस आहे?</span> <span aria-hidden="true">*</span></label>
+                <select id="f-service" name="service" required aria-describedby="f-service-err">
+                  <option value="" data-i18n="fServicePlaceholder">एक पर्याय निवडा</option>
+                  <option value="digital_campaign" data-i18n="svc_digital_campaign">डिजिटल प्रमोशन मोहीम</option>
+                  <option value="creative_design" data-i18n="svc_creative_design">पोस्टर / बॅनर / सोशल क्रिएटिव्ह</option>
+                  <option value="business_spotlight" data-i18n="svc_business_spotlight">स्थानिक व्यवसाय स्पॉटलाइट</option>
+                  <option value="branded_video" data-i18n="svc_branded_video">प्रायोजित मुलाखत / व्हिडिओ</option>
+                  <option value="media_partnership" data-i18n="svc_media_partnership">मोहीम / मीडिया भागीदारी</option>
+                  <option value="other" data-i18n="svc_other">इतर</option>
+                </select>
+                <p class="field-error" id="f-service-err"></p>
+              </div>
+              <div class="field">
+                <label for="f-city" data-i18n="fCity">शहर (ऐच्छिक)</label>
+                <input id="f-city" name="city" type="text" autocomplete="address-level2" maxlength="60">
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-budget" data-i18n="fBudget">अंदाजे बजेट (ऐच्छिक)</label>
+              <select id="f-budget" name="budget">
+                <option value="" data-i18n="budget_">सांगायचे नाही</option>
+                <option value="under_10k" data-i18n="budget_under_10k">₹१०,००० पेक्षा कमी</option>
+                <option value="10k_25k" data-i18n="budget_10k_25k">₹१०,००० – ₹२५,०००</option>
+                <option value="25k_50k" data-i18n="budget_25k_50k">₹२५,००० – ₹५०,०००</option>
+                <option value="above_50k" data-i18n="budget_above_50k">₹५०,००० पेक्षा जास्त</option>
+                <option value="not_sure" data-i18n="budget_not_sure">अजून ठरवले नाही</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-message"><span data-i18n="fMessage">तुमच्या व्यवसायाविषयी आणि मोहिमेविषयी सांगा</span> <span aria-hidden="true">*</span></label>
+              <textarea id="f-message" name="message" rows="4" maxlength="2000" required aria-describedby="f-message-hint f-message-err"></textarea>
+              <p class="field-hint" id="f-message-hint" data-i18n="fMessageHint">किमान २० अक्षरे</p>
+              <p class="field-error" id="f-message-err"></p>
+            </div>
+            <!-- Honeypot: hidden from people and assistive tech; bots tend to fill it. -->
+            <div class="hp" aria-hidden="true">
+              <label for="f-website" data-i18n="fWebsite">वेबसाइट (हे रिकामे ठेवा)</label>
+              <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="field field-check">
+              <input id="f-consent" name="consent" type="checkbox" required aria-describedby="f-consent-err">
+              <label for="f-consent" data-i18n="fConsent">या चौकशीसंदर्भात INBrownTown ने माझ्याशी संपर्क साधावा याला मी संमती देतो/देते.</label>
+              <p class="field-error" id="f-consent-err"></p>
+            </div>
+            <p class="privacy-notice"><span data-i18n="privacyNotice">तुम्ही दिलेली माहिती फक्त या चौकशीला उत्तर देण्यासाठी वापरली जाते, थेट INBrownTown टीमकडे पाठवली जाते आणि विकली किंवा इतरांना दिली जात नाही. या ब्राउझरमध्ये ती साठवली जात नाही.</span> <a href="/privacy" data-i18n="privacyLink">गोपनीयता सूचना वाचा</a></p>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="enquiry-submit">
+              <span class="btn-label" data-i18n="submit">चौकशी पाठवा</span>
+            </button>
+          </form>
+          <div class="form-success" id="form-success" tabindex="-1" hidden></div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- ==================== 4. SITE FOOTER ==================== -->
-  <footer class="site-footer" id="contact">
-    <!-- Rendered dynamically via Channel.renderFooter() -->
+  <!-- ============ 9. FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-invert" href="#top" aria-label="INBrownTown">
+          <span class="brand-mark" aria-hidden="true">IN</span>
+          <span class="brand-word">INBrown<span>Town</span></span>
+        </a>
+        <p class="footer-line" data-i18n="brandLine">जिथे प्रत्येक गोष्टीला आवाज मिळतो.</p>
+        <p data-i18n="footerAbout">महाराष्ट्रातील खऱ्या गोष्टी आणि स्थानिक व्यवसायांसाठी स्पष्टपणे नमूद केलेले प्रमोशन — एकाच कम्युनिटी मीडिया मंचावर.</p>
+      </div>
+      <nav class="footer-col" aria-labelledby="f-explore">
+        <h2 id="f-explore" data-i18n="footerExplore">एक्सप्लोर करा</h2>
+        <ul>
+          <li><a href="#stories" data-i18n="navStories">गोष्टी</a></li>
+          <li><a href="#coverage" data-i18n="navCoverage">कव्हरेज</a></li>
+          <li><a href="#services" data-i18n="navServices">आमचे काम</a></li>
+          <li><a href="#work" data-i18n="navWork">प्रमोशन</a></li>
+          <li><a href="#founder" data-i18n="navAbout">आमच्याविषयी</a></li>
+          <li><a href="#partner" data-i18n="navPartner">भागीदारी करा</a></li>
+        </ul>
+      </nav>
+      <div class="footer-col">
+        <h2 data-i18n="footerFollow">फॉलो करा</h2>
+        <ul class="social-list" id="social-list"></ul>
+      </div>
+      <div class="footer-col">
+        <h2 data-i18n="footerContact">संपर्क</h2>
+        <p id="footer-contact"></p>
+        <a class="btn btn-primary btn-sm" href="#partner" data-i18n="navPartner">भागीदारी करा</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p id="footer-copyright">© 2026 INBrownTown.</p>
+      <ul>
+        <li><a href="/privacy" data-i18n="footerPrivacy">गोपनीयता सूचना</a></li>
+        <li><span data-i18n="footerMadeBy">वेबसाइट: PaviqLabs</span></li>
+        <li><a href="#top" data-i18n="backToTop">वर जा</a></li>
+      </ul>
+    </div>
   </footer>
 
-  <!-- ==================== 5. SCRIPTS ==================== -->
-  <script src="js/config.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/channel.js"></script>
-  <script src="js/app.js"></script>
+  <!-- Video player. Uses the native <dialog> element (focus containment,
+       Escape to close, inert background). The iframe is created only on play. -->
+  <dialog class="video-modal" id="video-modal" aria-labelledby="video-modal-title">
+    <div class="video-modal-inner">
+      <div class="video-modal-head">
+        <h2 class="video-modal-title" id="video-modal-title"></h2>
+        <button type="button" class="icon-btn video-modal-close" id="video-modal-close" data-i18n-attr="aria-label:modalClose" aria-label="प्लेअर बंद करा">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+      <div class="video-frame" id="video-frame"></div>
+      <div class="video-modal-foot">
+        <p><span data-i18n="modalFallback">व्हिडिओ इथे लोड होत नसेल, तर तो थेट YouTube वर पहा.</span> <span class="muted" data-i18n="modalPrivacy">प्ले केल्यावरच YouTube (privacy-enhanced mode) लोड होते.</span></p>
+        <a class="btn btn-outline btn-sm" id="video-modal-yt" href="https://www.youtube.com/@INBrownTown" target="_blank" rel="noopener">
+          <svg class="icon" aria-hidden="true"><use href="#i-youtube"/></svg>
+          <span data-i18n="modalOpenYoutube">YouTube वर उघडा</span>
+          <span class="visually-hidden" data-i18n="newTab">(नवीन टॅबमध्ये उघडते)</span>
+        </a>
+      </div>
+    </div>
+  </dialog>
 </body>
 </html>
